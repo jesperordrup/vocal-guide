@@ -775,24 +775,30 @@
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Swipe arrow indicators - fixed position on screen edges */
+    /* Swipe arrow BUTTONS - tappable, fixed on screen edges */
     .swipe-arrow {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      width: 36px;
-      height: 36px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: var(--accent-warm);
       border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--bg);
-      opacity: 0.8;
-      pointer-events: none;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      color: #fff;
+      opacity: 0.9;
+      pointer-events: auto;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .swipe-arrow:active {
+      transform: translateY(-50%) scale(0.85);
+      opacity: 1;
     }
     .swipe-arrow-left {
       left: 8px;
@@ -801,11 +807,22 @@
       right: 8px;
     }
     .swipe-arrow.hidden {
-      display: none;
+      opacity: 0.2;
+      pointer-events: none;
     }
     .swipe-arrow svg {
-      width: 18px;
-      height: 18px;
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Visual drag feedback on card */
+    .technique-table tbody tr.mobile-active.dragging-left {
+      border-left: 4px solid var(--accent-warm);
+      background: linear-gradient(90deg, rgba(212,135,77,0.15) 0%, var(--surface) 30%);
+    }
+    .technique-table tbody tr.mobile-active.dragging-right {
+      border-right: 4px solid var(--accent-warm);
+      background: linear-gradient(270deg, rgba(212,135,77,0.15) 0%, var(--surface) 30%);
     }
 
     /* Mobile navigation container */
@@ -1647,9 +1664,14 @@ function updateMobileNav(sectionId) {
   updateSwipeArrows(sectionId);
 }
 
+// Track current section for arrow clicks
+let activeSection = null;
+
 function updateSwipeArrows(sectionId) {
   const state = mobileNavState[sectionId];
   if (!state) return;
+
+  activeSection = sectionId;
 
   // Only show arrows on mobile
   if (window.innerWidth > 768) {
@@ -1660,14 +1682,25 @@ function updateSwipeArrows(sectionId) {
   // Remove all existing arrows first
   document.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
 
-  // Create arrow elements attached to body (fixed position)
-  const leftArrow = document.createElement('div');
+  // Create LEFT arrow button
+  const leftArrow = document.createElement('button');
   leftArrow.className = 'swipe-arrow swipe-arrow-left' + (state.current === 0 ? ' hidden' : '');
-  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>';
+  leftArrow.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (activeSection) mobileNavPrev(activeSection);
+  };
 
-  const rightArrow = document.createElement('div');
+  // Create RIGHT arrow button
+  const rightArrow = document.createElement('button');
   rightArrow.className = 'swipe-arrow swipe-arrow-right' + (state.current === state.total - 1 ? ' hidden' : '');
-  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
+  rightArrow.onclick = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (activeSection) mobileNavNext(activeSection);
+  };
 
   document.body.appendChild(leftArrow);
   document.body.appendChild(rightArrow);
@@ -1702,19 +1735,13 @@ document.addEventListener('touchmove', function(e) {
   const touchX = e.changedTouches[0].clientX;
   const diff = touchX - touchStartX;
 
-  // Limit drag distance and add resistance at edges
-  const state = mobileNavState[currentSwipeSection];
-  const maxDrag = 120;
-  let clampedDiff = Math.max(-maxDrag, Math.min(maxDrag, diff));
-
-  // Add resistance if at first/last card
-  if ((state.current === 0 && diff > 0) ||
-      (state.current === state.total - 1 && diff < 0)) {
-    clampedDiff = diff * 0.3;
+  // Visual feedback: show drag direction with color
+  currentCard.classList.remove('dragging-left', 'dragging-right');
+  if (diff > 30) {
+    currentCard.classList.add('dragging-right');
+  } else if (diff < -30) {
+    currentCard.classList.add('dragging-left');
   }
-
-  currentCard.style.transform = `translateX(${clampedDiff}px)`;
-  currentCard.style.opacity = 1 - Math.abs(clampedDiff) / 300;
 }, { passive: true });
 
 document.addEventListener('touchend', function(e) {
@@ -1723,9 +1750,8 @@ document.addEventListener('touchend', function(e) {
   const touchEndX = e.changedTouches[0].clientX;
   const diff = touchStartX - touchEndX;
 
-  currentCard.classList.remove('dragging');
-  currentCard.style.transform = '';
-  currentCard.style.opacity = '';
+  // Remove drag visual feedback
+  currentCard.classList.remove('dragging', 'dragging-left', 'dragging-right');
 
   // Require minimum swipe distance of 50px
   if (Math.abs(diff) > 50) {
