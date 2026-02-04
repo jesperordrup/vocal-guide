@@ -806,6 +806,42 @@
       color: var(--text);
     }
 
+    /* Fixed left/right arrow buttons on screen */
+    .screen-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .screen-arrow:active {
+      transform: translateY(-50%) scale(0.9);
+    }
+    .screen-arrow-left {
+      left: 6px;
+    }
+    .screen-arrow-right {
+      right: 6px;
+    }
+    .screen-arrow.hidden {
+      display: none;
+    }
+    .screen-arrow svg {
+      width: 20px;
+      height: 20px;
+    }
+
     /* Readme modal adjustments */
     .readme-overlay {
       padding: 0;
@@ -880,7 +916,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.1</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -914,7 +950,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.1</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1583,6 +1619,9 @@ function mobileNavNext(sectionId) {
   }
 }
 
+// Track currently active section for screen arrows
+let activeScreenSection = null;
+
 function updateMobileNav(sectionId) {
   const state = mobileNavState[sectionId];
   const nav = document.querySelector(`.mobile-nav[data-section="${sectionId}"]`);
@@ -1595,12 +1634,62 @@ function updateMobileNav(sectionId) {
   counter.innerHTML = `<strong>${state.current + 1}</strong> / ${state.total}`;
   prevBtn.disabled = state.current === 0;
   nextBtn.disabled = state.current === state.total - 1;
+
+  // Update active section for screen arrows
+  activeScreenSection = sectionId;
+  updateScreenArrows();
 }
 
 function updateAllMobileNavCounters() {
   Object.keys(mobileNavState).forEach(sectionId => {
     updateMobileNav(sectionId);
   });
+}
+
+// Screen arrows (fixed left/right buttons)
+function createScreenArrows() {
+  if (window.innerWidth > 768) return;
+
+  // Remove existing
+  document.querySelectorAll('.screen-arrow').forEach(el => el.remove());
+
+  // Left arrow
+  const leftArrow = document.createElement('button');
+  leftArrow.className = 'screen-arrow screen-arrow-left';
+  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>';
+  leftArrow.addEventListener('click', function() {
+    if (activeScreenSection) mobileNavPrev(activeScreenSection);
+  });
+
+  // Right arrow
+  const rightArrow = document.createElement('button');
+  rightArrow.className = 'screen-arrow screen-arrow-right';
+  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
+  rightArrow.addEventListener('click', function() {
+    if (activeScreenSection) mobileNavNext(activeScreenSection);
+  });
+
+  document.body.appendChild(leftArrow);
+  document.body.appendChild(rightArrow);
+
+  updateScreenArrows();
+}
+
+function updateScreenArrows() {
+  if (!activeScreenSection || window.innerWidth > 768) return;
+
+  const state = mobileNavState[activeScreenSection];
+  if (!state) return;
+
+  const leftArrow = document.querySelector('.screen-arrow-left');
+  const rightArrow = document.querySelector('.screen-arrow-right');
+
+  if (leftArrow) {
+    leftArrow.classList.toggle('hidden', state.current === 0);
+  }
+  if (rightArrow) {
+    rightArrow.classList.toggle('hidden', state.current === state.total - 1);
+  }
 }
 
 // Touch swipe support for mobile
@@ -1638,9 +1727,13 @@ document.addEventListener('touchend', function(e) {
 
 // Initialize mobile nav on DOM ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobileNav);
+  document.addEventListener('DOMContentLoaded', function() {
+    initMobileNav();
+    createScreenArrows();
+  });
 } else {
   initMobileNav();
+  createScreenArrows();
 }
 </script>
 
