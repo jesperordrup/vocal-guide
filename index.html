@@ -916,7 +916,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.3</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.4</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -950,7 +950,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.3</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.4</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1755,6 +1755,55 @@ document.addEventListener('touchend', function(e) {
 
   currentSwipeSection = null;
 }, { passive: true });
+
+// Handle clicks on prerequisite chips and technique links
+function navigateToTechnique(techId) {
+  // Find the technique row
+  const techRow = document.getElementById(techId);
+  if (!techRow) return false;
+
+  // Find which section it belongs to
+  const section = techRow.closest('[id]');
+  if (!section) return false;
+
+  const sectionId = section.id;
+  const state = mobileNavState[sectionId];
+  if (!state) return false;
+
+  // Find the index of this row in the section
+  const rowIndex = Array.from(state.rows).indexOf(techRow);
+  if (rowIndex === -1) return false;
+
+  // Update the active card
+  state.rows[state.current].classList.remove('mobile-active');
+  state.current = rowIndex;
+  state.rows[state.current].classList.add('mobile-active');
+
+  // Update navigation
+  updateMobileNav(sectionId);
+  updateScreenArrows();
+
+  return true;
+}
+
+// Listen for clicks on links to techniques
+document.addEventListener('click', function(e) {
+  const link = e.target.closest('a[href^="#tech-"]');
+  if (!link) return;
+
+  // Only handle on mobile
+  if (window.innerWidth > 768) return;
+
+  const techId = link.getAttribute('href').substring(1); // Remove #
+  if (navigateToTechnique(techId)) {
+    e.preventDefault();
+    // Scroll to the section
+    const section = document.getElementById(techId)?.closest('[id]');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+});
 
 // Initialize mobile nav on DOM ready
 if (document.readyState === 'loading') {
