@@ -755,74 +755,10 @@
     /* Card animation */
     .technique-table tbody tr.mobile-active {
       animation: cardFadeIn 0.25s ease-out;
-      position: relative;
-      transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-      will-change: transform;
-      touch-action: pan-y pinch-zoom;
-    }
-    .technique-table tbody tr.mobile-active.dragging {
-      transition: none;
-      cursor: grabbing;
-    }
-
-    /* Ensure table allows overflow for arrows */
-    .technique-table,
-    .technique-table tbody {
-      overflow: visible !important;
     }
     @keyframes cardFadeIn {
       from { opacity: 0; transform: translateX(10px); }
       to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* Swipe arrow BUTTONS - tappable, fixed on screen edges */
-    .swipe-arrow {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--accent-warm);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      opacity: 0.9;
-      pointer-events: auto;
-      z-index: 1000;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .swipe-arrow:active {
-      transform: translateY(-50%) scale(0.85);
-      opacity: 1;
-    }
-    .swipe-arrow-left {
-      left: 8px;
-    }
-    .swipe-arrow-right {
-      right: 8px;
-    }
-    .swipe-arrow.hidden {
-      opacity: 0.2;
-      pointer-events: none;
-    }
-    .swipe-arrow svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    /* Visual drag feedback on card */
-    .technique-table tbody tr.mobile-active.dragging-left {
-      border-left: 4px solid var(--accent-warm);
-      background: linear-gradient(90deg, rgba(212,135,77,0.15) 0%, var(--surface) 30%);
-    }
-    .technique-table tbody tr.mobile-active.dragging-right {
-      border-right: 4px solid var(--accent-warm);
-      background: linear-gradient(270deg, rgba(212,135,77,0.15) 0%, var(--surface) 30%);
     }
 
     /* Mobile navigation container */
@@ -944,7 +880,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v1.5</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -978,7 +914,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v1.5</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1659,51 +1595,6 @@ function updateMobileNav(sectionId) {
   counter.innerHTML = `<strong>${state.current + 1}</strong> / ${state.total}`;
   prevBtn.disabled = state.current === 0;
   nextBtn.disabled = state.current === state.total - 1;
-
-  // Update swipe arrows on active card
-  updateSwipeArrows(sectionId);
-}
-
-// Track current section for arrow clicks
-let activeSection = null;
-
-function updateSwipeArrows(sectionId) {
-  const state = mobileNavState[sectionId];
-  if (!state) return;
-
-  activeSection = sectionId;
-
-  // Only show arrows on mobile
-  if (window.innerWidth > 768) {
-    document.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
-    return;
-  }
-
-  // Remove all existing arrows first
-  document.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
-
-  // Create LEFT arrow button
-  const leftArrow = document.createElement('button');
-  leftArrow.className = 'swipe-arrow swipe-arrow-left' + (state.current === 0 ? ' hidden' : '');
-  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>';
-  leftArrow.onclick = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (activeSection) mobileNavPrev(activeSection);
-  };
-
-  // Create RIGHT arrow button
-  const rightArrow = document.createElement('button');
-  rightArrow.className = 'swipe-arrow swipe-arrow-right' + (state.current === state.total - 1 ? ' hidden' : '');
-  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
-  rightArrow.onclick = function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (activeSection) mobileNavNext(activeSection);
-  };
-
-  document.body.appendChild(leftArrow);
-  document.body.appendChild(rightArrow);
 }
 
 function updateAllMobileNavCounters() {
@@ -1712,58 +1603,36 @@ function updateAllMobileNavCounters() {
   });
 }
 
-// Touch swipe support for mobile with visual dragging
+// Touch swipe support for mobile
 let touchStartX = 0;
+let touchEndX = 0;
 let currentSwipeSection = null;
-let currentCard = null;
-let isDragging = false;
 
 document.addEventListener('touchstart', function(e) {
-  const card = e.target.closest('.technique-table tbody tr.mobile-active');
-  if (card) {
-    touchStartX = e.changedTouches[0].clientX;
-    currentSwipeSection = card.closest('[id]')?.id;
-    currentCard = card;
-    isDragging = true;
-    card.classList.add('dragging');
-  }
-}, { passive: true });
-
-document.addEventListener('touchmove', function(e) {
-  if (!isDragging || !currentCard) return;
-
-  const touchX = e.changedTouches[0].clientX;
-  const diff = touchX - touchStartX;
-
-  // Visual feedback: show drag direction with color
-  currentCard.classList.remove('dragging-left', 'dragging-right');
-  if (diff > 30) {
-    currentCard.classList.add('dragging-right');
-  } else if (diff < -30) {
-    currentCard.classList.add('dragging-left');
+  const table = e.target.closest('.technique-table');
+  if (table) {
+    touchStartX = e.changedTouches[0].screenX;
+    currentSwipeSection = table.closest('[id]')?.id;
   }
 }, { passive: true });
 
 document.addEventListener('touchend', function(e) {
-  if (!isDragging || !currentCard) return;
+  if (!currentSwipeSection) return;
 
-  const touchEndX = e.changedTouches[0].clientX;
+  touchEndX = e.changedTouches[0].screenX;
   const diff = touchStartX - touchEndX;
-
-  // Remove drag visual feedback
-  currentCard.classList.remove('dragging', 'dragging-left', 'dragging-right');
 
   // Require minimum swipe distance of 50px
   if (Math.abs(diff) > 50) {
     if (diff > 0) {
+      // Swipe left - next
       mobileNavNext(currentSwipeSection);
     } else {
+      // Swipe right - prev
       mobileNavPrev(currentSwipeSection);
     }
   }
 
-  isDragging = false;
-  currentCard = null;
   currentSwipeSection = null;
 }, { passive: true });
 
