@@ -758,45 +758,54 @@
       position: relative;
       transition: transform 0.15s ease-out, opacity 0.15s ease-out;
       will-change: transform;
+      touch-action: pan-y pinch-zoom;
     }
     .technique-table tbody tr.mobile-active.dragging {
       transition: none;
+      cursor: grabbing;
+    }
+
+    /* Ensure table allows overflow for arrows */
+    .technique-table,
+    .technique-table tbody {
+      overflow: visible !important;
     }
     @keyframes cardFadeIn {
       from { opacity: 0; transform: translateX(10px); }
       to { opacity: 1; transform: translateX(0); }
     }
 
-    /* Swipe arrow indicators on cards */
+    /* Swipe arrow indicators - fixed position on screen edges */
     .swipe-arrow {
-      position: absolute;
+      position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: var(--bg);
-      border: 1px solid var(--border);
+      background: var(--accent-warm);
+      border: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
-      opacity: 0.6;
+      color: var(--bg);
+      opacity: 0.8;
       pointer-events: none;
-      z-index: 5;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .swipe-arrow-left {
-      left: -8px;
+      left: 8px;
     }
     .swipe-arrow-right {
-      right: -8px;
+      right: 8px;
     }
     .swipe-arrow.hidden {
       display: none;
     }
     .swipe-arrow svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
     }
 
     /* Mobile navigation container */
@@ -1642,13 +1651,16 @@ function updateSwipeArrows(sectionId) {
   const state = mobileNavState[sectionId];
   if (!state) return;
 
-  const activeCard = state.rows[state.current];
-  if (!activeCard) return;
+  // Only show arrows on mobile
+  if (window.innerWidth > 768) {
+    document.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
+    return;
+  }
 
-  // Remove existing arrows
-  activeCard.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
+  // Remove all existing arrows first
+  document.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
 
-  // Create arrow elements
+  // Create arrow elements attached to body (fixed position)
   const leftArrow = document.createElement('div');
   leftArrow.className = 'swipe-arrow swipe-arrow-left' + (state.current === 0 ? ' hidden' : '');
   leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
@@ -1657,8 +1669,8 @@ function updateSwipeArrows(sectionId) {
   rightArrow.className = 'swipe-arrow swipe-arrow-right' + (state.current === state.total - 1 ? ' hidden' : '');
   rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
 
-  activeCard.appendChild(leftArrow);
-  activeCard.appendChild(rightArrow);
+  document.body.appendChild(leftArrow);
+  document.body.appendChild(rightArrow);
 }
 
 function updateAllMobileNavCounters() {
