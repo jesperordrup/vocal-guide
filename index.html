@@ -916,7 +916,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.4</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.5</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -950,7 +950,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.4</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.5</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1501,6 +1501,77 @@
 
 </div><!-- /container -->
 
+<!-- CHANGELOG MODAL -->
+<div id="changelogModal" class="readme-overlay" onclick="if(event.target===this)closeChangelog()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeChangelog()">&times;</button>
+    <h3>Changelog</h3>
+
+    <div class="readme-section">
+      <p><strong>v2.0.5</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li>Add changelog modal with version history</li>
+        <li>Footer link to view all changes</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v2.0.4</strong></p>
+      <ul>
+        <li>Fix clicking prerequisite labels to navigate to correct card</li>
+        <li>Scroll to section and show the right technique</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v2.0.3</strong></p>
+      <ul>
+        <li>Fix initial section detection for screen arrows</li>
+        <li>Added explicit section order array</li>
+        <li>Default to first section on load</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v2.0.2</strong></p>
+      <ul>
+        <li>Fix screen arrows to detect visible section</li>
+        <li>Arrows update on scroll</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v2.0.1</strong></p>
+      <ul>
+        <li>Add left/right screen arrow buttons</li>
+        <li>Fixed position on screen edges</li>
+        <li>Tap to navigate between cards</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v2.0.0</strong></p>
+      <ul>
+        <li>Mobile card-based layout (one technique per screen)</li>
+        <li>Prev/next navigation buttons per section</li>
+        <li>Swipe gestures to navigate cards</li>
+        <li>Sticky section navigation</li>
+        <li>No horizontal scrolling</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v1.x</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Original</span></p>
+      <ul>
+        <li>Desktop table-based layout</li>
+        <li>Language toggle (EN/DA)</li>
+        <li>Dark/light theme</li>
+        <li>Prerequisite chips with tooltips</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <div class="footer">
   <div class="warning">
@@ -1511,6 +1582,7 @@
   <p data-lang="da">Sangerens Teknik-Bibel — En vokal-referenceguide</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v2.0.5)</a></p>
 </div>
 
 <script>
@@ -1547,8 +1619,22 @@ function closeReadme() {
   document.getElementById('readmeModal').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// Changelog modal
+function openChangelog() {
+  document.getElementById('changelogModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeChangelog() {
+  document.getElementById('changelogModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeReadme();
+  if (e.key === 'Escape') {
+    closeReadme();
+    closeChangelog();
+  }
 });
 
 // === MOBILE NAVIGATION ===
