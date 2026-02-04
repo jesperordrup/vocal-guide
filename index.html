@@ -755,10 +755,48 @@
     /* Card animation */
     .technique-table tbody tr.mobile-active {
       animation: cardFadeIn 0.25s ease-out;
+      position: relative;
+      transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+      will-change: transform;
+    }
+    .technique-table tbody tr.mobile-active.dragging {
+      transition: none;
     }
     @keyframes cardFadeIn {
       from { opacity: 0; transform: translateX(10px); }
       to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Swipe arrow indicators on cards */
+    .swipe-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .swipe-arrow-left {
+      left: -8px;
+    }
+    .swipe-arrow-right {
+      right: -8px;
+    }
+    .swipe-arrow.hidden {
+      display: none;
+    }
+    .swipe-arrow svg {
+      width: 16px;
+      height: 16px;
     }
 
     /* Mobile navigation container */
@@ -1595,6 +1633,32 @@ function updateMobileNav(sectionId) {
   counter.innerHTML = `<strong>${state.current + 1}</strong> / ${state.total}`;
   prevBtn.disabled = state.current === 0;
   nextBtn.disabled = state.current === state.total - 1;
+
+  // Update swipe arrows on active card
+  updateSwipeArrows(sectionId);
+}
+
+function updateSwipeArrows(sectionId) {
+  const state = mobileNavState[sectionId];
+  if (!state) return;
+
+  const activeCard = state.rows[state.current];
+  if (!activeCard) return;
+
+  // Remove existing arrows
+  activeCard.querySelectorAll('.swipe-arrow').forEach(el => el.remove());
+
+  // Create arrow elements
+  const leftArrow = document.createElement('div');
+  leftArrow.className = 'swipe-arrow swipe-arrow-left' + (state.current === 0 ? ' hidden' : '');
+  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+
+  const rightArrow = document.createElement('div');
+  rightArrow.className = 'swipe-arrow swipe-arrow-right' + (state.current === state.total - 1 ? ' hidden' : '');
+  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+
+  activeCard.appendChild(leftArrow);
+  activeCard.appendChild(rightArrow);
 }
 
 function updateAllMobileNavCounters() {
@@ -1603,36 +1667,65 @@ function updateAllMobileNavCounters() {
   });
 }
 
-// Touch swipe support for mobile
+// Touch swipe support for mobile with visual dragging
 let touchStartX = 0;
-let touchEndX = 0;
 let currentSwipeSection = null;
+let currentCard = null;
+let isDragging = false;
 
 document.addEventListener('touchstart', function(e) {
-  const table = e.target.closest('.technique-table');
-  if (table) {
-    touchStartX = e.changedTouches[0].screenX;
-    currentSwipeSection = table.closest('[id]')?.id;
+  const card = e.target.closest('.technique-table tbody tr.mobile-active');
+  if (card) {
+    touchStartX = e.changedTouches[0].clientX;
+    currentSwipeSection = card.closest('[id]')?.id;
+    currentCard = card;
+    isDragging = true;
+    card.classList.add('dragging');
   }
 }, { passive: true });
 
-document.addEventListener('touchend', function(e) {
-  if (!currentSwipeSection) return;
+document.addEventListener('touchmove', function(e) {
+  if (!isDragging || !currentCard) return;
 
-  touchEndX = e.changedTouches[0].screenX;
+  const touchX = e.changedTouches[0].clientX;
+  const diff = touchX - touchStartX;
+
+  // Limit drag distance and add resistance at edges
+  const state = mobileNavState[currentSwipeSection];
+  const maxDrag = 120;
+  let clampedDiff = Math.max(-maxDrag, Math.min(maxDrag, diff));
+
+  // Add resistance if at first/last card
+  if ((state.current === 0 && diff > 0) ||
+      (state.current === state.total - 1 && diff < 0)) {
+    clampedDiff = diff * 0.3;
+  }
+
+  currentCard.style.transform = `translateX(${clampedDiff}px)`;
+  currentCard.style.opacity = 1 - Math.abs(clampedDiff) / 300;
+}, { passive: true });
+
+document.addEventListener('touchend', function(e) {
+  if (!isDragging || !currentCard) return;
+
+  const touchEndX = e.changedTouches[0].clientX;
   const diff = touchStartX - touchEndX;
+
+  currentCard.classList.remove('dragging');
+  currentCard.style.transform = '';
+  currentCard.style.opacity = '';
 
   // Require minimum swipe distance of 50px
   if (Math.abs(diff) > 50) {
     if (diff > 0) {
-      // Swipe left - next
       mobileNavNext(currentSwipeSection);
     } else {
-      // Swipe right - prev
       mobileNavPrev(currentSwipeSection);
     }
   }
 
+  isDragging = false;
+  currentCard = null;
   currentSwipeSection = null;
 }, { passive: true });
 
