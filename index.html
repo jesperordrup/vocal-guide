@@ -916,7 +916,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.1</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.2</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -950,7 +950,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.1</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.2</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1646,6 +1646,23 @@ function updateAllMobileNavCounters() {
   });
 }
 
+// Find which section is currently visible on screen
+function getVisibleSection() {
+  const sections = Object.keys(mobileNavState);
+  const viewportMiddle = window.innerHeight / 2;
+
+  for (const sectionId of sections) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < viewportMiddle && rect.bottom > viewportMiddle) {
+        return sectionId;
+      }
+    }
+  }
+  return sections[0] || null;
+}
+
 // Screen arrows (fixed left/right buttons)
 function createScreenArrows() {
   if (window.innerWidth > 768) return;
@@ -1658,7 +1675,8 @@ function createScreenArrows() {
   leftArrow.className = 'screen-arrow screen-arrow-left';
   leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>';
   leftArrow.addEventListener('click', function() {
-    if (activeScreenSection) mobileNavPrev(activeScreenSection);
+    const section = getVisibleSection();
+    if (section) mobileNavPrev(section);
   });
 
   // Right arrow
@@ -1666,19 +1684,26 @@ function createScreenArrows() {
   rightArrow.className = 'screen-arrow screen-arrow-right';
   rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
   rightArrow.addEventListener('click', function() {
-    if (activeScreenSection) mobileNavNext(activeScreenSection);
+    const section = getVisibleSection();
+    if (section) mobileNavNext(section);
   });
 
   document.body.appendChild(leftArrow);
   document.body.appendChild(rightArrow);
 
+  // Update arrows on scroll
+  window.addEventListener('scroll', updateScreenArrows, { passive: true });
+
   updateScreenArrows();
 }
 
 function updateScreenArrows() {
-  if (!activeScreenSection || window.innerWidth > 768) return;
+  if (window.innerWidth > 768) return;
 
-  const state = mobileNavState[activeScreenSection];
+  const section = getVisibleSection();
+  if (!section) return;
+
+  const state = mobileNavState[section];
   if (!state) return;
 
   const leftArrow = document.querySelector('.screen-arrow-left');
