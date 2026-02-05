@@ -1,0 +1,54 @@
+name: Deploy Production
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Prepare production files
+        run: |
+          mkdir -p /tmp/prod-staging
+          cp index.html styles.css sw.js manifest.json robots.txt sitemap.txt og-image.svg /tmp/prod-staging/
+          cp -r icons /tmp/prod-staging/
+
+      - name: Deploy to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch gh-pages or create it
+          if git fetch origin gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf .
+          fi
+
+          # Copy production files to root, preserving preview/ directory
+          cp /tmp/prod-staging/index.html .
+          cp /tmp/prod-staging/styles.css .
+          cp /tmp/prod-staging/sw.js .
+          cp /tmp/prod-staging/manifest.json .
+          cp /tmp/prod-staging/robots.txt .
+          cp /tmp/prod-staging/sitemap.txt .
+          cp /tmp/prod-staging/og-image.svg .
+          cp -r /tmp/prod-staging/icons .
+
+          # Commit and push
+          git add index.html styles.css sw.js manifest.json robots.txt sitemap.txt og-image.svg icons/
+          git commit -m "Deploy production: ${GITHUB_SHA}" || echo "No changes to deploy"
+          git push origin gh-pages

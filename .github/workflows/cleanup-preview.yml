@@ -1,0 +1,46 @@
+name: Cleanup Branch Preview
+
+on:
+  pull_request:
+    types: [closed]
+  delete:
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute branch name
+        id: path
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            RAW_BRANCH="${{ github.event.pull_request.head.ref }}"
+          else
+            RAW_BRANCH="${{ github.event.ref }}"
+          fi
+          SAFE_BRANCH=$(echo "${RAW_BRANCH}" | tr '/' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]//g')
+          echo "safe_branch=${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "dir=preview/${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+
+      - name: Remove preview directory
+        run: |
+          DIR="${{ steps.path.outputs.dir }}"
+          if [ -d "${DIR}" ]; then
+            rm -rf "${DIR}"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Remove preview: ${{ steps.path.outputs.safe_branch }}"
+            git push origin gh-pages
+            echo "Cleaned up ${DIR}"
+          else
+            echo "No preview directory found at ${DIR}, nothing to clean."
+          fi
