@@ -1,7 +1,7 @@
 {
   "name": "Vocal Guide",
   "short_name": "Vocal Guide",
-  "description": "A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, ornaments, and dynamics.",
+  "description": "A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, embellish, and dynamics.",
   "start_url": "/vocal-guide/",
   "scope": "/vocal-guide/",
   "display": "standalone",
