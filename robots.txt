@@ -1,0 +1,7 @@
+# Robots.txt for The Singer's Technique Bible
+
+User-agent: *
+Allow: /
+
+# Sitemap location (update with actual domain when deployed)
+# Sitemap: https://yourdomain.com/sitemap.txt

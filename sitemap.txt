@@ -1,0 +1,9 @@
+# Sitemap for The Singer's Technique Bible
+# Main page and section anchors
+
+/
+/#registers
+/#styles
+/#effects
+/#ornaments
+/#dynamics
