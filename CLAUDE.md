@@ -30,6 +30,23 @@ This is an installable PWA. When updating cached assets, bump the `CACHE_NAME` v
 
 Static site deployed to GitHub Pages at: https://jesperordrup.github.io/vocal-guide/
 
+## Branch Preview Links
+
+After pushing a branch, **always** provide the preview link to the user:
+
+```
+https://jesperordrup.github.io/vocal-guide/preview/<branch-name>/
+```
+
+Where `<branch-name>` is the branch name with `/` replaced by `-`, lowercased, and special characters removed.
+
+When creating a PR, **always** include the preview link in the PR body. Use this format in the PR description:
+
+```
+## Preview
+https://jesperordrup.github.io/vocal-guide/preview/<branch-name>/
+```
+
 ## Maintaining This File
 
 When you discover new learnings about this project (patterns, gotchas, important locations, or workflows), update this CLAUDE.md file to capture them. This helps future sessions work more effectively.

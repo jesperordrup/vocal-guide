@@ -1,0 +1,126 @@
+name: Deploy Branch Preview
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - gh-pages
+
+concurrency:
+  group: preview-${{ github.ref_name }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Compute preview path
+        id: path
+        run: |
+          SAFE_BRANCH=$(echo "${{ github.ref_name }}" | tr '/' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9-]//g')
+          echo "safe_branch=${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "dir=preview/${SAFE_BRANCH}" >> "$GITHUB_OUTPUT"
+          echo "base_path=/vocal-guide/preview/${SAFE_BRANCH}/" >> "$GITHUB_OUTPUT"
+          echo "url=https://jesperordrup.github.io/vocal-guide/preview/${SAFE_BRANCH}/" >> "$GITHUB_OUTPUT"
+
+      - name: Rewrite paths for preview
+        run: |
+          sed -i "s|/vocal-guide/|${{ steps.path.outputs.base_path }}|g" sw.js
+          sed -i "s|/vocal-guide/|${{ steps.path.outputs.base_path }}|g" manifest.json
+
+      - name: Verify path rewriting
+        run: |
+          echo "Checking sw.js for correct base path..."
+          grep -q "${{ steps.path.outputs.base_path }}" sw.js || { echo "ERROR: sw.js path rewrite failed"; exit 1; }
+          echo "Checking manifest.json for correct base path..."
+          grep -q "${{ steps.path.outputs.base_path }}" manifest.json || { echo "ERROR: manifest.json path rewrite failed"; exit 1; }
+          echo "Path rewriting verified."
+
+      - name: Prepare preview files
+        run: |
+          mkdir -p /tmp/preview-staging
+          cp index.html styles.css sw.js manifest.json robots.txt sitemap.txt og-image.svg /tmp/preview-staging/
+          cp -r icons /tmp/preview-staging/
+
+      - name: Deploy to gh-pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Fetch gh-pages or create it
+          if git fetch origin gh-pages; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "# GitHub Pages previews" > README.md
+            git add README.md
+            git commit -m "Initialize gh-pages branch"
+          fi
+
+          # Copy preview files into subdirectory
+          mkdir -p "${{ steps.path.outputs.dir }}"
+          cp -r /tmp/preview-staging/* "${{ steps.path.outputs.dir }}/"
+
+          # Commit and push
+          git add "${{ steps.path.outputs.dir }}"
+          git commit -m "Deploy preview: ${{ github.ref_name }} (${{ github.sha }})" || echo "No changes to deploy"
+          git push origin gh-pages
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.path.outputs.url }}';
+            const branch = '${{ github.ref_name }}';
+
+            // Find open PRs for this branch
+            const pulls = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:${branch}`,
+              state: 'open'
+            });
+
+            if (pulls.data.length === 0) {
+              console.log('No open PR found for this branch, skipping comment.');
+              return;
+            }
+
+            const prNumber = pulls.data[0].number;
+            const marker = '<!-- preview-bot -->';
+            const body = `${marker}\n🔗 **Branch preview deployed:**\n${url}\n\n_Updated for commit ${context.sha.substring(0, 7)}_`;
+
+            // Check for existing bot comment
+            const comments = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber
+            });
+
+            const existing = comments.data.find(c => c.body.includes(marker));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body: body
+              });
+              console.log(`Updated existing comment on PR #${prNumber}`);
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: prNumber,
+                body: body
+              });
+              console.log(`Created new comment on PR #${prNumber}`);
+            }
