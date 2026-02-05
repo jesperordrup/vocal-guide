@@ -4,13 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Singer's Technique Bible - by Jesper Ordrup</title>
-<meta name="description" content="A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, ornaments, and dynamics.">
+<meta name="description" content="A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, embellishments, and dynamics.">
 <meta name="author" content="Jesper Ordrup">
 <link rel="canonical" href="https://jesperordrup.github.io/vocal-guide/">
 
+<!-- Plausible Analytics -->
+<script defer data-domain="jesperordrup.github.io/vocal-guide" src="https://plausible.umakers.dk/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
 <!-- Open Graph -->
 <meta property="og:title" content="The Singer's Technique Bible - by Jesper Ordrup">
-<meta property="og:description" content="A complete vocal technique reference covering 19 techniques: registers, styles, effects, ornaments, and dynamics.">
+<meta property="og:description" content="A complete vocal technique reference covering 19 techniques: registers, styles, effects, embellishments, and dynamics.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jesperordrup.github.io/vocal-guide/">
 <meta property="og:locale" content="en_US">
@@ -40,7 +44,7 @@
       "@id": "#article",
       "url": "https://jesperordrup.github.io/vocal-guide/",
       "headline": "The Singer's Technique Bible",
-      "description": "A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, ornaments, and dynamics.",
+      "description": "A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, embellishments, and dynamics.",
       "author": {"@id": "#author"},
       "inLanguage": ["en", "da"],
       "about": {
@@ -49,7 +53,7 @@
         "description": "Singing techniques for contemporary and classical vocalists"
       },
       "keywords": ["singing", "vocal technique", "voice training", "belting", "falsetto", "vibrato", "head voice", "chest voice", "mixed voice"],
-      "articleSection": ["Registers", "Styles", "Effects", "Ornaments", "Dynamics"],
+      "articleSection": ["Registers", "Styles", "Effects", "Embellishments", "Dynamics"],
       "educationalLevel": "Beginner to Advanced"
     },
     {
@@ -85,7 +89,7 @@
         {
           "@type": "ListItem",
           "position": 4,
-          "name": "Ornaments",
+          "name": "Embellishments",
           "description": "Melodic embellishments that add flair and sophistication"
         },
         {
@@ -127,7 +131,7 @@
         {"@type": "ListItem", "position": 2, "name": "Registers", "item": "#registers"},
         {"@type": "ListItem", "position": 3, "name": "Styles", "item": "#styles"},
         {"@type": "ListItem", "position": 4, "name": "Effects", "item": "#effects"},
-        {"@type": "ListItem", "position": 5, "name": "Ornaments", "item": "#ornaments"},
+        {"@type": "ListItem", "position": 5, "name": "Embellishments", "item": "#ornaments"},
         {"@type": "ListItem", "position": 6, "name": "Dynamics", "item": "#dynamics"}
       ]
     }
@@ -151,18 +155,42 @@
 </head>
 <body>
 
-<!-- CONTROLS -->
-<div class="controls-bar">
-  <button class="readme-btn" onclick="openReadme()">Read Me</button>
-  <button class="install-btn" id="installBtn" onclick="installPWA()" style="display:none;">Install</button>
-  <div class="theme-toggle">
+<!-- APP BAR -->
+<div class="app-bar">
+  <div class="app-bar-title" data-lang="en">Vocal Guide</div>
+  <div class="app-bar-title" data-lang="da">Vocal Guide</div>
+  <button class="burger-btn" onclick="toggleBurger()" id="burgerBtn" aria-label="Menu">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</div>
+<div class="burger-menu" id="burgerMenu">
+  <div class="burger-menu-item">
+    <span data-lang="en">Language</span><span data-lang="da">Sprog</span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('da')">DA</button>
+    </div>
+  </div>
+  <div class="burger-menu-item">
+    <span data-lang="en">Theme</span><span data-lang="da">Tema</span>
     <button class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode" id="themeBtn">☀️</button>
   </div>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('da')">DA</button>
-  </div>
+  <button class="burger-menu-btn" onclick="openReadme();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+    <span data-lang="en">Read Me</span><span data-lang="da">Læs mig</span>
+  </button>
+  <button class="burger-menu-btn" onclick="openShareModal();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    <span data-lang="en">Share</span><span data-lang="da">Del</span>
+  </button>
+  <button class="burger-menu-btn" id="installBtn" onclick="installPWA();closeBurger();" style="display:none;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span data-lang="en">Install App</span><span data-lang="da">Installer app</span>
+  </button>
 </div>
+<div class="burger-backdrop" id="burgerBackdrop" onclick="closeBurger()"></div>
 
 <!-- README MODAL -->
 <div id="readmeModal" class="readme-overlay" onclick="if(event.target===this)closeReadme()">
@@ -170,7 +198,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.6</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.8</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -182,7 +210,7 @@
           <li><span class="readme-chip-demo d-register">register</span> — the fundamental vocal modes (start here)</li>
           <li><span class="readme-chip-demo d-style">style</span> — ways to shape and color your sound</li>
           <li><span class="readme-chip-demo d-effect">effect</span> — grit, distortion, growl, emotion</li>
-          <li><span class="readme-chip-demo d-ornament">ornament</span> — vibrato, runs, bends, articulation</li>
+          <li><span class="readme-chip-demo d-ornament">embellishment</span> — vibrato, runs, bends, articulation</li>
           <li><span class="readme-chip-demo d-dynamics">dynamics</span> — breath control and volume mastery</li>
         </ul>
       </div>
@@ -207,7 +235,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.6</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.8</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -219,7 +247,7 @@
           <li><span class="readme-chip-demo d-register">register</span> — de grundlæggende stemmemåder (start her)</li>
           <li><span class="readme-chip-demo d-style">style</span> — måder at forme og farve din lyd</li>
           <li><span class="readme-chip-demo d-effect">effect</span> — grit, distortion, growl, emotion</li>
-          <li><span class="readme-chip-demo d-ornament">ornament</span> — vibrato, runs, bends, artikulation</li>
+          <li><span class="readme-chip-demo d-ornament">udsmykning</span> — vibrato, runs, bends, artikulation</li>
           <li><span class="readme-chip-demo d-dynamics">dynamics</span> — åndedræt og volumenkontrol</li>
         </ul>
       </div>
@@ -245,12 +273,58 @@
   </div>
 </div>
 
+<!-- SHARE MODAL -->
+<div id="shareModal" class="readme-overlay" onclick="if(event.target===this)closeShareModal()">
+  <div class="share-card">
+    <button class="readme-close" onclick="closeShareModal()">&times;</button>
+    <h3 data-lang="en">Share This Guide</h3>
+    <h3 data-lang="da">Del denne guide</h3>
+    <div class="share-url-box">
+      <input type="text" id="shareUrlInput" value="https://jesperordrup.github.io/vocal-guide/" readonly onclick="this.select()">
+      <button class="share-copy-btn" id="shareCopyBtn" onclick="copyShareUrl()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span data-lang="en">Copy</span><span data-lang="da">Kopier</span>
+      </button>
+    </div>
+    <div class="share-buttons">
+      <a class="share-btn share-email" href="mailto:?subject=The%20Singer%27s%20Technique%20Bible&body=Check%20out%20this%20vocal%20technique%20reference%3A%20https%3A%2F%2Fjesperordrup.github.io%2Fvocal-guide%2F" onclick="closeBurger()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+        Email
+      </a>
+      <a class="share-btn share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjesperordrup.github.io%2Fvocal-guide%2F" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <a class="share-btn share-bsky" href="https://bsky.app/intent/compose?text=The%20Singer%27s%20Technique%20Bible%20%E2%80%94%20a%20complete%20vocal%20technique%20reference%20https%3A%2F%2Fjesperordrup.github.io%2Fvocal-guide%2F" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.596 6.449.764 2.813 3.5 3.742 5.963 3.473-4.11.57-7.737 2.454-2.891 8.31 5.37 5.086 7.382-1.272 8.332-4.6.95 3.328 2.092 9.396 8.332 4.6 4.846-5.856 1.219-7.74-2.891-8.31 2.463.269 5.199-.66 5.963-3.473C23.622 9.418 24 4.458 24 3.768c0-.688-.139-1.86-.902-2.203-.659-.3-1.664-.62-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+        Bluesky
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL POPUP -->
+<div id="installPopup" class="install-popup-overlay" onclick="if(event.target===this)dismissInstallPopup()">
+  <div class="install-popup">
+    <h3 data-lang="en">Install This App</h3>
+    <h3 data-lang="da">Installer denne app</h3>
+    <p data-lang="en">Add The Singer's Technique Bible to your home screen for quick access, even offline.</p>
+    <p data-lang="da">Tilf&oslash;j Sangerens Teknik-Bibel til din startsk&aelig;rm for hurtig adgang, ogs&aring; offline.</p>
+    <div class="install-popup-actions">
+      <button class="install-popup-install" onclick="installPWA()" data-lang="en">Install</button>
+      <button class="install-popup-install" onclick="installPWA()" data-lang="da">Installer</button>
+      <button class="install-popup-dismiss" onclick="dismissInstallPopup()" data-lang="en">Not now</button>
+      <button class="install-popup-dismiss" onclick="dismissInstallPopup()" data-lang="da">Ikke nu</button>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
 <div class="hero">
   <h1 data-lang="en">The Singer's <span>Technique Bible</span></h1>
   <h1 data-lang="da">Sangerens <span>Teknik-Bibel</span></h1>
-  <p class="subtitle" data-lang="en">Registers · Effects · Styles · Ornaments · Dynamics — a complete vocal reference</p>
-  <p class="subtitle" data-lang="da">Registre · Effekter · Stilarter · Ornamenter · Dynamik — en komplet vokal-reference</p>
+  <p class="subtitle" data-lang="en">Registers · Effects · Styles · Embellishments · Dynamics — a complete vocal reference</p>
+  <p class="subtitle" data-lang="da">Registre · Effekter · Stilarter · Udsmykninger · Dynamik — en komplet vokal-reference</p>
 </div>
 
 <!-- STICKY NAV -->
@@ -258,7 +332,7 @@
   <a class="nav-link" href="#registers"><div class="nav-dot" style="background:var(--accent-warm)"></div><span data-lang="en">Registers</span><span data-lang="da">Registre</span></a>
   <a class="nav-link" href="#styles"><div class="nav-dot" style="background:var(--accent-blue)"></div><span data-lang="en">Styles</span><span data-lang="da">Stilarter</span></a>
   <a class="nav-link" href="#effects"><div class="nav-dot" style="background:var(--accent-purple)"></div><span data-lang="en">Effects</span><span data-lang="da">Effekter</span></a>
-  <a class="nav-link" href="#ornaments"><div class="nav-dot" style="background:var(--accent-green)"></div><span data-lang="en">Ornaments</span><span data-lang="da">Ornamenter</span></a>
+  <a class="nav-link" href="#ornaments"><div class="nav-dot" style="background:var(--accent-green)"></div><span data-lang="en">Embellishments</span><span data-lang="da">Udsmykninger</span></a>
   <a class="nav-link" href="#dynamics"><div class="nav-dot" style="background:var(--accent-red)"></div><span data-lang="en">Dynamics</span><span data-lang="da">Dynamik</span></a>
 </nav>
 
@@ -591,7 +665,7 @@
 
 <!-- ===================== ORNAMENTS ===================== -->
 <div id="ornaments">
-  <div class="section-header"><h2 data-lang="en">Ornaments &amp; Embellishments</h2><h2 data-lang="da">Ornamenter &amp; udsmykninger</h2></div>
+  <div class="section-header"><h2 data-lang="en">Vocal Embellishments</h2><h2 data-lang="da">Vokale udsmykninger</h2></div>
   <p class="section-desc" data-lang="en">Decorative techniques that add flair, personality, and musicality to your phrasing.</p>
   <p class="section-desc" data-lang="da">Dekorative teknikker der tilføjer flair, personlighed og musikalitet til din frasering.</p>
 
@@ -607,7 +681,7 @@
       <!-- VIBRATO -->
       <tr id="tech-vibrato">
         <td>
-          <div class="tech-tag tag-ornament">ornament</div>
+          <div class="tech-tag tag-ornament">embellishment</div>
           <div class="technique-name">Vibrato<span class="desc-tip" data-lang="en">Natural oscillation of pitch on sustained notes.</span><span class="desc-tip" data-lang="da">Naturlig svingning i pitch på sustained notes.</span></div>
           <div class="prereq-row"><a class="prereq-chip chip-dynamics" href="#tech-breath-support" data-tip-en="THE foundation. Everything depends on this." data-tip-da="DET grundlæggende. Alt afhænger af dette.">Breath Support</a></div>
         </td>
@@ -626,7 +700,7 @@
       <!-- RUNS -->
       <tr id="tech-runs-riffs">
         <td>
-          <div class="tech-tag tag-ornament">ornament</div>
+          <div class="tech-tag tag-ornament">embellishment</div>
           <div class="technique-name">Runs / Riffs<span class="desc-tip" data-lang="en">Rapid sequences of notes within a melody.</span><span class="desc-tip" data-lang="da">Hurtige sekvenser af toner inden for en melodi.</span></div>
           <div class="prereq-row"><a class="prereq-chip chip-register" href="#tech-chest-voice" data-tip-en="Rich, warm, powerful, grounded. Vibrations felt in upper torso." data-tip-da="Fyldig, varm, kraftfuld, jordbunden. Vibrationer mærkes i brystkassen.">Chest Voice</a><a class="prereq-chip chip-register" href="#tech-head-voice" data-tip-en="Lighter than chest but with depth and ring. Resonant, clear, projecting." data-tip-da="Lettere end chest, men med dybde og klang. Resonant, klar, projicerende.">Head Voice</a></div>
         </td>
@@ -645,7 +719,7 @@
       <!-- PITCH BENDING -->
       <tr id="tech-pitch-bending">
         <td>
-          <div class="tech-tag tag-ornament">ornament</div>
+          <div class="tech-tag tag-ornament">embellishment</div>
           <div class="technique-name">Pitch Bending<span class="desc-tip" data-lang="en">Sliding into or between notes instead of hitting them directly.</span><span class="desc-tip" data-lang="da">Glider ind i eller mellem toner i stedet for at ramme dem direkte.</span></div>
           <div class="prereq-row"><a class="prereq-chip chip-register" href="#tech-chest-voice" data-tip-en="Rich, warm, powerful, grounded. Vibrations felt in upper torso." data-tip-da="Fyldig, varm, kraftfuld, jordbunden. Vibrationer mærkes i brystkassen.">Chest Voice</a></div>
         </td>
@@ -664,7 +738,7 @@
       <!-- GLOTTAL -->
       <tr id="tech-glottal-stop">
         <td>
-          <div class="tech-tag tag-ornament">ornament</div>
+          <div class="tech-tag tag-ornament">embellishment</div>
           <div class="technique-name">Glottal Stop<span class="desc-tip" data-lang="en">Brief closure of vocal folds before a note. Adds "attack."</span><span class="desc-tip" data-lang="da">Kort lukning af vocal folds før en tone. Tilføjer "attack."</span></div>
           <div class="prereq-row"><a class="prereq-chip chip-register" href="#tech-vocal-fry" data-tip-en="Creaky, rattling, crackling. Extremely low. Also used as stylistic onset." data-tip-da="Knirkende, raslende, knasende. Ekstremt lavt. Også brugt som stilistisk ansats.">Vocal Fry</a></div>
         </td>
@@ -768,7 +842,28 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.0.6</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.0.8</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New: App bar with burger menu</strong> — Fixed top bar with hamburger menu for all controls</li>
+        <li><strong>New: Share feature</strong> — Copy URL, share via Email, Facebook, or Bluesky</li>
+        <li>Moved language, theme, readme, and install into burger menu</li>
+        <li>Added Plausible analytics</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.0.7</strong></p>
+      <ul>
+        <li><strong>UI: Improved text contrast</strong> — Better readability in both dark and light mode</li>
+        <li><strong>UI: Slightly larger font sizes</strong> across body text, tables, and descriptions</li>
+        <li><strong>Install popup</strong> — First-time visitors see an install prompt (remembered via localStorage)</li>
+        <li><strong>Nav: Single-line sticky bar</strong> — No longer wraps; scrolls horizontally if needed</li>
+        <li><strong>Renamed "Ornaments"</strong> to "Embellishments" across nav, sections, and metadata</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.0.6</strong></p>
       <ul>
         <li><strong>Fix: PWA install prompt</strong> — Install button now appears in supported browsers</li>
         <li>Added beforeinstallprompt event handling</li>
@@ -868,7 +963,7 @@
   <p data-lang="da">Sangerens Teknik-Bibel — En vokal-referenceguide</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.0.6)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.0.8)</a></p>
 </div>
 
 <script>
@@ -916,10 +1011,49 @@ function closeChangelog() {
   document.body.style.overflow = '';
 }
 
+// Burger menu
+function toggleBurger() {
+  const menu = document.getElementById('burgerMenu');
+  const btn = document.getElementById('burgerBtn');
+  const backdrop = document.getElementById('burgerBackdrop');
+  const isOpen = menu.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  backdrop.classList.toggle('open', isOpen);
+}
+function closeBurger() {
+  document.getElementById('burgerMenu').classList.remove('open');
+  document.getElementById('burgerBtn').classList.remove('open');
+  document.getElementById('burgerBackdrop').classList.remove('open');
+}
+
+// Share modal
+function openShareModal() {
+  document.getElementById('shareModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function copyShareUrl() {
+  const input = document.getElementById('shareUrlInput');
+  navigator.clipboard.writeText(input.value).then(() => {
+    const btn = document.getElementById('shareCopyBtn');
+    const origHTML = btn.innerHTML;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>' + (document.body.classList.contains('da') ? 'Kopieret!' : 'Copied!') + '</span>';
+    setTimeout(() => { btn.innerHTML = origHTML; }, 2000);
+  }).catch(() => {
+    input.select();
+    document.execCommand('copy');
+  });
+}
+
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeReadme();
     closeChangelog();
+    closeShareModal();
+    closeBurger();
   }
 });
 
@@ -1010,15 +1144,30 @@ if ('serviceWorker' in navigator) {
 <script>
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
+const installPopup = document.getElementById('installPopup');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installBtn.style.display = 'block';
+  // Show popup on first visit only
+  try {
+    if (!localStorage.getItem('vtb-install-dismissed')) {
+      setTimeout(() => {
+        installPopup.classList.add('open');
+      }, 1500);
+    }
+  } catch(e) {}
 });
+
+function dismissInstallPopup() {
+  installPopup.classList.remove('open');
+  try { localStorage.setItem('vtb-install-dismissed', '1'); } catch(e) {}
+}
 
 function installPWA() {
   if (!deferredPrompt) return;
+  installPopup.classList.remove('open');
   deferredPrompt.prompt();
   deferredPrompt.userChoice.then((choiceResult) => {
     if (choiceResult.outcome === 'accepted') {
@@ -1027,12 +1176,15 @@ function installPWA() {
     deferredPrompt = null;
     installBtn.style.display = 'none';
   });
+  try { localStorage.setItem('vtb-install-dismissed', '1'); } catch(e) {}
 }
 
 window.addEventListener('appinstalled', () => {
   console.log('PWA was installed');
   installBtn.style.display = 'none';
+  installPopup.classList.remove('open');
   deferredPrompt = null;
+  try { localStorage.setItem('vtb-install-dismissed', '1'); } catch(e) {}
 });
 </script>
 
