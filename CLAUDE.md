@@ -29,3 +29,13 @@ This is an installable PWA. When updating cached assets, bump the `CACHE_NAME` v
 ## Deployment
 
 Static site deployed to GitHub Pages at: https://jesperordrup.github.io/vocal-guide/
+
+## Maintaining This File
+
+When you discover new learnings about this project (patterns, gotchas, important locations, or workflows), update this CLAUDE.md file to capture them. This helps future sessions work more effectively.
+
+Examples of learnings to add:
+- New file locations or naming conventions
+- Non-obvious dependencies between files
+- Common pitfalls or edge cases
+- Project-specific patterns or conventions
