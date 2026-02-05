@@ -600,55 +600,83 @@
       display: none;
     }
 
-    /* Transform table into cards */
+    /* Transform table into accordion */
     .technique-table {
       display: block;
       overflow: visible;
       margin-bottom: 24px;
     }
     .technique-table tbody {
-      display: block;
-    }
-    .technique-table tbody tr {
-      display: none;
+      display: flex;
       flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Accordion item (row) */
+    .technique-table tbody tr {
+      display: block;
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 0;
+      border-radius: 10px;
+      overflow: hidden;
     }
-    .technique-table tbody tr.mobile-active {
-      display: flex;
-    }
+
+    /* All cells hidden by default */
     .technique-table td {
-      display: block;
+      display: none;
       padding: 0;
       width: 100% !important;
       min-width: 0 !important;
       border: none;
     }
 
-    /* Card sections */
+    /* First cell (header) always visible - acts as accordion trigger */
     .technique-table td:first-child {
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
-    .technique-table td:nth-child(2) {
-      margin-bottom: 12px;
+
+    /* Accordion chevron */
+    .technique-table td:first-child::after {
+      content: '';
+      margin-left: auto;
+      width: 20px;
+      height: 20px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239a9189' stroke-width='2'%3E%3Cpath d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: transform 0.2s;
+      flex-shrink: 0;
     }
-    .technique-table td:nth-child(3) {
-      margin-bottom: 12px;
+
+    /* Expanded state */
+    .technique-table tbody tr.accordion-open td:first-child::after {
+      transform: rotate(180deg);
     }
-    .technique-table td:nth-child(4) {
-      margin-bottom: 12px;
-      padding: 12px;
+
+    .technique-table tbody tr.accordion-open {
+      border-color: var(--accent-warm);
+    }
+
+    .technique-table tbody tr.accordion-open td {
+      display: block;
+    }
+
+    /* Accordion content cells */
+    .technique-table tbody tr.accordion-open td:nth-child(2),
+    .technique-table tbody tr.accordion-open td:nth-child(3),
+    .technique-table tbody tr.accordion-open td:nth-child(4),
+    .technique-table tbody tr.accordion-open td:nth-child(5) {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .technique-table tbody tr.accordion-open td:nth-child(4) {
       background: var(--surface-raised);
-      border-radius: 8px;
-    }
-    .technique-table td:nth-child(5) {
-      padding-top: 8px;
     }
 
     /* Mobile labels */
@@ -694,22 +722,29 @@
 
     /* Technique name styling */
     .technique-name {
-      font-size: 1.15rem;
-      margin-top: 4px;
+      font-size: 1rem;
+      margin-top: 0;
     }
     .tech-tag {
-      font-size: 0.6rem;
+      font-size: 0.55rem;
+      flex-shrink: 0;
     }
 
-    /* Prerequisites row */
+    /* Prerequisites row - show inline in header */
     .prereq-row {
+      display: none;
+    }
+    .technique-table tbody tr.accordion-open .prereq-row {
+      display: flex;
+      flex-wrap: wrap;
       margin-top: 8px;
     }
     .prereq-chip {
       font-size: 0.6rem;
       padding: 3px 6px;
     }
-    /* Hide tooltips on mobile - use tap instead */
+
+    /* Hide tooltips on mobile */
     .prereq-chip::before,
     .prereq-chip::after,
     .technique-name .desc-tip {
@@ -750,96 +785,6 @@
       width: 100%;
       justify-content: center;
       padding: 10px;
-    }
-
-    /* Card animation */
-    .technique-table tbody tr.mobile-active {
-      animation: cardFadeIn 0.25s ease-out;
-    }
-    @keyframes cardFadeIn {
-      from { opacity: 0; transform: translateX(10px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* Mobile navigation container */
-    .mobile-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 0;
-      gap: 12px;
-    }
-    .mobile-nav-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      background: var(--surface);
-      color: var(--text);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      flex-shrink: 0;
-    }
-    .mobile-nav-btn:hover {
-      background: var(--surface-raised);
-      border-color: var(--accent-warm);
-    }
-    .mobile-nav-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-    .mobile-nav-btn:disabled:hover {
-      background: var(--surface);
-      border-color: var(--border);
-    }
-    .mobile-nav-counter {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-      flex: 1;
-    }
-    .mobile-nav-counter strong {
-      color: var(--text);
-    }
-
-    /* Fixed left/right arrow buttons on screen */
-    .screen-arrow {
-      position: fixed;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--accent-warm);
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      z-index: 999;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .screen-arrow:active {
-      transform: translateY(-50%) scale(0.9);
-    }
-    .screen-arrow-left {
-      left: 6px;
-    }
-    .screen-arrow-right {
-      right: 6px;
-    }
-    .screen-arrow.hidden {
-      display: none;
-    }
-    .screen-arrow svg {
-      width: 20px;
-      height: 20px;
     }
 
     /* Readme modal adjustments */
@@ -885,15 +830,6 @@
   .mobile-nav {
     display: none;
   }
-
-  @media (min-width: 769px) {
-    .mobile-nav {
-      display: none !important;
-    }
-    .technique-table tbody tr {
-      display: table-row !important;
-    }
-  }
 </style>
 </head>
 <body>
@@ -916,7 +852,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.5</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.0</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -950,7 +886,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v2.0.5</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.0</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -1508,55 +1444,24 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v2.0.5</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.0.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
       <ul>
-        <li>Add changelog modal with version history</li>
-        <li>Footer link to view all changes</li>
+        <li><strong>New: Accordion layout</strong> for mobile</li>
+        <li>All techniques visible as collapsed headers</li>
+        <li>Tap to expand and see full details</li>
+        <li>Removed slider/card navigation</li>
+        <li>Removed screen arrows</li>
+        <li>Removed swipe gestures</li>
+        <li>Clicking prerequisite labels opens that technique</li>
       </ul>
     </div>
 
     <div class="readme-section">
-      <p><strong>v2.0.4</strong></p>
+      <p><strong>v2.x</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Card/Slider (deprecated)</span></p>
       <ul>
-        <li>Fix clicking prerequisite labels to navigate to correct card</li>
-        <li>Scroll to section and show the right technique</li>
-      </ul>
-    </div>
-
-    <div class="readme-section">
-      <p><strong>v2.0.3</strong></p>
-      <ul>
-        <li>Fix initial section detection for screen arrows</li>
-        <li>Added explicit section order array</li>
-        <li>Default to first section on load</li>
-      </ul>
-    </div>
-
-    <div class="readme-section">
-      <p><strong>v2.0.2</strong></p>
-      <ul>
-        <li>Fix screen arrows to detect visible section</li>
-        <li>Arrows update on scroll</li>
-      </ul>
-    </div>
-
-    <div class="readme-section">
-      <p><strong>v2.0.1</strong></p>
-      <ul>
-        <li>Add left/right screen arrow buttons</li>
-        <li>Fixed position on screen edges</li>
-        <li>Tap to navigate between cards</li>
-      </ul>
-    </div>
-
-    <div class="readme-section">
-      <p><strong>v2.0.0</strong></p>
-      <ul>
-        <li>Mobile card-based layout (one technique per screen)</li>
-        <li>Prev/next navigation buttons per section</li>
-        <li>Swipe gestures to navigate cards</li>
-        <li>Sticky section navigation</li>
-        <li>No horizontal scrolling</li>
+        <li>v2.0.5: Changelog modal</li>
+        <li>v2.0.4: Prerequisite label navigation</li>
+        <li>v2.0.0-2.0.3: Card slider with arrows</li>
       </ul>
     </div>
 
@@ -1582,7 +1487,7 @@
   <p data-lang="da">Sangerens Teknik-Bibel — En vokal-referenceguide</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v2.0.5)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.0.0)</a></p>
 </div>
 
 <script>
@@ -1637,242 +1542,43 @@ document.addEventListener('keydown', function(e) {
   }
 });
 
-// === MOBILE NAVIGATION ===
-const mobileNavState = {};
+// === MOBILE ACCORDION ===
+function initAccordion() {
+  if (window.innerWidth > 768) return;
 
-function initMobileNav() {
-  const sections = document.querySelectorAll('.technique-table');
-  sections.forEach((table, sectionIndex) => {
-    const rows = table.querySelectorAll('tbody tr');
-    const sectionId = table.closest('[id]')?.id || `section-${sectionIndex}`;
+  const rows = document.querySelectorAll('.technique-table tbody tr');
 
-    mobileNavState[sectionId] = {
-      current: 0,
-      total: rows.length,
-      rows: rows
-    };
+  rows.forEach(row => {
+    const header = row.querySelector('td:first-child');
+    if (!header) return;
 
-    // Create navigation container
-    const nav = document.createElement('div');
-    nav.className = 'mobile-nav';
-    nav.setAttribute('data-section', sectionId);
+    header.addEventListener('click', function(e) {
+      // Don't toggle if clicking a link
+      if (e.target.closest('a')) return;
 
-    nav.innerHTML = `
-      <button class="mobile-nav-btn" onclick="mobileNavPrev('${sectionId}')" aria-label="Previous">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-      </button>
-      <div class="mobile-nav-counter">
-        <strong>1</strong> / ${rows.length}
-      </div>
-      <button class="mobile-nav-btn" onclick="mobileNavNext('${sectionId}')" aria-label="Next">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 18l6-6-6-6"/>
-        </svg>
-      </button>
-    `;
+      // Toggle this row
+      const isOpen = row.classList.contains('accordion-open');
 
-    // Insert before table
-    table.parentNode.insertBefore(nav, table);
+      // Close all others in same table (optional - remove for multi-open)
+      const table = row.closest('.technique-table');
+      table.querySelectorAll('tbody tr.accordion-open').forEach(r => {
+        if (r !== row) r.classList.remove('accordion-open');
+      });
 
-    // Set first card as active
-    if (rows.length > 0) {
-      rows[0].classList.add('mobile-active');
-    }
+      // Toggle current
+      row.classList.toggle('accordion-open', !isOpen);
 
-    updateMobileNav(sectionId);
-  });
-}
-
-function mobileNavPrev(sectionId) {
-  const state = mobileNavState[sectionId];
-  if (state && state.current > 0) {
-    state.rows[state.current].classList.remove('mobile-active');
-    state.current--;
-    state.rows[state.current].classList.add('mobile-active');
-    updateMobileNav(sectionId);
-  }
-}
-
-function mobileNavNext(sectionId) {
-  const state = mobileNavState[sectionId];
-  if (state && state.current < state.total - 1) {
-    state.rows[state.current].classList.remove('mobile-active');
-    state.current++;
-    state.rows[state.current].classList.add('mobile-active');
-    updateMobileNav(sectionId);
-  }
-}
-
-// Track currently active section for screen arrows
-let activeScreenSection = null;
-
-function updateMobileNav(sectionId) {
-  const state = mobileNavState[sectionId];
-  const nav = document.querySelector(`.mobile-nav[data-section="${sectionId}"]`);
-  if (!nav || !state) return;
-
-  const counter = nav.querySelector('.mobile-nav-counter');
-  const prevBtn = nav.querySelector('.mobile-nav-btn:first-child');
-  const nextBtn = nav.querySelector('.mobile-nav-btn:last-child');
-
-  counter.innerHTML = `<strong>${state.current + 1}</strong> / ${state.total}`;
-  prevBtn.disabled = state.current === 0;
-  nextBtn.disabled = state.current === state.total - 1;
-
-  // Update active section for screen arrows
-  activeScreenSection = sectionId;
-  updateScreenArrows();
-}
-
-function updateAllMobileNavCounters() {
-  Object.keys(mobileNavState).forEach(sectionId => {
-    updateMobileNav(sectionId);
-  });
-}
-
-// Section order for navigation
-const sectionOrder = ['registers', 'styles', 'effects', 'ornaments', 'dynamics'];
-
-// Find which section is currently visible on screen
-function getVisibleSection() {
-  const viewportMiddle = window.innerHeight / 2;
-
-  // Check sections in order
-  for (const sectionId of sectionOrder) {
-    if (!mobileNavState[sectionId]) continue;
-    const el = document.getElementById(sectionId);
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      // Section is visible if it overlaps with viewport
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        return sectionId;
+      // Scroll into view if opening
+      if (!isOpen) {
+        setTimeout(() => {
+          row.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
       }
-    }
-  }
-  // Default to first section
-  return sectionOrder[0];
-}
-
-// Screen arrows (fixed left/right buttons)
-function createScreenArrows() {
-  if (window.innerWidth > 768) return;
-
-  // Remove existing
-  document.querySelectorAll('.screen-arrow').forEach(el => el.remove());
-
-  // Left arrow
-  const leftArrow = document.createElement('button');
-  leftArrow.className = 'screen-arrow screen-arrow-left';
-  leftArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>';
-  leftArrow.addEventListener('click', function() {
-    const section = getVisibleSection();
-    if (section) mobileNavPrev(section);
+    });
   });
-
-  // Right arrow
-  const rightArrow = document.createElement('button');
-  rightArrow.className = 'screen-arrow screen-arrow-right';
-  rightArrow.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
-  rightArrow.addEventListener('click', function() {
-    const section = getVisibleSection();
-    if (section) mobileNavNext(section);
-  });
-
-  document.body.appendChild(leftArrow);
-  document.body.appendChild(rightArrow);
-
-  // Update arrows on scroll
-  window.addEventListener('scroll', updateScreenArrows, { passive: true });
-
-  updateScreenArrows();
 }
 
-function updateScreenArrows() {
-  if (window.innerWidth > 768) return;
-
-  const section = getVisibleSection();
-  if (!section) return;
-
-  const state = mobileNavState[section];
-  if (!state) return;
-
-  const leftArrow = document.querySelector('.screen-arrow-left');
-  const rightArrow = document.querySelector('.screen-arrow-right');
-
-  if (leftArrow) {
-    leftArrow.classList.toggle('hidden', state.current === 0);
-  }
-  if (rightArrow) {
-    rightArrow.classList.toggle('hidden', state.current === state.total - 1);
-  }
-}
-
-// Touch swipe support for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-let currentSwipeSection = null;
-
-document.addEventListener('touchstart', function(e) {
-  const table = e.target.closest('.technique-table');
-  if (table) {
-    touchStartX = e.changedTouches[0].screenX;
-    currentSwipeSection = table.closest('[id]')?.id;
-  }
-}, { passive: true });
-
-document.addEventListener('touchend', function(e) {
-  if (!currentSwipeSection) return;
-
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-
-  // Require minimum swipe distance of 50px
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) {
-      // Swipe left - next
-      mobileNavNext(currentSwipeSection);
-    } else {
-      // Swipe right - prev
-      mobileNavPrev(currentSwipeSection);
-    }
-  }
-
-  currentSwipeSection = null;
-}, { passive: true });
-
-// Handle clicks on prerequisite chips and technique links
-function navigateToTechnique(techId) {
-  // Find the technique row
-  const techRow = document.getElementById(techId);
-  if (!techRow) return false;
-
-  // Find which section it belongs to
-  const section = techRow.closest('[id]');
-  if (!section) return false;
-
-  const sectionId = section.id;
-  const state = mobileNavState[sectionId];
-  if (!state) return false;
-
-  // Find the index of this row in the section
-  const rowIndex = Array.from(state.rows).indexOf(techRow);
-  if (rowIndex === -1) return false;
-
-  // Update the active card
-  state.rows[state.current].classList.remove('mobile-active');
-  state.current = rowIndex;
-  state.rows[state.current].classList.add('mobile-active');
-
-  // Update navigation
-  updateMobileNav(sectionId);
-  updateScreenArrows();
-
-  return true;
-}
-
-// Listen for clicks on links to techniques
+// Handle clicks on prerequisite chips - open that technique's accordion
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a[href^="#tech-"]');
   if (!link) return;
@@ -1880,26 +1586,31 @@ document.addEventListener('click', function(e) {
   // Only handle on mobile
   if (window.innerWidth > 768) return;
 
-  const techId = link.getAttribute('href').substring(1); // Remove #
-  if (navigateToTechnique(techId)) {
-    e.preventDefault();
-    // Scroll to the section
-    const section = document.getElementById(techId)?.closest('[id]');
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+  e.preventDefault();
+  const techId = link.getAttribute('href').substring(1);
+  const techRow = document.getElementById(techId);
+
+  if (techRow) {
+    // Close all accordions
+    document.querySelectorAll('.technique-table tbody tr.accordion-open').forEach(r => {
+      r.classList.remove('accordion-open');
+    });
+
+    // Open target accordion
+    techRow.classList.add('accordion-open');
+
+    // Scroll to it
+    setTimeout(() => {
+      techRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   }
 });
 
-// Initialize mobile nav on DOM ready
+// Initialize accordion on DOM ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() {
-    initMobileNav();
-    createScreenArrows();
-  });
+  document.addEventListener('DOMContentLoaded', initAccordion);
 } else {
-  initMobileNav();
-  createScreenArrows();
+  initAccordion();
 }
 </script>
 
