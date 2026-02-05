@@ -1,4 +1,4 @@
-# Vocal Guide — The Singer's Technique Bible
+# Vocal Guide
 
 A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, embellishments, and dynamics.
 
