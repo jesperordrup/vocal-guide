@@ -115,6 +115,21 @@
     box-shadow: 0 4px 20px var(--shadow);
   }
   .readme-btn:hover { color: var(--text); background: var(--surface-raised); }
+  .install-btn {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--accent-warm);
+    border-radius: 6px;
+    background: var(--accent-warm);
+    color: var(--bg);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Source Sans 3', sans-serif;
+    box-shadow: 0 4px 20px var(--shadow);
+  }
+  .install-btn:hover { background: #c47a45; }
   .readme-overlay {
     display: none;
     position: fixed;
@@ -542,6 +557,10 @@
       gap: 6px;
     }
     .readme-btn {
+      padding: 5px 10px;
+      font-size: 0.7rem;
+    }
+    .install-btn {
       padding: 5px 10px;
       font-size: 0.7rem;
     }

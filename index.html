@@ -154,6 +154,7 @@
 <!-- CONTROLS -->
 <div class="controls-bar">
   <button class="readme-btn" onclick="openReadme()">Read Me</button>
+  <button class="install-btn" id="installBtn" onclick="installPWA()" style="display:none;">Install</button>
   <div class="theme-toggle">
     <button class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode" id="themeBtn">☀️</button>
   </div>
@@ -169,7 +170,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.5</span></h3>
+      <h3>Welcome to the Technique Bible <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.6</span></h3>
           <p>Created by Jesper Ordrup</p>
       <div class="readme-section">
         <p>This is a complete vocal technique reference covering 19 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
@@ -206,7 +207,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.5</span></h3>
+      <h3>Velkommen til Teknik-Biblen <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.0.6</span></h3>
       <p>Udarbejdet af Jesper Ordrup</p>
       <div class="readme-section">
         <p>Dette er en komplet vokal-reference der dækker 19 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
@@ -767,7 +768,16 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.0.5</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.0.6</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>Fix: PWA install prompt</strong> — Install button now appears in supported browsers</li>
+        <li>Added beforeinstallprompt event handling</li>
+        <li>Added install button to controls bar</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.0.5</strong></p>
       <ul>
         <li><strong>New: PWA support</strong> — App is now installable</li>
         <li>Added web app manifest for install prompts</li>
@@ -858,7 +868,7 @@
   <p data-lang="da">Sangerens Teknik-Bibel — En vokal-referenceguide</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.0.5)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.0.6)</a></p>
 </div>
 
 <script>
@@ -994,6 +1004,36 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.log('Service Worker registration failed:', err));
   });
 }
+</script>
+
+<!-- PWA Install Prompt -->
+<script>
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+});
+
+function installPWA() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('PWA installed');
+    }
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  });
+}
+
+window.addEventListener('appinstalled', () => {
+  console.log('PWA was installed');
+  installBtn.style.display = 'none';
+  deferredPrompt = null;
+});
 </script>
 
 </body>
