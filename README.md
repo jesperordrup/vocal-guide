@@ -2,6 +2,8 @@
 
 A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, ornaments, and dynamics.
 
+**Live Demo:** https://jesperordrup.github.io/vocal-guide/
+
 ## Features
 
 - **19 Vocal Techniques** - Comprehensive coverage from chest voice to messa di voce
