@@ -1,4 +1,4 @@
-# Vocal Guide — The Singer's Technique Bible
+# Vocal Guide
 
 A complete vocal technique reference covering 19 techniques across five categories: registers, styles, effects, embellishments, and dynamics.
 
@@ -7,7 +7,7 @@ A complete vocal technique reference covering 19 techniques across five categori
 ## Features
 
 - **19 Vocal Techniques** — Comprehensive coverage from chest voice to messa di voce
-- **5 Categories** — Registers, Styles, Effects, Embellishments, Dynamics
+- **5 Categories** — Registers, Styles, Effects, Embellish, Dynamics
 - **Bilingual** — English and Danish language support
 - **Dark/Light Mode** — Theme toggle for comfortable reading
 - **App Bar + Burger Menu** — Fixed top bar with hamburger menu for all controls
@@ -26,7 +26,7 @@ A complete vocal technique reference covering 19 techniques across five categori
 | Registers | Foundation voice modes | Chest Voice, Head Voice, Mixed Voice, Falsetto, Vocal Fry, Whistle |
 | Styles | Characteristic vocal approaches | Belting, Twang, Breathy, Vowel Modification |
 | Effects | Extended techniques | Grit/Rasp, Distortion, Growl, Cry/Sob |
-| Embellishments | Melodic embellishments | Vibrato, Riffs & Runs, Trills, Bends |
+| Embellish | Melodic embellishments | Vibrato, Riffs & Runs, Trills, Bends |
 | Dynamics | Volume control & expression | Breath Support, Messa di Voce, Straight Tone, Dynamic Contrast |
 
 ## Tech Stack
