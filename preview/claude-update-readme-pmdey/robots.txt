@@ -1,0 +1,6 @@
+# Robots.txt for Vocal Guide
+
+User-agent: *
+Allow: /
+
+Sitemap: https://jesperordrup.github.io/vocal-guide/sitemap.txt
