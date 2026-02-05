@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vocal-guide-v7';
+const CACHE_NAME = 'vocal-guide-v8';
 const ASSETS = [
   '/vocal-guide/',
   '/vocal-guide/index.html',
@@ -6,7 +6,8 @@ const ASSETS = [
   '/vocal-guide/manifest.json',
   '/vocal-guide/icons/icon-192.png',
   '/vocal-guide/icons/icon-512.png',
-  '/vocal-guide/icons/icon.svg'
+  '/vocal-guide/icons/icon.svg',
+  '/vocal-guide/og-image.svg'
 ];
 
 // Install event - cache assets
