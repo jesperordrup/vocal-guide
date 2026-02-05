@@ -824,7 +824,7 @@
 
     /* Mobile labels */
     .technique-table td:nth-child(2)::before {
-      content: 'Sound / Character';
+      content: 'Character';
       display: block;
       font-size: 0.68rem;
       text-transform: uppercase;
@@ -834,7 +834,7 @@
       font-weight: 600;
     }
     body.da .technique-table td:nth-child(2)::before {
-      content: 'Lyd / Karakter';
+      content: 'Karakter';
     }
     .technique-table td:nth-child(3)::before {
       content: 'Famous Examples';
