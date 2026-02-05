@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vocal-guide-v2';
+const CACHE_NAME = 'vocal-guide-v3';
 const ASSETS = [
   '/vocal-guide/',
   '/vocal-guide/index.html',
