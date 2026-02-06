@@ -1,0 +1,8 @@
+# Sitemap for Vocal Guide
+
+https://jesperordrup.github.io/vocal-guide/
+https://jesperordrup.github.io/vocal-guide/#registers
+https://jesperordrup.github.io/vocal-guide/#styles
+https://jesperordrup.github.io/vocal-guide/#effects
+https://jesperordrup.github.io/vocal-guide/#ornaments
+https://jesperordrup.github.io/vocal-guide/#dynamics
