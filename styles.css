@@ -685,9 +685,9 @@
   }
   /* === MOBILE STYLES === */
   @media (max-width: 768px) {
-    /* Prevent horizontal scroll globally */
+    /* Prevent horizontal scroll globally — use clip instead of hidden to preserve sticky positioning */
     html, body {
-      overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100vw;
     }
 
