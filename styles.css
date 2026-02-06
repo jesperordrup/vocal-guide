@@ -41,6 +41,61 @@
   body.light .yt-link:hover { background: rgba(168,69,53,0.12); }
   body.light .hero::before { background: radial-gradient(ellipse at 50% 80%, rgba(181,110,53,0.06) 0%, transparent 60%); }
   body.light .theme-btn { background: var(--surface); border: 1px solid var(--border); }
+
+  /* === MIDNIGHT THEME === */
+  body.midnight {
+    --bg: #0d1420;
+    --surface: #141d2e;
+    --surface-raised: #1a253a;
+    --border: #293548;
+    --text: #d0d8e4;
+    --text-muted: #8e99a8;
+    --accent-warm: #d4874d;
+    --accent-gold: #c9a84c;
+    --accent-red: #c45c4a;
+    --accent-blue: #6b9ab0;
+    --accent-green: #6a9a5b;
+    --accent-purple: #9a7ac5;
+    --shadow: rgba(0,0,0,0.6);
+  }
+  body.midnight .hero::before { background: radial-gradient(ellipse at 50% 80%, rgba(107,154,176,0.08) 0%, transparent 60%); }
+
+  /* === FOREST THEME === */
+  body.forest {
+    --bg: #0e150e;
+    --surface: #152015;
+    --surface-raised: #1c2b1c;
+    --border: #2a3a2a;
+    --text: #d4e0d4;
+    --text-muted: #9aab9a;
+    --accent-warm: #d4874d;
+    --accent-gold: #c9a84c;
+    --accent-red: #c45c4a;
+    --accent-blue: #5b8a9a;
+    --accent-green: #7aaa6b;
+    --accent-purple: #8a6ab5;
+    --shadow: rgba(0,0,0,0.5);
+  }
+  body.forest .hero::before { background: radial-gradient(ellipse at 50% 80%, rgba(106,154,91,0.08) 0%, transparent 60%); }
+
+  /* === EMBER THEME === */
+  body.ember {
+    --bg: #150e0a;
+    --surface: #201510;
+    --surface-raised: #2a1c16;
+    --border: #3a2920;
+    --text: #e8ddd4;
+    --text-muted: #b5a595;
+    --accent-warm: #e09050;
+    --accent-gold: #d4b050;
+    --accent-red: #d46050;
+    --accent-blue: #5b8a9a;
+    --accent-green: #6a9a5b;
+    --accent-purple: #8a6ab5;
+    --shadow: rgba(0,0,0,0.5);
+  }
+  body.ember .hero::before { background: radial-gradient(ellipse at 50% 80%, rgba(212,96,80,0.08) 0%, transparent 60%); }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: calc(48px + var(--nav-h) + 12px); }
   body {
@@ -685,9 +740,9 @@
   }
   /* === MOBILE STYLES === */
   @media (max-width: 768px) {
-    /* Prevent horizontal scroll globally */
+    /* Prevent horizontal scroll globally — use clip instead of hidden to preserve sticky positioning */
     html, body {
-      overflow-x: hidden;
+      overflow-x: clip;
       max-width: 100vw;
     }
 

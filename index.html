@@ -182,7 +182,7 @@
   </div>
   <div class="burger-menu-item">
     <span data-lang="en">Theme</span><span data-lang="da">Tema</span>
-    <button class="theme-btn" onclick="toggleTheme()" title="Toggle light/dark mode" id="themeBtn">☀️</button>
+    <button class="theme-btn" onclick="cycleTheme()" title="Cycle color theme" id="themeBtn">🌙 Dark</button>
   </div>
   <button class="burger-menu-btn" onclick="openReadme();closeBurger();">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
@@ -209,8 +209,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.4.0</span></h3>
-          <p>Created by Jesper Ordrup</p>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.6.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -238,7 +237,7 @@
         <p>Techniques marked with ⚠️ warnings can cause damage if done incorrectly. The golden rule: if it hurts, stop. Work with a vocal coach for anything rated 4–5 dots.</p>
       </div>
       <div class="readme-section">
-        <p>Use <span class="key">EN</span> / <span class="key">DA</span> to switch language and <span class="key">☀️</span> / <span class="key">🌙</span> to toggle theme. Your choices are saved automatically.</p>
+        <p>Use <span class="key">EN</span> / <span class="key">DA</span> to switch language and the theme button to cycle through five color schemes: Dark, Light, Midnight, Forest, and Ember. Your choices are saved automatically.</p>
       </div>
       <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
@@ -246,8 +245,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.4.0</span></h3>
-      <p>Udarbejdet af Jesper Ordrup</p>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.6.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -275,7 +273,7 @@
         <p>Teknikker markeret med ⚠️ kan skade stemmen hvis de udføres forkert. Gylden regel: hvis det gør ondt, stop. Arbejd med en vokalcoach ved teknikker med 4–5 prikker.</p>
       </div>
       <div class="readme-section">
-        <p>Brug <span class="key">EN</span> / <span class="key">DA</span> til at skifte sprog og <span class="key">☀️</span> / <span class="key">🌙</span> til at skifte tema. Dine valg gemmes automatisk.</p>
+        <p>Brug <span class="key">EN</span> / <span class="key">DA</span> til at skifte sprog og temaknappen til at skifte mellem fem farvetemaer: Dark, Light, Midnight, Forest og Ember. Dine valg gemmes automatisk.</p>
       </div>
       <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
@@ -866,7 +864,23 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.4.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.6.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li>Replaced dark/light toggle with 5 color schemes: Dark, Light, Midnight, Forest, and Ember</li>
+        <li>Theme button now cycles through all schemes with icon + name label</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.5.0</strong></p>
+      <ul>
+        <li>Fixed sticky navigation bar not working on mobile</li>
+        <li>Removed "created by" text from welcome modal in both languages</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.4.0</strong></p>
       <ul>
         <li>Updated README with accurate technique count (21), corrected technique names, and added deployment docs</li>
         <li>Updated welcome modal to reflect 21 techniques</li>
@@ -1021,7 +1035,7 @@
   <p data-lang="da">Vocal Guide — En vokal-referenceguide af Jesper Ordrup</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.4.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.6.0)</a></p>
 </div>
 
 <script>
@@ -1036,16 +1050,34 @@ function setLang(lang) {
   updateAllMobileNavCounters();
 }
 
-function toggleTheme() {
-  const isLight = document.body.classList.toggle('light');
-  document.getElementById('themeBtn').textContent = isLight ? '🌙' : '☀️';
-  try { localStorage.setItem('vtb-theme', isLight ? 'light' : 'dark'); } catch(e) {}
+var themes = ['dark', 'light', 'midnight', 'forest', 'ember'];
+var themeLabels = { dark: '🌙 Dark', light: '☀️ Light', midnight: '🌊 Midnight', forest: '🌲 Forest', ember: '🔥 Ember' };
+
+function getCurrentTheme() {
+  for (var i = 1; i < themes.length; i++) {
+    if (document.body.classList.contains(themes[i])) return themes[i];
+  }
+  return 'dark';
+}
+
+function setTheme(theme) {
+  document.body.classList.remove('light', 'midnight', 'forest', 'ember');
+  if (theme !== 'dark') document.body.classList.add(theme);
+  document.getElementById('themeBtn').textContent = themeLabels[theme];
+  try { localStorage.setItem('vtb-theme', theme); } catch(e) {}
+}
+
+function cycleTheme() {
+  var current = getCurrentTheme();
+  var next = themes[(themes.indexOf(current) + 1) % themes.length];
+  setTheme(next);
 }
 
 // Restore preferences
 try {
-  if (localStorage.getItem('vtb-theme') === 'light') toggleTheme();
-  const savedLang = localStorage.getItem('vtb-lang');
+  var savedTheme = localStorage.getItem('vtb-theme');
+  if (savedTheme && savedTheme !== 'dark') setTheme(savedTheme);
+  var savedLang = localStorage.getItem('vtb-lang');
   if (savedLang === 'da') setLang('da');
 } catch(e) {}
 
