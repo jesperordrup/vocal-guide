@@ -677,18 +677,20 @@
     color: var(--accent-gold);
     font-size: 0.82rem;
   }
-  .how-to { font-size: 0.9rem; line-height: 1.6; }
+  .how-to { font-size: 0.92rem; line-height: 1.7; }
   .how-to strong { color: var(--accent-warm); font-weight: 600; }
   .exercise {
     display: inline-block;
     background: var(--surface-raised);
     border: 1px solid var(--border);
-    padding: 2px 8px;
-    border-radius: 3px;
+    border-left: 3px solid var(--accent-gold);
+    padding: 6px 12px;
+    border-radius: 0 4px 4px 0;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     color: var(--accent-gold);
-    margin: 2px 0;
+    margin: 3px 0;
+    line-height: 1.5;
   }
   .yt-link {
     display: inline-flex;
@@ -710,15 +712,16 @@
     border-color: var(--accent-red);
   }
   .yt-svg { width: 14px; height: 14px; fill: var(--accent-red); flex-shrink: 0; }
-  .difficulty { display: flex; gap: 3px; margin-top: 4px; }
+  .difficulty { display: flex; gap: 3px; margin-top: 10px; }
   .diff-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
   .diff-dot.active { background: var(--accent-warm); }
   .danger-note {
     font-size: 0.78rem;
     color: var(--accent-red);
-    margin-top: 6px;
-    padding: 4px 8px;
-    border-left: 2px solid var(--accent-red);
+    margin-top: 10px;
+    padding: 6px 10px;
+    border-left: 3px solid var(--accent-red);
+    border-radius: 0 4px 4px 0;
     background: rgba(196,92,74,0.05);
   }
   .footer {
@@ -875,6 +878,7 @@
 
     .technique-table tbody tr.accordion-open td:nth-child(4) {
       background: var(--surface-raised);
+      padding: 16px 16px 20px;
     }
 
     /* Mobile labels */
@@ -951,23 +955,37 @@
 
     /* How-to section */
     .how-to {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
+      line-height: 1.75;
     }
-    .exercise {
-      font-size: 0.75rem;
+    /* Hide <br> before exercises — block display makes them redundant */
+    .how-to [data-lang] br {
+      display: none;
+    }
+    .technique-table td.how-to .exercise {
       display: block;
-      margin: 6px 0;
+      font-size: 0.82rem;
+      margin: 8px 0;
+      padding: 10px 14px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 0 6px 6px 0;
+      line-height: 1.5;
     }
 
     /* Difficulty dots */
     .difficulty {
-      margin-top: 12px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
     }
 
     /* Danger notes */
     .danger-note {
-      font-size: 0.75rem;
-      margin-top: 10px;
+      font-size: 0.78rem;
+      margin-top: 12px;
+      padding: 8px 12px;
     }
 
     /* Artist references */
