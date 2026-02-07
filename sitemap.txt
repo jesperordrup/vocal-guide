@@ -1,8 +1,51 @@
 # Sitemap for Vocal Guide
 
+# Main page
 https://jesperordrup.github.io/vocal-guide/
+
+# Sections
 https://jesperordrup.github.io/vocal-guide/#registers
 https://jesperordrup.github.io/vocal-guide/#styles
 https://jesperordrup.github.io/vocal-guide/#effects
 https://jesperordrup.github.io/vocal-guide/#ornaments
 https://jesperordrup.github.io/vocal-guide/#dynamics
+
+# Modals
+https://jesperordrup.github.io/vocal-guide/#readme
+https://jesperordrup.github.io/vocal-guide/#warmup
+https://jesperordrup.github.io/vocal-guide/#anatomy
+https://jesperordrup.github.io/vocal-guide/#myths
+https://jesperordrup.github.io/vocal-guide/#changelog
+https://jesperordrup.github.io/vocal-guide/#share
+https://jesperordrup.github.io/vocal-guide/#feedback
+
+# Techniques - Registers
+https://jesperordrup.github.io/vocal-guide/#chest-voice
+https://jesperordrup.github.io/vocal-guide/#head-voice
+https://jesperordrup.github.io/vocal-guide/#falsetto
+https://jesperordrup.github.io/vocal-guide/#mixed-voice
+https://jesperordrup.github.io/vocal-guide/#vocal-fry
+https://jesperordrup.github.io/vocal-guide/#whistle-register
+
+# Techniques - Styles
+https://jesperordrup.github.io/vocal-guide/#belting
+https://jesperordrup.github.io/vocal-guide/#twang
+https://jesperordrup.github.io/vocal-guide/#breathy-singing
+https://jesperordrup.github.io/vocal-guide/#vowel-modification
+
+# Techniques - Effects
+https://jesperordrup.github.io/vocal-guide/#grit-rasp
+https://jesperordrup.github.io/vocal-guide/#distortion-overdrive
+https://jesperordrup.github.io/vocal-guide/#growl
+https://jesperordrup.github.io/vocal-guide/#cry-sob
+
+# Techniques - Embellish
+https://jesperordrup.github.io/vocal-guide/#vibrato
+https://jesperordrup.github.io/vocal-guide/#runs-riffs
+https://jesperordrup.github.io/vocal-guide/#pitch-bending
+https://jesperordrup.github.io/vocal-guide/#glottal-stop
+
+# Techniques - Dynamics
+https://jesperordrup.github.io/vocal-guide/#breath-support
+https://jesperordrup.github.io/vocal-guide/#messa-di-voce
+https://jesperordrup.github.io/vocal-guide/#dynamic-contrast
