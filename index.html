@@ -235,7 +235,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.9.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.10.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -278,7 +278,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.9.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.10.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -669,6 +669,10 @@
 <div class="hero">
   <h1 data-lang="en"><span>Vocal Guide</span></h1>
   <h1 data-lang="da"><span>Vocal Guide</span></h1>
+  <button id="firstTimeBtn" class="first-time-btn" onclick="openFirstTime()" style="display:none;">
+    <span data-lang="en">First time here?</span>
+    <span data-lang="da">Første gang her?</span>
+  </button>
 </div>
 
 <!-- STICKY NAV -->
@@ -1186,7 +1190,16 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.9.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.10.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>Changed: Welcome popup</strong> — No longer opens automatically on first visit</li>
+        <li><strong>New: "First time here?" button</strong> — Shown in the hero for new visitors; opens the welcome popup and hides permanently after click</li>
+        <li><strong>Updated: Footer link</strong> — Renamed "Welcome"/"Velkommen" to "First time here?"/"Første gang her?"</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.9.0</strong></p>
       <ul>
         <li><strong>New: PWA install analytics</strong> — Track install prompt, accept/dismiss, and completed installs via Plausible</li>
         <li><strong>New: Modal analytics</strong> — Track opens of Welcome, Warm-Up, Anatomy, Myths, Read Me, Share, and Feedback via Plausible</li>
@@ -1392,7 +1405,7 @@
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
   <p style="margin-top:12px;" data-lang="en">
-    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Welcome</a> ·
+    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">First time here?</a> ·
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Warm-Up</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomy</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Vocal Myths</a> ·
@@ -1401,7 +1414,7 @@
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
   <p style="margin-top:12px;" data-lang="da">
-    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Velkommen</a> ·
+    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Første gang her?</a> ·
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Opvarmning</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomi</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Myter</a> ·
@@ -1409,7 +1422,7 @@
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.9.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.10.0)</a></p>
 </div>
 
 <script>
@@ -1636,6 +1649,18 @@ document.addEventListener('keydown', function(e) {
 });
 
 // === WELCOME POPUP (first-time visitors) ===
+function showFirstTimeButton() {
+  try {
+    if (!localStorage.getItem('vtb-welcome-seen')) {
+      document.getElementById('firstTimeBtn').style.display = '';
+    }
+  } catch(e) {}
+}
+function openFirstTime() {
+  showWelcome();
+  document.getElementById('firstTimeBtn').style.display = 'none';
+  try { localStorage.setItem('vtb-welcome-seen', '1'); } catch(e) {}
+}
 function showWelcome() {
   document.getElementById('welcomePopup').classList.add('open');
   plausible('Open-Welcome');
@@ -1827,21 +1852,14 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     initAccordion();
     handleInitialHash();
-    // Show welcome popup for first-time visitors (after hash handling)
-    try {
-      if (!localStorage.getItem('vtb-welcome-seen') && !location.hash) {
-        setTimeout(showWelcome, 800);
-      }
-    } catch(e) {}
+    // Show "First time here?" button for new visitors
+    showFirstTimeButton();
   });
 } else {
   initAccordion();
   handleInitialHash();
-  try {
-    if (!localStorage.getItem('vtb-welcome-seen') && !location.hash) {
-      setTimeout(showWelcome, 800);
-    }
-  } catch(e) {}
+  // Show "First time here?" button for new visitors
+  showFirstTimeButton();
 }
 </script>
 
