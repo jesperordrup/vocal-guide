@@ -1,0 +1,25 @@
+# Vocal Guide
+
+> A vocal technique reference covering 21 techniques across five categories: registers, styles, effects, embellish, and dynamics. Created by Jesper Ordrup.
+
+This guide is designed as a learning companion for singers at all levels. Each technique includes a description, character, famous examples, how-to instructions with exercises, difficulty rating (1-5), prerequisites, safety warnings where applicable, and YouTube tutorial links.
+
+The site also includes a warm-up routine, vocal anatomy guide, and a list of common vocal myths and bad advice.
+
+## Sections
+
+- [Vocal Registers](https://jesperordrup.github.io/vocal-guide/#registers): Foundation voice modes — Chest Voice, Head Voice, Falsetto, Mixed Voice, Vocal Fry, Whistle Register
+- [Vocal Styles & Techniques](https://jesperordrup.github.io/vocal-guide/#styles): Characteristic approaches — Belting, Twang, Breathy Singing, Vowel Modification
+- [Vocal Effects](https://jesperordrup.github.io/vocal-guide/#effects): Extended techniques — Grit/Rasp, Distortion/Overdrive, Growl, Cry/Sob
+- [Embellish](https://jesperordrup.github.io/vocal-guide/#ornaments): Melodic embellishments — Vibrato, Runs/Riffs, Pitch Bending, Glottal Stop
+- [Dynamics & Breath](https://jesperordrup.github.io/vocal-guide/#dynamics): Volume and breath control — Breath Support, Messa di Voce, Dynamic Contrast
+
+## Links
+
+- [Full technique content for LLMs](https://jesperordrup.github.io/vocal-guide/llms-full.txt): Complete details for all 21 techniques including descriptions, exercises, prerequisites, difficulty ratings, and safety notes
+- [Website](https://jesperordrup.github.io/vocal-guide/): Interactive web application with bilingual support (English/Danish)
+
+## Contact
+
+- Author: Jesper Ordrup
+- Email: jesper@jesper.com
