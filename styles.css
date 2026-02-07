@@ -36,6 +36,7 @@
   body.light .tag-dynamics { background: rgba(168,69,53,0.12); }
   body.light .exercise { background: var(--surface); }
   body.light .danger-note { background: rgba(168,69,53,0.06); }
+  body.light .cvt-note .cvt-note-body { background: rgba(61,109,125,0.06); }
   body.light .footer .warning { background: rgba(168,69,53,0.06); border-color: rgba(168,69,53,0.25); }
   body.light .yt-link { background: rgba(168,69,53,0.06); border-color: rgba(168,69,53,0.2); }
   body.light .yt-link:hover { background: rgba(168,69,53,0.12); }
@@ -742,6 +743,37 @@
     border-radius: 0 4px 4px 0;
     background: rgba(196,92,74,0.05);
   }
+  /* CVT expandable note on technique cards */
+  .cvt-note { margin-top: 10px; }
+  .cvt-note summary {
+    font-size: 0.75rem;
+    color: var(--accent-blue);
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    user-select: none;
+    list-style: none;
+  }
+  .cvt-note summary::before { content: '▸ '; }
+  .cvt-note[open] summary::before { content: '▾ '; }
+  .cvt-note summary:hover { color: var(--accent-warm); }
+  .cvt-note .cvt-note-body {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 6px;
+    padding: 6px 10px;
+    border-left: 3px solid var(--accent-blue);
+    border-radius: 0 4px 4px 0;
+    background: rgba(91,138,154,0.05);
+    line-height: 1.5;
+  }
+  .cvt-note .cvt-note-body a { color: var(--accent-blue); }
+  /* CVT mapping table in modal */
+  .cvt-map-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 12px 0; }
+  .cvt-map-table th, .cvt-map-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); text-align: left; }
+  .cvt-map-table th { color: var(--accent-warm); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cvt-map-table td { color: var(--text-muted); line-height: 1.5; }
+  .cvt-map-table td:first-child { color: var(--text); font-weight: 600; }
   .footer {
     padding: 40px;
     text-align: center;
@@ -1005,6 +1037,9 @@
       margin-top: 12px;
       padding: 8px 12px;
     }
+    /* CVT notes mobile */
+    .cvt-note { margin-top: 12px; }
+    .cvt-note .cvt-note-body { padding: 8px 12px; }
 
     /* Artist references */
     .artist-ref {

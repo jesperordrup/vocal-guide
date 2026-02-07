@@ -210,6 +210,10 @@
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
     <span data-lang="en">Vocal Myths</span><span data-lang="da">Myter</span>
   </button>
+  <button class="burger-menu-btn" onclick="openCvt();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/><circle cx="12" cy="8" r="1" fill="currentColor"/></svg>
+    <span data-lang="en">CVT Reference</span><span data-lang="da">CVT Reference</span>
+  </button>
   <button class="burger-menu-btn" onclick="openReadme();closeBurger();">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
     <span data-lang="en">Read Me</span><span data-lang="da">Læs mig</span>
@@ -235,7 +239,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.10.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.11.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -278,7 +282,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.10.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.11.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -620,6 +624,145 @@
   </div>
 </div>
 
+<!-- CVT REFERENCE MODAL -->
+<div id="cvtModal" class="readme-overlay" onclick="if(event.target===this)closeCvt()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeCvt()">&times;</button>
+
+    <div data-lang="en">
+      <h3>CVT vs Traditional Terminology</h3>
+      <div class="readme-section">
+        <p>This guide uses <strong>traditional vocal terminology</strong> (chest voice, head voice, mixed voice, etc.) because it's the most widely understood framework worldwide. However, the most scientifically validated system is <strong>Complete Vocal Technique (CVT)</strong>, developed by Cathrine Sadolin at the <a href="https://completevocalinstitute.com/" target="_blank" rel="noopener" style="color:var(--accent-warm);">Complete Vocal Institute</a> in Copenhagen.</p>
+        <p style="margin-top:8px;">CVT is built on laryngoscopic imaging, EGG measurements, and peer-reviewed acoustic research. Here's how the two frameworks relate.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>The Four CVT Modes</strong></p>
+        <p>CVT classifies all singing into four modes based on vocal tract configuration — not felt vibration:</p>
+        <table class="cvt-map-table">
+          <thead><tr><th>CVT Mode</th><th>Character</th><th>Vowels</th><th>Volume</th></tr></thead>
+          <tbody>
+            <tr><td>Neutral</td><td>Soft, open, non-metallic. Widest range of sounds.</td><td>All vowels</td><td>1–4 / 10</td></tr>
+            <tr><td>Curbing</td><td>Restrained, held back, emotional. A "light hold."</td><td>UH, O, OO</td><td>4–7 / 10</td></tr>
+            <tr><td>Overdrive</td><td>Clear, direct, shouty. Like calling out loudly.</td><td>EH, OH</td><td>4–10 / 10</td></tr>
+            <tr><td>Edge</td><td>Sharp, bright, twangy. Distinct epiglottic funnel.</td><td>I, EH, A, OE</td><td>4–10 / 10</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Three Overall Principles (CVT Foundation)</strong></p>
+        <ul>
+          <li><strong>Support</strong> — Coordinated abdominal, waist, solar plexus, and back muscle engagement to control air pressure and airflow. (This guide: Breath Support)</li>
+          <li><strong>Necessary Twang</strong> — Narrowing the epiglottic funnel for clearer, more efficient sound. CVT considers this foundational for <em>all</em> healthy singing, not just a style. (This guide: Twang)</li>
+          <li><strong>Avoid protruding jaw &amp; tightened lips</strong> — These trigger uncontrolled vocal cord constriction, especially in upper register. (Not explicitly covered in this guide)</li>
+        </ul>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Mapping: Traditional &harr; CVT</strong></p>
+        <table class="cvt-map-table">
+          <thead><tr><th>This Guide (Traditional)</th><th>CVT Equivalent</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Chest Voice</td><td>Overdrive / Edge</td><td>Depends on vowel and intensity</td></tr>
+            <tr><td>Head Voice</td><td>Neutral (fuller density)</td><td>Full fold closure, lighter weight</td></tr>
+            <tr><td>Falsetto</td><td>Neutral (reduced density)</td><td>Partial fold closure, airy</td></tr>
+            <tr><td>Mixed Voice</td><td>Curbing / Edge</td><td>CVT doesn't use "mixed voice" — mode transitions handle this</td></tr>
+            <tr><td>Vocal Fry</td><td>—</td><td>Not a CVT mode; classified separately</td></tr>
+            <tr><td>Whistle Register</td><td>—</td><td>Not a CVT mode; classified separately</td></tr>
+            <tr><td>Belting</td><td>Overdrive or Edge</td><td>Overdrive: EH/OH vowels. Edge: I/EH/A/OE vowels</td></tr>
+            <tr><td>Twang</td><td>Necessary Twang + Edge</td><td>Foundational principle; Edge requires maximum twang</td></tr>
+            <tr><td>Breathy Singing</td><td>Neutral + air effect</td><td>Only Neutral permits audible air</td></tr>
+            <tr><td>Distortion / Overdrive</td><td>Effects (on any mode)</td><td>"Overdrive" in CVT is a clean mode, not distortion</td></tr>
+            <tr><td>Breath Support</td><td>Support (1st principle)</td><td>Same concept, CVT's first pillar</td></tr>
+            <tr><td>Cry / Sob</td><td>Curbing quality</td><td>Restrained, emotional hold</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Key Differences</strong></p>
+        <ul>
+          <li><strong>Vowel rules:</strong> CVT restricts specific vowels per mode. Traditional pedagogy uses general vowel modification. Both work, but CVT is more precise.</li>
+          <li><strong>Metal &amp; Density:</strong> CVT uses "degree of metal" (0–100%) and "density" (fuller vs. reduced) as parameters. Traditional pedagogy doesn't have these concepts.</li>
+          <li><strong>"Overdrive" means different things:</strong> In this guide, overdrive = heavy vocal distortion (like guitar overdrive). In CVT, Overdrive = a clean, shouty vocal mode.</li>
+        </ul>
+      </div>
+
+      <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+        <p style="font-size:0.85rem;color:var(--text-muted);">Learn more: <a href="https://completevocalinstitute.com/" target="_blank" rel="noopener" style="color:var(--accent-warm);">completevocalinstitute.com</a><br>
+        <span style="font-size:0.8rem;">Look for expandable <span style="color:var(--accent-blue);font-family:'JetBrains Mono',monospace;font-weight:600;">CVT note</span> annotations on technique cards throughout this guide.</span></p>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>CVT vs traditionel terminologi</h3>
+      <div class="readme-section">
+        <p>Denne guide bruger <strong>traditionel vokalterminologi</strong> (bryststemme, hovedklang, mixstemme osv.) fordi det er den mest udbredte ramme globalt. Men det mest videnskabeligt validerede system er <strong>Complete Vocal Technique (CVT)</strong>, udviklet af Cathrine Sadolin p&aring; <a href="https://completevocalinstitute.com/" target="_blank" rel="noopener" style="color:var(--accent-warm);">Complete Vocal Institute</a> i K&oslash;benhavn.</p>
+        <p style="margin-top:8px;">CVT er bygget p&aring; laryngoskopisk billeddannelse, EGG-m&aring;linger og peer-reviewed akustisk forskning. Her er hvordan de to systemer h&aelig;nger sammen.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>De fire CVT-modes</strong></p>
+        <p>CVT klassificerer al sang i fire modes baseret p&aring; stemmekanalens konfiguration — ikke f&oslash;lt vibration:</p>
+        <table class="cvt-map-table">
+          <thead><tr><th>CVT Mode</th><th>Karakter</th><th>Vokaler</th><th>Volumen</th></tr></thead>
+          <tbody>
+            <tr><td>Neutral</td><td>Bl&oslash;d, &aring;ben, ikke-metallisk. Bredeste lydspektrum.</td><td>Alle vokaler</td><td>1–4 / 10</td></tr>
+            <tr><td>Curbing</td><td>Tilbageholdt, emotionel. Et "let hold."</td><td>UH, O, OO</td><td>4–7 / 10</td></tr>
+            <tr><td>Overdrive</td><td>Klar, direkte, r&aring;bende. Som at kalde h&oslash;jt.</td><td>EH, OH</td><td>4–10 / 10</td></tr>
+            <tr><td>Edge</td><td>Skarp, lys, twanget. Tydelig epiglottisk tragt.</td><td>I, EH, A, OE</td><td>4–10 / 10</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Tre overordnede principper (CVT-fundament)</strong></p>
+        <ul>
+          <li><strong>St&oslash;tte (Support)</strong> — Koordineret aktivering af mave-, talje-, solar plexus- og rygmuskler til kontrol af lufttryk og luftstr&oslash;m. (Denne guide: Breath Support)</li>
+          <li><strong>N&oslash;dvendig twang</strong> — Indsnævring af den epiglottiske tragt for klarere, mere effektiv lyd. CVT betragter dette som grundl&aelig;ggende for <em>al</em> sund sang, ikke kun en stilart. (Denne guide: Twang)</li>
+          <li><strong>Undg&aring; fremskudt k&aelig;be &amp; stramme l&aelig;ber</strong> — Disse udl&oslash;ser ukontrolleret stemmeb&aring;ndssammensnøring, s&aelig;rligt i det h&oslash;je register. (Ikke eksplicit d&aelig;kket i denne guide)</li>
+        </ul>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Kortl&aelig;gning: Traditionel &harr; CVT</strong></p>
+        <table class="cvt-map-table">
+          <thead><tr><th>Denne guide (Traditionel)</th><th>CVT-&aelig;kvivalent</th><th>Noter</th></tr></thead>
+          <tbody>
+            <tr><td>Chest Voice</td><td>Overdrive / Edge</td><td>Afh&aelig;nger af vokal og intensitet</td></tr>
+            <tr><td>Head Voice</td><td>Neutral (fuld densitet)</td><td>Fuld foldlukning, lettere v&aelig;gt</td></tr>
+            <tr><td>Falsetto</td><td>Neutral (reduceret densitet)</td><td>Delvis foldlukning, luftig</td></tr>
+            <tr><td>Mixed Voice</td><td>Curbing / Edge</td><td>CVT bruger ikke "mixstemme" — mode-skift h&aring;ndterer dette</td></tr>
+            <tr><td>Vocal Fry</td><td>—</td><td>Ikke en CVT-mode; klassificeret separat</td></tr>
+            <tr><td>Whistle Register</td><td>—</td><td>Ikke en CVT-mode; klassificeret separat</td></tr>
+            <tr><td>Belting</td><td>Overdrive eller Edge</td><td>Overdrive: EH/OH-vokaler. Edge: I/EH/A/OE-vokaler</td></tr>
+            <tr><td>Twang</td><td>N&oslash;dvendig Twang + Edge</td><td>Grundl&aelig;ggende princip; Edge kr&aelig;ver maksimal twang</td></tr>
+            <tr><td>Breathy Singing</td><td>Neutral + lufteffekt</td><td>Kun Neutral tillader h&oslash;rbar luft</td></tr>
+            <tr><td>Distortion / Overdrive</td><td>Effekter (p&aring; enhver mode)</td><td>"Overdrive" i CVT er en ren mode, ikke forvrængning</td></tr>
+            <tr><td>Breath Support</td><td>Support (1. princip)</td><td>Samme koncept, CVTs f&oslash;rste s&oslash;jle</td></tr>
+            <tr><td>Cry / Sob</td><td>Curbing-kvalitet</td><td>Tilbageholdt, emotionelt hold</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Centrale forskelle</strong></p>
+        <ul>
+          <li><strong>Vokalregler:</strong> CVT begr&aelig;nser specifikke vokaler per mode. Traditionel p&aelig;dagogik bruger generel vokalmodifikation. Begge virker, men CVT er mere pr&aelig;cis.</li>
+          <li><strong>Metal &amp; densitet:</strong> CVT bruger "grad af metal" (0–100%) og "densitet" (fuld vs. reduceret) som parametre. Traditionel p&aelig;dagogik har ikke disse koncepter.</li>
+          <li><strong>"Overdrive" betyder forskellige ting:</strong> I denne guide betyder overdrive = tung vokal forvrængning (som guitar-overdrive). I CVT er Overdrive = en ren, r&aring;bende vokalmode.</li>
+        </ul>
+      </div>
+
+      <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+        <p style="font-size:0.85rem;color:var(--text-muted);">L&aelig;r mere: <a href="https://completevocalinstitute.com/" target="_blank" rel="noopener" style="color:var(--accent-warm);">completevocalinstitute.com</a><br>
+        <span style="font-size:0.8rem;">Se efter udvidbare <span style="color:var(--accent-blue);font-family:'JetBrains Mono',monospace;font-weight:600;">CVT note</span>-annotationer p&aring; teknikkort i hele guiden.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- WELCOME POPUP (first-time visitors) -->
 <div id="welcomePopup" class="install-popup-overlay" onclick="if(event.target===this)dismissWelcome()">
   <div class="install-popup" style="text-align:left;max-width:400px;">
@@ -715,6 +858,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>Place hand on chest and speak — feel the buzz.</strong> That's chest resonance. Sing "Hey!" like calling someone across the street. Keep that forward, spoken quality as you move to pitch.<br><span class="exercise">Exercise: "Hey man!" projection on scales</span><br><span class="exercise">Exercise: Speak-sing counting 1–10</span></span>
           <span data-lang="da"><strong>Læg hånden på brystet og tal — mærk vibrationen.</strong> Det er brystresonans. Syng "Hej!" som om du kalder på nogen over gaden. Bevar den fremadrettede, talte kvalitet når du synger på tone.<br><span class="exercise">Øvelse: "Hej du!" projektion på skalaer</span><br><span class="exercise">Øvelse: Talesyng og tæl 1–10</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, chest-dominant sounds are produced using <strong>Overdrive</strong> mode (shouty, direct, vowels: EH/OH) or <strong>Edge</strong> mode (sharp, twangy, vowels: I/EH/A/OE). <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT produceres brystdominerede lyde med <strong>Overdrive</strong>-mode (r&aring;bende, direkte, vokaler: EH/OH) eller <strong>Edge</strong>-mode (skarp, twanget, vokaler: I/EH/A/OE). <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=chest+voice+singing+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Chest Voice Tutorial</a></td>
@@ -733,6 +877,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>Imagine calling over a fence — "Hellooo?"</strong> That lifting feeling is head voice. Keep cord closure (no air leaking). The sound should ring, not whisper.<br><span class="exercise">Exercise: "Hoo" on descending 5-note scales</span><br><span class="exercise">Exercise: "Wee" sirens from low to high</span></span>
           <span data-lang="da"><strong>Forestil dig at du kalder over et hegn — "Hallooo?"</strong> Den løftende fornemmelse er hovedklang. Bevar lukning af stemmebåndene (ingen luft slipper ud). Lyden skal ringe, ikke hviske.<br><span class="exercise">Øvelse: "Hoo" på nedadgående 5-tone skalaer</span><br><span class="exercise">Øvelse: "Wee" sirener fra lav til høj</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, this corresponds to <strong>Neutral</strong> mode in <em>fuller density</em> — full fold closure with a lighter, non-metallic quality. All vowels are available. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT svarer dette til <strong>Neutral</strong>-mode i <em>fuld densitet</em> — fuld foldlukning med en lettere, ikke-metallisk kvalitet. Alle vokaler er tilg&aelig;ngelige. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=head+voice+vs+falsetto+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Head Voice vs Falsetto</a></td>
@@ -747,10 +892,11 @@
           <span data-lang="en">Breathy, ethereal, flute-like, intimate. Lighter than head voice. Hollow quality.</span>
           <span data-lang="da">Luftig, æterisk, fløjteagtig, intim. Lettere end hovedklang. Hul kvalitet.</span>
         </td>
-        <td><span class="artist-ref">Bee Gees, Jeff Buckley, Thom Yorke, Prince, Justin Timberlake</span></td>
+        <td><span class="artist-ref">Barry Gibb, Jeff Buckley, Thom Yorke, Prince, Justin Timberlake</span></td>
         <td class="how-to">
           <span data-lang="en"><strong>Sigh gently on a high note — that airy release is falsetto.</strong> The vocal folds thin out and partially separate. Don't push volume; let it be light.<br><span class="exercise">Exercise: Gentle sighs down 5-note scale</span><br><span class="exercise">Exercise: "Hoo" (like an owl) on high notes</span></span>
           <span data-lang="da"><strong>Suk blidt på en høj tone — den luftige løsladelse er falset.</strong> Stemmebåndene bliver tynde og adskilles delvist. Pres ikke volumen; lad det være let.<br><span class="exercise">Øvelse: Bløde suk ned ad 5-tone skala</span><br><span class="exercise">Øvelse: "Hoo" (som en ugle) på høje toner</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, falsetto is classified as <strong>Neutral</strong> mode in <em>reduced density</em> or "falsetto" configuration — thin, hollow sound requiring minimal support energy. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT klassificeres falset som <strong>Neutral</strong>-mode i <em>reduceret densitet</em> eller "falset"-konfiguration — tynd, hul lyd der kr&aelig;ver minimal st&oslash;tteenergi. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=how+to+sing+falsetto+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Falsetto Tutorial</a></td>
@@ -769,6 +915,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>The bridge between chest and head — neither cracks nor flips.</strong> Start with bratty "Nay" on scales to force cord closure while ascending. Shade vowels toward "OH/OO" as you go higher.<br><span class="exercise">Exercise: Bratty "Nay" on octave scales</span><br><span class="exercise">Exercise: "Gee" ascending (keeps cords together)</span><br><span class="exercise">Exercise: "Gug" for chest-to-head bridge</span></span>
           <span data-lang="da"><strong>Broen mellem bryst og hoved — hverken knak eller flip.</strong> Start med frækt "Næ" på skalaer for at tvinge stemmebåndene sammen under stigning. Skift vokaler mod "OH/OO" jo højere du synger.<br><span class="exercise">Øvelse: Frækt "Næ" på oktavskalaer</span><br><span class="exercise">Øvelse: "Gee" opadgående (holder båndene sammen)</span><br><span class="exercise">Øvelse: "Gug" for bryst-til-hoved bro</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">CVT doesn't use the term "mixed voice." The seamless transition between registers is achieved by switching between modes — typically <strong>Curbing</strong> (restrained, held back) or <strong>Edge</strong> (sharp, twangy) through the passaggio. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">CVT bruger ikke begrebet "mixstemme." Den s&oslash;ml&oslash;se overgang mellem registre opn&aring;s ved at skifte mellem modes — typisk <strong>Curbing</strong> (tilbageholdt) eller <strong>Edge</strong> (skarp, twanget) gennem passaggioen. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=mixed+voice+exercises+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Mixed Voice Exercises</a></td>
@@ -847,6 +994,7 @@
           <span data-lang="da"><strong>God belting = den rette balance mellem bryst og hoved, ikke bare at råbe.</strong> Åbn munden naturligt, kæben afslappet. Åndedrætssstøtte fra mellemgulvet. Lyse, fremadrettede vokaler. Tænk "kald ud" ikke "pres op."<br><span class="exercise">Øvelse: "Hej du!" på stigende tonehøjde</span><br><span class="exercise">Øvelse: Frækt "Næ" på stigende kvinter</span></span>
           <div class="danger-note" data-lang="en">⚠ Bad belting (pure chest pushed high) causes strain and nodules. Never belt without warming up.</div>
           <div class="danger-note" data-lang="da">⚠ Dårlig belting (ren bryst presset højt op) forårsager belastning og knuder. Belt aldrig uden opvarmning.</div>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, belting is achieved through <strong>Overdrive</strong> mode (vowels: EH, OH — max D5 for women, C5 for men) or <strong>Edge</strong> mode (vowels: I, EH, A, OE — wider range). It's not "pushing chest voice up" but a specific vocal tract configuration. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT opn&aring;s belting gennem <strong>Overdrive</strong>-mode (vokaler: EH, OH — maks D5 for kvinder, C5 for m&aelig;nd) eller <strong>Edge</strong>-mode (vokaler: I, EH, A, OE — bredere register). Det er ikke at "presse bryststemmen op" men en specifik stemmekanalskonfiguration. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=how+to+belt+singing+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Belting Tutorial</a></td>
@@ -862,10 +1010,11 @@
           <span data-lang="en">Bright, piercing, "nasal" but in a good way. Adds volume and cut without extra effort.</span>
           <span data-lang="da">Lys, gennemtrængende, "nasal" men på den gode måde. Tilføjer volumen og skarphed uden ekstra anstrengelse.</span>
         </td>
-        <td><span class="artist-ref">Steven Tyler, Dolly Parton, AC/DC, musical theatre</span></td>
+        <td><span class="artist-ref">Steven Tyler, Dolly Parton, Brian Johnson, musical theatre</span></td>
         <td class="how-to">
           <span data-lang="en"><strong>Think of a duck quacking, or a witch cackling "nyah nyah!"</strong> That nasal, buzzy quality is twang. It narrows the vocal tract, amplifying sound. Hugely useful for projection without strain.<br><span class="exercise">Exercise: Quack like a duck on scales</span><br><span class="exercise">Exercise: "Nyah nyah" bratty sound, ascending</span></span>
           <span data-lang="da"><strong>Tænk på en and der rapper, eller en heks der kagler "næh næh!"</strong> Den nasale, summende kvalitet er twang. Det indsnævrer stemmekanalen og forstærker lyden. Enormt nyttigt til projektion uden belastning.<br><span class="exercise">Øvelse: Rap som en and på skalaer</span><br><span class="exercise">Øvelse: "Næh næh" frækt, opadgående</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, "Necessary Twang" is one of the <strong>three foundational principles</strong> for all healthy singing — not just a style. It involves narrowing the epiglottic funnel for clarity and efficiency. <strong>Edge</strong> mode requires maximum twang. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT er "N&oslash;dvendig Twang" et af de <strong>tre grundl&aelig;ggende principper</strong> for al sund sang — ikke blot en stilart. Det indeb&aelig;rer indsnævring af den epiglottiske tragt for klarhed og effektivitet. <strong>Edge</strong>-mode kr&aelig;ver maksimal twang. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=twang+vocal+technique+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Twang Technique</a></td>
@@ -885,6 +1034,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>Begin a note with a gentle "H" — let air flow before and during the tone.</strong> Soften cord closure. Keep volume low and microphone close.<br><span class="exercise">Exercise: "Hah" with extra airflow on each note</span><br><span class="exercise">Exercise: Whisper phrases, then add minimal tone</span></span>
           <span data-lang="da"><strong>Begynd en tone med et blødt "H" — lad luften flyde før og under tonen.</strong> Blødgør lukningen af stemmebåndene. Hold volumen lav og mikrofonen tæt.<br><span class="exercise">Øvelse: "Hah" med ekstra luftstrøm på hver tone</span><br><span class="exercise">Øvelse: Hviskesyng sætninger, tilføj derefter minimal tone</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, breathy singing is <strong>Neutral</strong> mode with "air added to the voice" — Neutral is the <em>only</em> mode that permits audible air as an effect. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT er luftig sang <strong>Neutral</strong>-mode med "luft tilf&oslash;jet stemmen" — Neutral er den <em>eneste</em> mode der tillader h&oslash;rbar luft som effekt. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=breathy+singing+technique+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Breathy Singing</a></td>
@@ -904,6 +1054,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>As you sing higher, narrow your vowels slightly.</strong> "AH" → "UH", "EE" → "IH", "AY" → "EH". This matches the resonant frequency of your vocal tract to the pitch.<br><span class="exercise">Exercise: Sing "Ah" up a scale, let it shade to "Uh" above the break</span><br><span class="exercise">Exercise: "Me" → "Meh" → "Muh" ascending</span></span>
           <span data-lang="da"><strong>Jo højere du synger, desto mere indsnævrer du vokalerne.</strong> "AH" → "UH", "EE" → "IH", "AY" → "EH". Dette matcher resonansfrekvensen i din stemmekanal til tonehøjden.<br><span class="exercise">Øvelse: Syng "Ah" op ad en skala, lad det glide til "Uh" over bruddet</span><br><span class="exercise">Øvelse: "Me" → "Meh" → "Muh" opadgående</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">CVT handles this differently: each mode has <strong>strict vowel rules</strong>. Overdrive: EH, OH only. Edge: I, EH, A, OE only. Curbing: UH, O, OO only. Neutral: all vowels. Instead of gradually shading vowels, CVT singers choose the right mode for the vowel and pitch. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">CVT h&aring;ndterer dette anderledes: hver mode har <strong>strenge vokalregler</strong>. Overdrive: kun EH, OH. Edge: kun I, EH, A, OE. Curbing: kun UH, O, OO. Neutral: alle vokaler. I stedet for gradvist at &aelig;ndre vokaler v&aelig;lger CVT-sangere den rette mode til vokal og toneh&oslash;jde. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=vowel+modification+singing+tutorial" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Vowel Modification</a></td>
@@ -944,6 +1095,7 @@
           <span data-lang="da"><strong>Pres IKKE halsen sammen.</strong> Sund grit kommer fra strukturer over stemmebåndene (falske folder, overtonemætning). Start med et let hundegrynt. Tænk "heksekaglen." Hold halsen afslappet — stram kun mellemgulvet.<br><span class="exercise">Øvelse: Let hundegrynt på holdte toner</span><br><span class="exercise">Øvelse: Heksekaglen → bring ind i tonesang</span></span>
           <div class="danger-note" data-lang="en">⚠ If it hurts, stop immediately. Master clean singing first.</div>
           <div class="danger-note" data-lang="da">⚠ Gør det ondt, stop straks. Mestér ren sang først.</div>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">CVT classifies grit/rasp as an <strong>effect</strong> that can be layered on top of any mode. Research confirms these are supraglottic sound sources (false folds, arytenoids) — not damage to the true vocal folds when done correctly. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">CVT klassificerer grit/rasp som en <strong>effekt</strong> der kan l&aelig;gges oven p&aring; enhver mode. Forskning bekr&aelig;fter at disse er supraglottiske lydkilder (falske folder, arytænoider) — ikke skade p&aring; de rigtige stemmeb&aring;nd n&aring;r det g&oslash;res korrekt. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=vocal+grit+rasp+safe+technique" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Safe Vocal Grit</a></td>
@@ -965,6 +1117,7 @@
           <span data-lang="da"><strong>Falsk fold-aktivering + kompression + åndedrætssstøtte.</strong> De falske folder dækker de rigtige stemmebånd og skaber buzz. Tænk "rømme sig" blidt, hold det derefter. Stærk mellemgulvsstøtte er afgørende.<br><span class="exercise">Øvelse: Røm dig → hold raslen på tone</span><br><span class="exercise">Øvelse: Kargyraa-stil lav brummen</span></span>
           <div class="danger-note" data-lang="en">⚠ High risk. Requires solid clean singing foundation. Work with a specialist. Never push through pain.</div>
           <div class="danger-note" data-lang="da">⚠ Høj risiko. Kræver solid fundament i ren sang. Arbejd med specialist. Syng aldrig igennem smerte.</div>
+          <details class="cvt-note"><summary data-lang="en">CVT note — terminology</summary><summary data-lang="da">CVT note — terminologi</summary><div class="cvt-note-body" data-lang="en"><strong>Terminology alert:</strong> In CVT, "Overdrive" is a <em>clean</em> vocal mode (direct, shouty, like calling out) — not distortion. This guide uses "overdrive" in its traditional sense, like guitar overdrive (= heavy distortion). CVT calls these textures <strong>effects</strong> (Distortion, Growl, Rattle, Creaking) that are layered on top of any mode. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da"><strong>Terminologisk note:</strong> I CVT er "Overdrive" en <em>ren</em> vokalmode (direkte, r&aring;bende, som at kalde h&oslash;jt) — ikke forvrængning. Denne guide bruger "overdrive" i traditionel forstand, som guitar-overdrive (= tung forvrængning). CVT kalder disse teksturer <strong>effekter</strong> (Distortion, Growl, Rattle, Creaking) der l&aelig;gges oven p&aring; enhver mode. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot active"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=vocal+distortion+safe+singing+technique" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Distortion Safely</a></td>
@@ -1003,6 +1156,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>Imagine you're about to cry — that tilted larynx and thinned sound is "cry mode."</strong> Thins the voice without going into falsetto. Extremely useful for emotional passages and safe mix voice access.<br><span class="exercise">Exercise: Whimper like a puppy on pitch</span><br><span class="exercise">Exercise: Sob-sigh into sustained notes</span></span>
           <span data-lang="da"><strong>Forestil dig at du er ved at græde — det vippede strubehoved og tynde lyd er "græde-mode."</strong> Tynder stemmen uden at gå i falset. Ekstremt nyttigt til emotionelle passager og sikker adgang til mixstemme.<br><span class="exercise">Øvelse: Klynk som en hundehvalp på tone</span><br><span class="exercise">Øvelse: Hulke-suk ind i holdte toner</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">In CVT, the emotional "cry" quality is closely associated with <strong>Curbing</strong> mode — restrained, held back, with a "light hold" sensation. Curbing naturally produces a vulnerable, emotional sound. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">I CVT er den emotionelle "gr&aelig;de"-kvalitet t&aelig;t forbundet med <strong>Curbing</strong>-mode — tilbageholdt, med en "let hold"-fornemmelse. Curbing producerer naturligt en s&aring;rbar, emotionel lyd. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=cry+sob+vocal+technique+singing" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Cry Technique</a></td>
@@ -1135,6 +1289,7 @@
         <td class="how-to">
           <span data-lang="en"><strong>Breathe low into belly, sides, and back — not chest/shoulders.</strong> Place hands on sides below ribs. Inhale — feel expansion. Exhale on "Sss" — control the release with your abdominal wall.<br><span class="exercise">Exercise: "Sss" sustained — aim for 30+ sec</span><br><span class="exercise">Exercise: Farinelli breathing (inhale 4, hold 4, exhale 8)</span><br><span class="exercise">Exercise: Lip trills on scales</span></span>
           <span data-lang="da"><strong>Træk vejret lavt ned i mave, sider og ryg — ikke bryst/skuldre.</strong> Placer hænderne på siderne under ribbenene. Indånd — mærk udvidelsen. Udånd på "Sss" — kontrollér udslippet med bugvæggen.<br><span class="exercise">Øvelse: "Sss" holdt — sigt efter 30+ sek</span><br><span class="exercise">Øvelse: Farinelli-åndedræt (indånd 4, hold 4, udånd 8)</span><br><span class="exercise">Øvelse: Læbetriller på skalaer</span></span>
+          <details class="cvt-note"><summary data-lang="en">CVT note</summary><summary data-lang="da">CVT note</summary><div class="cvt-note-body" data-lang="en">CVT calls this <strong>Support</strong> — the first of three overall principles. It emphasizes coordinated engagement of abdominal, waist, solar plexus, and back muscles. CVT's definition aligns closely with what this guide describes. <a href="#" onclick="openCvt();return false;">See full mapping</a></div><div class="cvt-note-body" data-lang="da">CVT kalder dette <strong>St&oslash;tte (Support)</strong> — det f&oslash;rste af tre overordnede principper. Det betoner koordineret aktivering af mave-, talje-, solar plexus- og rygmuskler. CVTs definition stemmer godt overens med denne guides beskrivelse. <a href="#" onclick="openCvt();return false;">Se fuld kortl&aelig;gning</a></div></details>
           <div class="difficulty"><div class="diff-dot active"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div><div class="diff-dot"></div></div>
         </td>
         <td><a class="yt-link" href="https://www.youtube.com/results?search_query=breath+support+singing+tutorial+diaphragm" target="_blank"><svg class="yt-svg" viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.3 31.3 0 000 12a31.3 31.3 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1c.4-1.9.5-5.8.5-5.8s0-3.9-.5-5.8z"/><path d="M9.5 15.5l6.3-3.5-6.3-3.5z" fill="#0f0e0e"/></svg>Breath Support</a></td>
@@ -1169,7 +1324,7 @@
           <span data-lang="en">Creates emotional impact. A whispered verse exploding into a powerful chorus.</span>
           <span data-lang="da">Skaber emotionel effekt. Et hvisket vers der eksploderer i et kraftigt omkvæd.</span>
         </td>
-        <td><span class="artist-ref">Nirvana (quiet/loud), Adele, Radiohead, Hozier, Billie Eilish</span></td>
+        <td><span class="artist-ref">Kurt Cobain (quiet/loud), Adele, Thom Yorke, Hozier, Billie Eilish</span></td>
         <td class="how-to">
           <span data-lang="en"><strong>Map your dynamics before performing.</strong> Decide where soft, where build, where explode. The contrast creates emotion — constant volume is boring regardless of power.<br><span class="exercise">Exercise: Sing a phrase at volumes 1 through 5</span><br><span class="exercise">Exercise: Whisper a verse → belt the chorus</span></span>
           <span data-lang="da"><strong>Planlæg din dynamik før du synger.</strong> Beslut hvad der er blødt, hvor du bygger op, hvor du eksploderer. Kontrasten skaber følelse — konstant volumen er kedeligt uanset kraft.<br><span class="exercise">Øvelse: Syng en frase i volumen 1 til 5</span><br><span class="exercise">Øvelse: Hvisk et vers → belt omkvædet</span></span>
@@ -1190,7 +1345,17 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.10.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.11.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New: CVT Reference</strong> — Complete Vocal Technique explainer modal with four modes, three principles, and Traditional-to-CVT mapping table</li>
+        <li><strong>New: Expandable CVT notes</strong> — 12 technique cards now have collapsible "CVT note" annotations explaining how each technique maps to CVT terminology</li>
+        <li><strong>New: Distortion/Overdrive terminology note</strong> — Clarifies that "overdrive" means different things in traditional vs CVT contexts</li>
+        <li>CVT Reference accessible from burger menu, footer links, and direct link <code>#cvt</code></li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.10.0</strong></p>
       <ul>
         <li><strong>Changed: Welcome popup</strong> — No longer opens automatically on first visit</li>
         <li><strong>New: "First time here?" button</strong> — Shown in the hero for new visitors; opens the welcome popup and hides permanently after click</li>
@@ -1409,6 +1574,7 @@
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Warm-Up</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomy</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Vocal Myths</a> ·
+    <a href="#" onclick="openCvt();return false;" style="color:var(--accent-warm);font-size:0.75rem;">CVT Reference</a> ·
     <a href="#" onclick="openReadme();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Read Me</a> ·
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Share</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
@@ -1418,11 +1584,12 @@
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Opvarmning</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomi</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Myter</a> ·
+    <a href="#" onclick="openCvt();return false;" style="color:var(--accent-warm);font-size:0.75rem;">CVT Reference</a> ·
     <a href="#" onclick="openReadme();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Læs mig</a> ·
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.10.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.11.0)</a></p>
 </div>
 
 <script>
@@ -1477,6 +1644,7 @@ var modalHashMap = {
   'warmup':    { modalId: 'warmupModal' },
   'anatomy':   { modalId: 'anatomyModal' },
   'myths':     { modalId: 'mythsModal' },
+  'cvt':       { modalId: 'cvtModal' },
   'share':     { modalId: 'shareModal' },
   'feedback':  { modalId: 'feedbackModal' }
 };
@@ -1498,6 +1666,7 @@ function closeAllModals() {
   document.getElementById('warmupModal').classList.remove('open');
   document.getElementById('anatomyModal').classList.remove('open');
   document.getElementById('mythsModal').classList.remove('open');
+  document.getElementById('cvtModal').classList.remove('open');
   document.getElementById('shareModal').classList.remove('open');
   document.getElementById('feedbackModal').classList.remove('open');
   document.body.style.overflow = '';
@@ -1581,6 +1750,20 @@ function closeMyths() {
   document.getElementById('mythsModal').classList.remove('open');
   document.body.style.overflow = '';
   if (_hashRouting && location.hash === '#myths') clearHash();
+}
+
+// CVT Reference modal
+function openCvt() {
+  closeAllModals();
+  document.getElementById('cvtModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushHash('cvt');
+  plausible('Open-CVT');
+}
+function closeCvt() {
+  document.getElementById('cvtModal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#cvt') clearHash();
 }
 
 // Share modal
