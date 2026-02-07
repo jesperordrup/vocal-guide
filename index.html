@@ -235,7 +235,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.7.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.8.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -273,11 +273,12 @@
       </div>
       <div class="readme-section" style="margin-top:12px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
+        <p style="font-size:0.82rem;margin-top:8px;"><a href="https://umakers.dk" target="_blank" rel="noopener" style="color:var(--accent-warm);">umakers.dk</a></p>
       </div>
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.7.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.8.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -315,6 +316,7 @@
       </div>
       <div class="readme-section" style="margin-top:12px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
+        <p style="font-size:0.82rem;margin-top:8px;"><a href="https://umakers.dk" target="_blank" rel="noopener" style="color:var(--accent-warm);">umakers.dk</a></p>
       </div>
     </div>
   </div>
@@ -618,7 +620,36 @@
   </div>
 </div>
 
-<!-- INSTALL POPUP -->
+<!-- WELCOME POPUP (first-time visitors) -->
+<div id="welcomePopup" class="install-popup-overlay" onclick="if(event.target===this)dismissWelcome()">
+  <div class="install-popup" style="text-align:left;max-width:400px;">
+    <h3 data-lang="en">Welcome to Vocal Guide!</h3>
+    <h3 data-lang="da">Velkommen til Vocal Guide!</h3>
+    <p data-lang="en" style="margin-bottom:12px;">A vocal technique reference covering 21 techniques across five categories.</p>
+    <p data-lang="da" style="margin-bottom:12px;">En vokal-reference der dækker 21 teknikker fordelt på fem kategorier.</p>
+    <p data-lang="en" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:6px;"><strong style="color:var(--text);">In the menu</strong> (top right ☰) you'll find:</p>
+    <p data-lang="da" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:6px;"><strong style="color:var(--text);">I menuen</strong> (øverst til højre ☰) finder du:</p>
+    <ul data-lang="en" style="font-size:0.82rem;color:var(--text-muted);padding-left:18px;margin-bottom:16px;line-height:1.7;">
+      <li><strong style="color:var(--text);">Warm-Up</strong> — guided vocal warm-up routine</li>
+      <li><strong style="color:var(--text);">Anatomy</strong> — how your voice works</li>
+      <li><strong style="color:var(--text);">Vocal Myths</strong> — common bad advice debunked</li>
+      <li><strong style="color:var(--text);">Read Me</strong> — how to use this guide</li>
+      <li><strong style="color:var(--text);">Share &amp; Feedback</strong> — spread the word or get in touch</li>
+    </ul>
+    <ul data-lang="da" style="font-size:0.82rem;color:var(--text-muted);padding-left:18px;margin-bottom:16px;line-height:1.7;">
+      <li><strong style="color:var(--text);">Opvarmning</strong> — guidet vokal opvarmningsrutine</li>
+      <li><strong style="color:var(--text);">Anatomi</strong> — hvordan din stemme fungerer</li>
+      <li><strong style="color:var(--text);">Myter</strong> — almindelige dårlige råd aflivet</li>
+      <li><strong style="color:var(--text);">Læs mig</strong> — sådan bruger du guiden</li>
+      <li><strong style="color:var(--text);">Del &amp; Feedback</strong> — del guiden eller kontakt os</li>
+    </ul>
+    <div class="install-popup-actions" style="justify-content:flex-start;">
+      <button class="install-popup-install" onclick="dismissWelcome()" data-lang="en">Got it!</button>
+      <button class="install-popup-install" onclick="dismissWelcome()" data-lang="da">Forstået!</button>
+    </div>
+  </div>
+</div>
+
 <div id="installPopup" class="install-popup-overlay" onclick="if(event.target===this)dismissInstallPopup()">
   <div class="install-popup">
     <h3 data-lang="en">Install This App</h3>
@@ -1155,7 +1186,19 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.7.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.8.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New: Welcome popup</strong> — First-time visitors see an intro explaining the burger menu contents</li>
+        <li><strong>New: Deep linking</strong> — URL updates with pushState when opening modals, sections, and techniques</li>
+        <li>Direct navigation from external links: <code>#readme</code>, <code>#chest-voice</code>, <code>#warmup</code>, etc.</li>
+        <li>Browser back/forward navigation works with modals and accordion items</li>
+        <li>Expanded sitemap with all modal and technique hash URLs</li>
+        <li>Added <a href="https://umakers.dk" target="_blank" style="color:var(--accent-warm);">umakers.dk</a> link to Read Me</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.7.0</strong></p>
       <ul>
         <li><strong>New: Warm-Up Routine</strong> — 5-minute and extended warm-up guides in burger menu</li>
         <li><strong>New: Anatomy &amp; Preparation</strong> — Diaphragm, vocal folds, larynx, posture, vocal health</li>
@@ -1339,7 +1382,7 @@
   <p data-lang="da">Vocal Guide — En vokal-referenceguide af Jesper Ordrup</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.7.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.8.0)</a></p>
 </div>
 
 <script>
@@ -1385,54 +1428,141 @@ try {
   if (savedLang === 'da') setLang('da');
 } catch(e) {}
 
+// === HASH ROUTING ===
+// Map of hash -> { open, close, modalId }
+var _hashRouting = true; // flag to prevent recursive pushState
+var modalHashMap = {
+  'readme':    { modalId: 'readmeModal' },
+  'changelog': { modalId: 'changelogModal' },
+  'warmup':    { modalId: 'warmupModal' },
+  'anatomy':   { modalId: 'anatomyModal' },
+  'myths':     { modalId: 'mythsModal' },
+  'share':     { modalId: 'shareModal' },
+  'feedback':  { modalId: 'feedbackModal' }
+};
+
+function pushHash(hash) {
+  if (!_hashRouting) return;
+  var newUrl = hash ? '#' + hash : window.location.pathname + window.location.search;
+  history.pushState({ hash: hash || '' }, '', newUrl);
+}
+
+function clearHash() {
+  if (!_hashRouting) return;
+  history.pushState({ hash: '' }, '', window.location.pathname + window.location.search);
+}
+
+function closeAllModals() {
+  document.getElementById('readmeModal').classList.remove('open');
+  document.getElementById('changelogModal').classList.remove('open');
+  document.getElementById('warmupModal').classList.remove('open');
+  document.getElementById('anatomyModal').classList.remove('open');
+  document.getElementById('mythsModal').classList.remove('open');
+  document.getElementById('shareModal').classList.remove('open');
+  document.getElementById('feedbackModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function openModalByHash(hash) {
+  var entry = modalHashMap[hash];
+  if (entry) {
+    closeAllModals();
+    document.getElementById(entry.modalId).classList.add('open');
+    document.body.style.overflow = 'hidden';
+    return true;
+  }
+  return false;
+}
+
 // Readme modal
 function openReadme() {
+  closeAllModals();
   document.getElementById('readmeModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  pushHash('readme');
 }
 function closeReadme() {
   document.getElementById('readmeModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#readme') clearHash();
 }
 
 // Changelog modal
 function openChangelog() {
+  closeAllModals();
   document.getElementById('changelogModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  pushHash('changelog');
 }
 function closeChangelog() {
   document.getElementById('changelogModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#changelog') clearHash();
 }
 
 // Warm-up modal
 function openWarmup() {
+  closeAllModals();
   document.getElementById('warmupModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  pushHash('warmup');
 }
 function closeWarmup() {
   document.getElementById('warmupModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#warmup') clearHash();
 }
 
 // Anatomy modal
 function openAnatomy() {
+  closeAllModals();
   document.getElementById('anatomyModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  pushHash('anatomy');
 }
 function closeAnatomy() {
   document.getElementById('anatomyModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#anatomy') clearHash();
 }
 
 // Myths modal
 function openMyths() {
+  closeAllModals();
   document.getElementById('mythsModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  pushHash('myths');
 }
 function closeMyths() {
   document.getElementById('mythsModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#myths') clearHash();
+}
+
+// Share modal
+function openShareModal() {
+  closeAllModals();
+  document.getElementById('shareModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushHash('share');
+}
+function closeShareModal() {
+  document.getElementById('shareModal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#share') clearHash();
+}
+
+// Feedback modal
+function openFeedback() {
+  closeAllModals();
+  document.getElementById('feedbackModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushHash('feedback');
+}
+function closeFeedback() {
+  document.getElementById('feedbackModal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#feedback') clearHash();
 }
 
 // Burger menu
@@ -1450,25 +1580,6 @@ function closeBurger() {
   document.getElementById('burgerBackdrop').classList.remove('open');
 }
 
-// Share modal
-function openShareModal() {
-  document.getElementById('shareModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeShareModal() {
-  document.getElementById('shareModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// Feedback modal
-function openFeedback() {
-  document.getElementById('feedbackModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeFeedback() {
-  document.getElementById('feedbackModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
 function copyShareUrl() {
   const input = document.getElementById('shareUrlInput');
   navigator.clipboard.writeText(input.value).then(() => {
@@ -1484,17 +1595,43 @@ function copyShareUrl() {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    closeReadme();
-    closeChangelog();
-    closeShareModal();
-    closeWarmup();
-    closeAnatomy();
-    closeMyths();
+    closeAllModals();
     closeBurger();
+    dismissWelcome();
+    if (location.hash) clearHash();
   }
 });
 
+// === WELCOME POPUP (first-time visitors) ===
+function showWelcome() {
+  document.getElementById('welcomePopup').classList.add('open');
+}
+function dismissWelcome() {
+  document.getElementById('welcomePopup').classList.remove('open');
+  try { localStorage.setItem('vtb-welcome-seen', '1'); } catch(e) {}
+}
+
 // === MOBILE ACCORDION ===
+function openAccordionRow(row, updateHash) {
+  if (!row) return;
+
+  // Close all others in same table
+  var table = row.closest('.technique-table');
+  if (table) {
+    table.querySelectorAll('tbody tr.accordion-open').forEach(function(r) {
+      if (r !== row) r.classList.remove('accordion-open');
+    });
+  }
+
+  row.classList.add('accordion-open');
+
+  // Update URL hash with short technique name (e.g. "chest-voice" from "tech-chest-voice")
+  if (updateHash && row.id) {
+    var shortId = row.id.replace(/^tech-/, '');
+    pushHash(shortId);
+  }
+}
+
 function initAccordion() {
   if (window.innerWidth > 768) return;
 
@@ -1511,7 +1648,7 @@ function initAccordion() {
       // Toggle this row
       const isOpen = row.classList.contains('accordion-open');
 
-      // Close all others in same table (optional - remove for multi-open)
+      // Close all others in same table
       const table = row.closest('.technique-table');
       table.querySelectorAll('tbody tr.accordion-open').forEach(r => {
         if (r !== row) r.classList.remove('accordion-open');
@@ -1520,11 +1657,19 @@ function initAccordion() {
       // Toggle current
       row.classList.toggle('accordion-open', !isOpen);
 
-      // Scroll into view if opening
       if (!isOpen) {
+        // Update hash
+        if (row.id) {
+          var shortId = row.id.replace(/^tech-/, '');
+          pushHash(shortId);
+        }
+        // Scroll into view if opening
         setTimeout(() => {
           row.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
+      } else {
+        // Closing — clear hash
+        clearHash();
       }
     });
   });
@@ -1549,7 +1694,7 @@ document.addEventListener('click', function(e) {
     });
 
     // Open target accordion
-    techRow.classList.add('accordion-open');
+    openAccordionRow(techRow, true);
 
     // Scroll to it
     setTimeout(() => {
@@ -1558,11 +1703,111 @@ document.addEventListener('click', function(e) {
   }
 });
 
+// === HANDLE HASH ON LOAD AND POPSTATE ===
+function navigateToHash(hash, scroll) {
+  if (!hash) {
+    closeAllModals();
+    return;
+  }
+
+  // Remove leading # if present
+  hash = hash.replace(/^#/, '');
+  if (!hash) return;
+
+  // Check if it's a modal hash
+  if (openModalByHash(hash)) return;
+
+  // Check if it's a technique (short form like "chest-voice")
+  var techRow = document.getElementById('tech-' + hash);
+  if (techRow) {
+    closeAllModals();
+    // On mobile, open the accordion
+    if (window.innerWidth <= 768) {
+      openAccordionRow(techRow, false);
+    }
+    if (scroll) {
+      setTimeout(function() {
+        techRow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+    return;
+  }
+
+  // Check if it's a section hash (registers, styles, effects, ornaments, dynamics)
+  var section = document.getElementById(hash);
+  if (section) {
+    closeAllModals();
+    if (scroll) {
+      setTimeout(function() {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+    return;
+  }
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', function(e) {
+  _hashRouting = false;
+  var hash = location.hash.replace(/^#/, '');
+  if (!hash) {
+    closeAllModals();
+    // Close any open accordions
+    document.querySelectorAll('.technique-table tbody tr.accordion-open').forEach(function(r) {
+      r.classList.remove('accordion-open');
+    });
+  } else {
+    navigateToHash(hash, true);
+  }
+  _hashRouting = true;
+});
+
+// On page load, handle initial hash
+function handleInitialHash() {
+  var hash = location.hash.replace(/^#/, '');
+  if (hash) {
+    _hashRouting = false;
+    navigateToHash(hash, true);
+    _hashRouting = true;
+  }
+}
+
+// Update sticky nav links to use pushState
+document.querySelectorAll('.sticky-nav .nav-link').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    var href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      var hash = href.substring(1);
+      pushHash(hash);
+      var target = document.getElementById(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+});
+
 // Initialize accordion on DOM ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAccordion);
+  document.addEventListener('DOMContentLoaded', function() {
+    initAccordion();
+    handleInitialHash();
+    // Show welcome popup for first-time visitors (after hash handling)
+    try {
+      if (!localStorage.getItem('vtb-welcome-seen') && !location.hash) {
+        setTimeout(showWelcome, 800);
+      }
+    } catch(e) {}
+  });
 } else {
   initAccordion();
+  handleInitialHash();
+  try {
+    if (!localStorage.getItem('vtb-welcome-seen') && !location.hash) {
+      setTimeout(showWelcome, 800);
+    }
+  } catch(e) {}
 }
 </script>
 
