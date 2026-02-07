@@ -454,6 +454,24 @@
     position: relative;
   }
   .hero h1 span { color: var(--accent-warm); }
+  .first-time-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 8px 20px;
+    background: transparent;
+    border: 1px solid var(--accent-warm);
+    color: var(--accent-warm);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+  }
+  .first-time-btn:hover {
+    background: var(--accent-warm);
+    color: var(--bg);
+  }
   .hero .subtitle {
     font-size: 1.05rem;
     color: var(--text-muted);
