@@ -1189,6 +1189,8 @@
       <p><strong>v3.9.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
       <ul>
         <li><strong>New: PWA install analytics</strong> — Track install prompt, accept/dismiss, and completed installs via Plausible</li>
+        <li><strong>New: Modal analytics</strong> — Track opens of Welcome, Warm-Up, Anatomy, Myths, Read Me, Share, and Feedback via Plausible</li>
+        <li><strong>New: Footer navigation</strong> — Quick links to Welcome, Warm-Up, Anatomy, Vocal Myths, Read Me, Share, and Feedback</li>
       </ul>
     </div>
 
@@ -1389,6 +1391,24 @@
   <p data-lang="da">Vocal Guide — En vokal-referenceguide af Jesper Ordrup</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
+  <p style="margin-top:12px;" data-lang="en">
+    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Welcome</a> ·
+    <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Warm-Up</a> ·
+    <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomy</a> ·
+    <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Vocal Myths</a> ·
+    <a href="#" onclick="openReadme();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Read Me</a> ·
+    <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Share</a> ·
+    <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
+  </p>
+  <p style="margin-top:12px;" data-lang="da">
+    <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Velkommen</a> ·
+    <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Opvarmning</a> ·
+    <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomi</a> ·
+    <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Myter</a> ·
+    <a href="#" onclick="openReadme();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Læs mig</a> ·
+    <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
+    <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
+  </p>
   <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.9.0)</a></p>
 </div>
 
@@ -1487,6 +1507,7 @@ function openReadme() {
   document.getElementById('readmeModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('readme');
+  plausible('Open-Readme');
 }
 function closeReadme() {
   document.getElementById('readmeModal').classList.remove('open');
@@ -1513,6 +1534,7 @@ function openWarmup() {
   document.getElementById('warmupModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('warmup');
+  plausible('Open-Warmup');
 }
 function closeWarmup() {
   document.getElementById('warmupModal').classList.remove('open');
@@ -1526,6 +1548,7 @@ function openAnatomy() {
   document.getElementById('anatomyModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('anatomy');
+  plausible('Open-Anatomy');
 }
 function closeAnatomy() {
   document.getElementById('anatomyModal').classList.remove('open');
@@ -1539,6 +1562,7 @@ function openMyths() {
   document.getElementById('mythsModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('myths');
+  plausible('Open-Myths');
 }
 function closeMyths() {
   document.getElementById('mythsModal').classList.remove('open');
@@ -1552,6 +1576,7 @@ function openShareModal() {
   document.getElementById('shareModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('share');
+  plausible('Open-Share');
 }
 function closeShareModal() {
   document.getElementById('shareModal').classList.remove('open');
@@ -1565,6 +1590,7 @@ function openFeedback() {
   document.getElementById('feedbackModal').classList.add('open');
   document.body.style.overflow = 'hidden';
   pushHash('feedback');
+  plausible('Open-Feedback');
 }
 function closeFeedback() {
   document.getElementById('feedbackModal').classList.remove('open');
@@ -1612,6 +1638,7 @@ document.addEventListener('keydown', function(e) {
 // === WELCOME POPUP (first-time visitors) ===
 function showWelcome() {
   document.getElementById('welcomePopup').classList.add('open');
+  plausible('Open-Welcome');
 }
 function dismissWelcome() {
   document.getElementById('welcomePopup').classList.remove('open');
