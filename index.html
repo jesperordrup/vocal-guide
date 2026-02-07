@@ -7,6 +7,9 @@
 <meta name="description" content="A vocal technique reference covering 21 techniques across five categories: registers, styles, effects, embellish, and dynamics.">
 <meta name="author" content="Jesper Ordrup">
 <link rel="canonical" href="https://jesperordrup.github.io/vocal-guide/">
+<link rel="alternate" hreflang="en" href="https://jesperordrup.github.io/vocal-guide/">
+<link rel="alternate" hreflang="da" href="https://jesperordrup.github.io/vocal-guide/">
+<link rel="alternate" hreflang="x-default" href="https://jesperordrup.github.io/vocal-guide/">
 
 <!-- Plausible Analytics -->
 <script defer data-domain="jesperordrup.github.io/vocal-guide" src="https://plausible.umakers.dk/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
@@ -111,25 +114,36 @@
       "@type": "DefinedTermSet",
       "@id": "#techniques",
       "name": "Vocal Techniques Reference",
+      "description": "21 vocal techniques across five categories for contemporary and classical singers",
       "hasDefinedTerm": [
-        {"@type": "DefinedTerm", "name": "Chest Voice", "description": "Full, resonant lower register with thick vocal fold vibration"},
-        {"@type": "DefinedTerm", "name": "Head Voice", "description": "Light, resonant upper register with thinner vocal fold vibration"},
-        {"@type": "DefinedTerm", "name": "Mixed Voice", "description": "Blend of chest and head voice qualities across the range"},
-        {"@type": "DefinedTerm", "name": "Falsetto", "description": "Light, breathy upper register with minimal vocal fold contact"},
-        {"@type": "DefinedTerm", "name": "Belting", "description": "Powerful chest-dominant singing in higher range"},
-        {"@type": "DefinedTerm", "name": "Legit", "description": "Classical-influenced musical theatre style with head voice dominance"},
-        {"@type": "DefinedTerm", "name": "Breathy", "description": "Intentional air in the tone for intimate effect"},
-        {"@type": "DefinedTerm", "name": "Twang", "description": "Bright, cutting resonance from narrowed aryepiglottic sphincter"},
-        {"@type": "DefinedTerm", "name": "Distortion", "description": "Controlled grit using false vocal folds or arytenoids"},
-        {"@type": "DefinedTerm", "name": "Growl", "description": "Low, rumbling distortion from arytenoid cartilage vibration"},
-        {"@type": "DefinedTerm", "name": "Vibrato", "description": "Regular pitch oscillation adding warmth and expression"},
-        {"@type": "DefinedTerm", "name": "Riffs & Runs", "description": "Rapid melodic passages common in R&B and gospel"},
-        {"@type": "DefinedTerm", "name": "Trills", "description": "Rapid alternation between two adjacent pitches"},
-        {"@type": "DefinedTerm", "name": "Cry", "description": "Emotional quality with tilted larynx and thin folds"},
-        {"@type": "DefinedTerm", "name": "Messa di Voce", "description": "Gradual crescendo-decrescendo on sustained note"},
-        {"@type": "DefinedTerm", "name": "Straight Tone", "description": "Vibrato-less sustained notes for specific effect"}
+        {"@id": "#chest-voice"}, {"@id": "#head-voice"}, {"@id": "#falsetto"}, {"@id": "#mixed-voice"}, {"@id": "#vocal-fry"}, {"@id": "#whistle-register"},
+        {"@id": "#belting"}, {"@id": "#twang"}, {"@id": "#breathy-singing"}, {"@id": "#vowel-modification"},
+        {"@id": "#grit-rasp"}, {"@id": "#distortion-overdrive"}, {"@id": "#growl"}, {"@id": "#cry-sob"},
+        {"@id": "#vibrato"}, {"@id": "#runs-riffs"}, {"@id": "#pitch-bending"}, {"@id": "#glottal-stop"},
+        {"@id": "#breath-support"}, {"@id": "#messa-di-voce"}, {"@id": "#dynamic-contrast"}
       ]
     },
+    {"@type":"DefinedTerm","@id":"#chest-voice","name":"Chest Voice","description":"Your speaking register. Thick vocal folds, full closure.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-chest-voice","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"1","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#head-voice","name":"Head Voice","description":"Thinner folds, full closure. Rich resonance in upper range.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-head-voice","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#falsetto","name":"Falsetto","description":"Folds don't fully close. Air leaks through. Light and airy.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-falsetto","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"1","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#mixed-voice","name":"Mixed Voice","description":"Blend of chest power and head range. The holy grail.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-mixed-voice","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"4","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#vocal-fry","name":"Vocal Fry","description":"Lowest register. Folds are loose and bubbling.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-vocal-fry","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"1","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#whistle-register","name":"Whistle Register","description":"Highest possible register. Folds vibrate only at edges.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-whistle-register","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"register"},{"@type":"PropertyValue","name":"difficulty","value":"5","maxValue":"5"},{"@type":"PropertyValue","name":"safetyWarning","value":"Do not push. Many singers cannot safely access this. Work with a coach."}]},
+    {"@type":"DefinedTerm","@id":"#belting","name":"Belting","description":"Powerful, projected chest-dominant singing in higher range.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-belting","isBasedOn":[{"@id":"#chest-voice"},{"@id":"#head-voice"},{"@id":"#mixed-voice"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"style"},{"@type":"PropertyValue","name":"difficulty","value":"3","maxValue":"5"},{"@type":"PropertyValue","name":"safetyWarning","value":"Bad belting causes strain and nodules. Never belt without warming up."}]},
+    {"@type":"DefinedTerm","@id":"#twang","name":"Twang","description":"Bright, nasal edge. Narrowed aryepiglottic funnel.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-twang","isBasedOn":[{"@id":"#chest-voice"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"style"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#breathy-singing","name":"Breathy Singing","description":"Intentionally letting air leak through the folds.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-breathy-singing","isBasedOn":[{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"style"},{"@type":"PropertyValue","name":"difficulty","value":"1","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#vowel-modification","name":"Vowel Modification","description":"Shifting vowel shapes as you ascend to maintain resonance.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-vowel-modification","isBasedOn":[{"@id":"#chest-voice"},{"@id":"#head-voice"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"style"},{"@type":"PropertyValue","name":"difficulty","value":"3","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#grit-rasp","name":"Grit / Rasp","description":"Controlled distortion. False folds or overtone break-up.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-grit-rasp","isBasedOn":[{"@id":"#chest-voice"},{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"effect"},{"@type":"PropertyValue","name":"difficulty","value":"4","maxValue":"5"},{"@type":"PropertyValue","name":"safetyWarning","value":"If it hurts, stop immediately. Master clean singing first."}]},
+    {"@type":"DefinedTerm","@id":"#distortion-overdrive","name":"Distortion / Overdrive","description":"Heavy grit. False fold compression. Aggressive texture.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-distortion-overdrive","isBasedOn":[{"@id":"#grit-rasp"},{"@id":"#mixed-voice"},{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"effect"},{"@type":"PropertyValue","name":"difficulty","value":"5","maxValue":"5"},{"@type":"PropertyValue","name":"safetyWarning","value":"High risk. Requires solid clean singing foundation. Work with a specialist. Never push through pain."}]},
+    {"@type":"DefinedTerm","@id":"#growl","name":"Growl","description":"Short, sharp burst of distortion at note onset.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-growl","isBasedOn":[{"@id":"#chest-voice"},{"@id":"#grit-rasp"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"effect"},{"@type":"PropertyValue","name":"difficulty","value":"3","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#cry-sob","name":"Cry / Sob","description":"Tilted larynx, thinned folds. Emotional, vulnerable quality.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-cry-sob","isBasedOn":[{"@id":"#head-voice"},{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"effect"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#vibrato","name":"Vibrato","description":"Natural oscillation of pitch on sustained notes.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-vibrato","isBasedOn":[{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"embellish"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#runs-riffs","name":"Runs / Riffs","description":"Rapid sequences of notes within a melody.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-runs-riffs","isBasedOn":[{"@id":"#chest-voice"},{"@id":"#head-voice"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"embellish"},{"@type":"PropertyValue","name":"difficulty","value":"4","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#pitch-bending","name":"Pitch Bending","description":"Sliding into or between notes instead of hitting them directly.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-pitch-bending","isBasedOn":[{"@id":"#chest-voice"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"embellish"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#glottal-stop","name":"Glottal Stop","description":"Brief closure of vocal folds before a note. Adds attack.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-glottal-stop","isBasedOn":[{"@id":"#vocal-fry"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"embellish"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#breath-support","name":"Breath Support","description":"THE foundation. Everything depends on this.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-breath-support","additionalProperty":[{"@type":"PropertyValue","name":"category","value":"dynamics"},{"@type":"PropertyValue","name":"difficulty","value":"1","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#messa-di-voce","name":"Messa di Voce","description":"Crescendo then decrescendo on a single note.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-messa-di-voce","isBasedOn":[{"@id":"#breath-support"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"dynamics"},{"@type":"PropertyValue","name":"difficulty","value":"4","maxValue":"5"}]},
+    {"@type":"DefinedTerm","@id":"#dynamic-contrast","name":"Dynamic Contrast","description":"Intentional shifts between soft and loud within a song.","inDefinedTermSet":{"@id":"#techniques"},"termCode":"tech-dynamic-contrast","isBasedOn":[{"@id":"#breath-support"},{"@id":"#messa-di-voce"}],"additionalProperty":[{"@type":"PropertyValue","name":"category","value":"dynamics"},{"@type":"PropertyValue","name":"difficulty","value":"2","maxValue":"5"}]},
     {
       "@type": "BreadcrumbList",
       "@id": "#breadcrumb",
@@ -184,6 +198,18 @@
     <span data-lang="en">Theme</span><span data-lang="da">Tema</span>
     <button class="theme-btn" onclick="cycleTheme()" title="Cycle color theme" id="themeBtn">🌙 Dark</button>
   </div>
+  <button class="burger-menu-btn" onclick="openWarmup();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+    <span data-lang="en">Warm-Up</span><span data-lang="da">Opvarmning</span>
+  </button>
+  <button class="burger-menu-btn" onclick="openAnatomy();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z"/><path d="M12 15v4"/><path d="M8 19h8"/></svg>
+    <span data-lang="en">Anatomy</span><span data-lang="da">Anatomi</span>
+  </button>
+  <button class="burger-menu-btn" onclick="openMyths();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span data-lang="en">Vocal Myths</span><span data-lang="da">Myter</span>
+  </button>
   <button class="burger-menu-btn" onclick="openReadme();closeBurger();">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
     <span data-lang="en">Read Me</span><span data-lang="da">Læs mig</span>
@@ -209,7 +235,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.6.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.7.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -240,12 +266,18 @@
         <p>Use <span class="key">EN</span> / <span class="key">DA</span> to switch language and the theme button to cycle through five color schemes: Dark, Light, Midnight, Forest, and Ember. Your choices are saved automatically.</p>
       </div>
       <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+        <p><strong>For AI / LLMs</strong></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Machine-readable versions of this guide:<br>
+        <a href="llms.txt" style="color:var(--accent-warm);font-family:'JetBrains Mono',monospace;font-size:0.8rem;">llms.txt</a> — summary<br>
+        <a href="llms-full.txt" style="color:var(--accent-warm);font-family:'JetBrains Mono',monospace;font-size:0.8rem;">llms-full.txt</a> — full content</p>
+      </div>
+      <div class="readme-section" style="margin-top:12px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
       </div>
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.6.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.7.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -276,6 +308,12 @@
         <p>Brug <span class="key">EN</span> / <span class="key">DA</span> til at skifte sprog og temaknappen til at skifte mellem fem farvetemaer: Dark, Light, Midnight, Forest og Ember. Dine valg gemmes automatisk.</p>
       </div>
       <div class="readme-section" style="margin-top:24px;padding-top:16px;border-top:1px solid var(--border);">
+        <p><strong>For AI / LLMs</strong></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);">Maskinl&aelig;sbare versioner af denne guide:<br>
+        <a href="llms.txt" style="color:var(--accent-warm);font-family:'JetBrains Mono',monospace;font-size:0.8rem;">llms.txt</a> — overblik<br>
+        <a href="llms-full.txt" style="color:var(--accent-warm);font-family:'JetBrains Mono',monospace;font-size:0.8rem;">llms-full.txt</a> — fuldt indhold</p>
+      </div>
+      <div class="readme-section" style="margin-top:12px;padding-top:16px;border-top:1px solid var(--border);">
         <p style="font-size:0.85rem;color:var(--text-muted);"><strong>Jesper Ordrup</strong><br><a href="mailto:jesper@jesper.com" style="color:var(--accent-warm);">jesper@jesper.com</a></p>
       </div>
     </div>
@@ -324,6 +362,259 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
       <span data-lang="en">Send Feedback</span><span data-lang="da">Send feedback</span>
     </a>
+  </div>
+</div>
+
+<!-- WARM-UP MODAL -->
+<div id="warmupModal" class="readme-overlay" onclick="if(event.target===this)closeWarmup()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeWarmup()">&times;</button>
+
+    <div data-lang="en">
+      <h3>Warm-Up Routine</h3>
+      <div class="readme-section">
+        <p><strong>Before You Sing (checklist)</strong></p>
+        <ul>
+          <li>Drink water — room temperature, not cold. Hydrate 30+ minutes before singing.</li>
+          <li>Check your posture — feet shoulder-width, shoulders back and down, chin level.</li>
+          <li>Release tension — roll your neck, shrug and drop shoulders, shake out your arms.</li>
+          <li>No cold starts — never belt, distort, or push range without warming up first.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>5-Minute Warm-Up (do in order)</strong></p>
+        <ul>
+          <li><strong>Breathing (1 min)</strong> — Inhale 4 counts into belly/sides/back. Exhale on "Sss" for 15–20 seconds. Repeat 3x. This activates your support system.</li>
+          <li><strong>Lip Trills (1 min)</strong> — Blow air through closed lips to make them vibrate. Slide up and down your range. Keeps everything relaxed and connected.</li>
+          <li><strong>Humming (1 min)</strong> — Hum on "Mmm" through 5-note scales, ascending. Feel the buzz in your face (mask resonance). Keep jaw and tongue loose.</li>
+          <li><strong>Vowel Slides (1 min)</strong> — Sing "Mee-Meh-Mah-Moh-Moo" on a single note, then move up by half steps. Opens the vocal tract gradually.</li>
+          <li><strong>Sirens (1 min)</strong> — Slide from bottom to top and back on "Woo" or "Wee." Full range, gentle, no pushing. This bridges your registers.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Extended Warm-Up (add 5 more minutes)</strong></p>
+        <ul>
+          <li><strong>Straw phonation</strong> — Sing through a straw (or into a cup of water with a straw). Creates back-pressure that balances airflow and fold closure. Best warm-up tool available.</li>
+          <li><strong>Tongue trills</strong> — Roll your tongue on "Rr" while singing scales. Releases tongue tension (a common problem).</li>
+          <li><strong>Arpeggios</strong> — 1-3-5-8-5-3-1 on "Nay" or "Gee" to work through your passaggio (break area).</li>
+          <li><strong>Gentle belting prep</strong> — "Hey!" calls on ascending 5ths. Forward placement, no strain.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>Opvarmningsrutine</h3>
+      <div class="readme-section">
+        <p><strong>F&oslash;r du synger (tjekliste)</strong></p>
+        <ul>
+          <li>Drik vand — stuetemperatur, ikke koldt. Hydrér 30+ minutter f&oslash;r sang.</li>
+          <li>Tjek din kropsholdning — f&oslash;dder i skulderbredde, skuldre tilbage og ned, hagen lige.</li>
+          <li>Slip sp&aelig;ndinger — rul nakken, tr&aelig;k skuldrene op og slip, ryst armene.</li>
+          <li>Ingen koldstart — belt, forvrængning eller ekstremt register aldrig uden opvarmning.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>5-minutters opvarmning (g&oslash;r i r&aelig;kkef&oslash;lge)</strong></p>
+        <ul>
+          <li><strong>&Aring;ndedræt (1 min)</strong> — Indånd 4 tæl ned i mave/sider/ryg. Udånd på "Sss" i 15–20 sekunder. Gentag 3x. Dette aktiverer dit støttesystem.</li>
+          <li><strong>Læbetriller (1 min)</strong> — Blæs luft gennem lukkede læber så de vibrerer. Glid op og ned i dit register. Holder alt afslappet og forbundet.</li>
+          <li><strong>Nynne (1 min)</strong> — Nyn på "Mmm" gennem 5-tone skalaer, opadgående. Mærk summen i ansigtet (maskeresonans). Hold kæbe og tunge løs.</li>
+          <li><strong>Vokalglid (1 min)</strong> — Syng "Mii-Meh-Mah-Moh-Muu" på én tone, flyt derefter op i halvtoner. Åbner stemmekanalen gradvist.</li>
+          <li><strong>Sirener (1 min)</strong> — Glid fra bund til top og tilbage på "Woo" eller "Wii." Fuldt register, blidt, ingen pres. Dette forbinder dine registre.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Udvidet opvarmning (tilf&oslash;j 5 minutter mere)</strong></p>
+        <ul>
+          <li><strong>Suger&oslash;rsfonation</strong> — Syng gennem et sugerør (eller ned i et glas vand med sugerør). Skaber modtryk der balancerer luftstrøm og stemmebåndslukning. Bedste opvarmningsværktøj.</li>
+          <li><strong>Tungetriller</strong> — Rul tungen på "Rr" mens du synger skalaer. Frigør tungespænding (et almindeligt problem).</li>
+          <li><strong>Arpeggioer</strong> — 1-3-5-8-5-3-1 på "Næ" eller "Gii" for at arbejde gennem din passaggio (brudzone).</li>
+          <li><strong>Blid belting-forberedelse</strong> — "Hej!" kald på stigende kvinter. Fremadrettet placering, ingen belastning.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANATOMY MODAL -->
+<div id="anatomyModal" class="readme-overlay" onclick="if(event.target===this)closeAnatomy()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeAnatomy()">&times;</button>
+
+    <div data-lang="en">
+      <h3>Anatomy &amp; Preparation</h3>
+      <div class="readme-section">
+        <p><strong>The Diaphragm</strong></p>
+        <p>A dome-shaped muscle beneath your lungs. When you inhale, it flattens downward, pulling air in. You don't directly "sing from your diaphragm" — you use it to control the rate of exhalation. Think of it as an air pressure regulator, not a sound source.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Vocal Folds (Cords)</strong></p>
+        <p>Two small folds of tissue in your larynx. When air passes through, they vibrate and create sound. Thicker vibration = chest voice. Thinner vibration = head voice. Partial closure = falsetto/breathy. The space between them is called the glottis.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>The Larynx</strong></p>
+        <p>Your "voice box." It can move up (bright, thin sound) or down (dark, warm sound). For most singing, a neutral or slightly lowered larynx is ideal. A high larynx under pressure = strain. Learn to keep it stable — yawning gently while singing helps find the right position.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Supporting Muscles</strong></p>
+        <ul>
+          <li><strong>Abdominals</strong> — Control exhalation pressure. They don't push air out — they slow the collapse of the rib cage.</li>
+          <li><strong>Intercostals</strong> — Muscles between your ribs. Keep your ribs expanded during singing. This is "appoggio" (leaning into the breath).</li>
+          <li><strong>Back muscles</strong> — Often forgotten. Your lower back expands when breathing correctly. Engage it for support.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Posture</strong></p>
+        <p>Stand with feet shoulder-width apart. Knees slightly bent (not locked). Shoulders relaxed, back and down. Chest comfortably open. Head balanced on top of the spine — not jutting forward. Imagine a string pulling you up from the crown of your head.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Vocal Health</strong></p>
+        <ul>
+          <li><strong>Hydration</strong> — Drink water consistently throughout the day, not just before singing. Your vocal folds need systemic hydration.</li>
+          <li><strong>Steam inhalation</strong> — Breathe steam for 10 minutes before heavy singing. This directly hydrates the folds.</li>
+          <li><strong>Rest</strong> — Your voice needs recovery time. Avoid talking loudly after intense sessions.</li>
+          <li><strong>Avoid</strong> — Whispering (worse than talking), excessive throat clearing, smoking, dehydrating drinks (alcohol, excessive caffeine).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>Anatomi &amp; forberedelse</h3>
+      <div class="readme-section">
+        <p><strong>Mellemgulvet (diafragma)</strong></p>
+        <p>En kuppelformet muskel under dine lunger. N&aring;r du indånder, flader den nedad og trækker luft ind. Du "synger" ikke direkte "fra mellemgulvet" — du bruger det til at kontrollere udåndingshastigheden. Tænk på det som en lufttrykregulator, ikke en lydkilde.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Stemmeb&aring;nd</strong></p>
+        <p>To sm&aring; folder af v&aelig;v i dit strubehoved. N&aring;r luft passerer igennem, vibrerer de og skaber lyd. Tykkere vibration = bryststemme. Tyndere vibration = hovedklang. Delvis lukning = falset/luftig. Mellemrummet mellem dem kaldes glottis.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Struben (larynx)</strong></p>
+        <p>Din "stemmeboks." Den kan bevæge sig op (lys, tynd lyd) eller ned (mørk, varm lyd). Til de fleste former for sang er en neutral eller let sænket strube ideel. En høj strube under pres = belastning. Lær at holde den stabil — at gabe blidt mens du synger hjælper med at finde den rette position.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>St&oslash;ttemuskulatur</strong></p>
+        <ul>
+          <li><strong>Mavemuskler</strong> — Kontrollerer ud&aring;ndingstrykket. De presser ikke luft ud — de bremser brystkassens sammenfalden.</li>
+          <li><strong>Interkostalmuskler</strong> — Muskler mellem ribbenene. Hold ribbenene udvidet under sang. Dette er "appoggio" (at l&aelig;ne sig ind i &aring;ndedr&aelig;ttet).</li>
+          <li><strong>Rygmuskler</strong> — Ofte glemt. Din l&aelig;nd udvider sig ved korrekt &aring;ndedræt. Aktivér den for st&oslash;tte.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Kropsholdning</strong></p>
+        <p>St&aring; med f&oslash;dderne i skulderbredde. Kn&aelig;ene let b&oslash;jede (ikke l&aring;ste). Skuldrene afslappet, tilbage og ned. Brystet komfortabelt &aring;bent. Hovedet balanceret oven p&aring; rygs&oslash;jlen — ikke skudt fremad. Forestil dig en snor der tr&aelig;kker dig op fra issen.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Stemmesundhed</strong></p>
+        <ul>
+          <li><strong>Hydrering</strong> — Drik vand konsekvent hele dagen, ikke kun f&oslash;r sang. Dine stemmebånd har brug for systemisk hydrering.</li>
+          <li><strong>Dampinhalation</strong> — Ind&aring;nd damp i 10 minutter f&oslash;r intens sang. Dette hydrerer stemmeb&aring;ndene direkte.</li>
+          <li><strong>Hvile</strong> — Din stemme har brug for restitution. Undg&aring; at tale h&oslash;jt efter intense sessioner.</li>
+          <li><strong>Undg&aring;</strong> — Hvisken (v&aelig;rre end at tale), overdreven rømmen, rygning, dehydrerende drikke (alkohol, for meget koffein).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VOCAL MYTHS MODAL -->
+<div id="mythsModal" class="readme-overlay" onclick="if(event.target===this)closeMyths()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeMyths()">&times;</button>
+
+    <div data-lang="en">
+      <h3>Vocal Myths &amp; Bad Advice</h3>
+      <div class="readme-section">
+        <p>Common advice that's misleading, incomplete, or outright harmful. If someone tells you any of these, be skeptical.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Sing from your diaphragm"</strong></p>
+        <p>You can't directly control your diaphragm — it's an involuntary muscle on the inhale. What people mean is: use your abdominal and intercostal muscles to control exhalation. Saying "sing from your diaphragm" is like saying "digest from your stomach." Technically involved, but not how you'd teach it.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Drink tea with honey to fix your voice"</strong></p>
+        <p>Tea and honey never touch your vocal folds — they go down your esophagus, not your trachea. They can soothe throat irritation and feel nice, but they don't "fix" or "coat" your cords. What actually helps: steam inhalation and systemic hydration (water, hours in advance).</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Chest voice means singing from your chest"</strong></p>
+        <p>The sound isn't produced in your chest. "Chest voice" refers to the thick vocal fold vibration pattern that creates sympathetic resonance you feel in your upper torso. The sound is always made at the vocal folds in your larynx.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Falsetto is only for men"</strong></p>
+        <p>Everyone with vocal folds can produce falsetto — it's a mode of vibration where the folds don't fully close. Women use it too, though the timbral difference from head voice may be less dramatic.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Whiskey and cigarettes give you a raspy voice"</strong></p>
+        <p>They give you a damaged voice. The "rasp" from smoking and alcohol comes from swollen, irritated, dehydrated folds. Healthy vocal distortion uses the false folds and arytenoids — structures above the true cords. One is controlled art, the other is permanent damage.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Push harder for high notes"</strong></p>
+        <p>The exact opposite. High notes require less air, not more. Pushing more air at higher pitches forces the folds apart and creates strain. Think "less air, more compression" — let the folds do the work.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Vibrato should be added artificially"</strong></p>
+        <p>Artificial vibrato (jaw wobble, diaphragm pulse) sounds unnatural and creates tension. Real vibrato emerges naturally when breath support is solid and the throat is relaxed. If you don't have vibrato yet, the fix is better technique — not manufacturing it.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"You're either born with it or you're not"</strong></p>
+        <p>Singing is a motor skill. Some people have natural advantages (vocal fold length, resonance cavity size), but technique, pitch accuracy, tone quality, and range are all trainable. Most "natural" singers practiced obsessively as children.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Warm-ups are optional"</strong></p>
+        <p>Your vocal folds are tissue. They need increased blood flow and gradual stretching before heavy use — just like any other muscle. Cold singing is the fastest path to strain, nodules, and hemorrhages.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Pain means you're building strength"</strong></p>
+        <p>Pain means damage. Unlike skeletal muscles, vocal folds don't grow stronger from micro-tears. Pain, burning, or persistent hoarseness = stop immediately. Rest. If it lasts more than a few days, see an ENT specialist.</p>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>Vokale myter &amp; d&aring;rlige r&aring;d</h3>
+      <div class="readme-section">
+        <p>Almindelige r&aring;d der er misvisende, ufuldst&aelig;ndige eller direkte skadelige. Hvis nogen fort&aelig;ller dig noget af dette, v&aelig;r skeptisk.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Syng fra mellemgulvet"</strong></p>
+        <p>Du kan ikke direkte kontrollere dit mellemgulv — det er en ufrivillig muskel ved ind&aring;nding. Det folk mener er: brug dine mave- og interkostalmuskler til at kontrollere ud&aring;ndingen. At sige "syng fra mellemgulvet" er som at sige "ford&oslash;j fra maven."</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Drik te med honning for at fikse din stemme"</strong></p>
+        <p>Te og honning r&oslash;rer aldrig dine stemmeb&aring;nd — de g&aring;r ned i spiser&oslash;ret, ikke luftr&oslash;ret. De kan lindre halsirritation, men de "fikser" eller "coater" ikke dine b&aring;nd. Det der virkelig hj&aelig;lper: dampinhalation og systemisk hydrering (vand, timer i forvejen).</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Bryststemme betyder at synge fra brystet"</strong></p>
+        <p>Lyden produceres ikke i brystet. "Bryststemme" refererer til det tykke stemmeb&aring;ndsvibrationsmønster der skaber sympatisk resonans du mærker i overkroppen. Lyden laves altid ved stemmeb&aring;ndene i struben.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Falset er kun for m&aelig;nd"</strong></p>
+        <p>Alle med stemmeb&aring;nd kan producere falset — det er en vibrationsm&aring;de hvor b&aring;ndene ikke lukker helt. Kvinder bruger det ogs&aring;, selvom den klanglige forskel fra hovedklang kan v&aelig;re mindre dramatisk.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Whiskey og cigaretter giver dig en hæs stemme"</strong></p>
+        <p>De giver dig en skadet stemme. "Raspen" fra rygning og alkohol kommer fra h&aelig;vede, irriterede, dehydrerede b&aring;nd. Sund vokal distortion bruger de falske folder og arytenoiderne — strukturer over de rigtige b&aring;nd. Det ene er kontrolleret kunst, det andet er permanent skade.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Pres h&aring;rdere for h&oslash;je toner"</strong></p>
+        <p>Det stik modsatte. H&oslash;je toner kr&aelig;ver mindre luft, ikke mere. At presse mere luft ved h&oslash;jere toneh&oslash;jder tvinger b&aring;ndene fra hinanden og skaber belastning. T&aelig;nk "mindre luft, mere kompression."</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Vibrato skal tilf&oslash;jes kunstigt"</strong></p>
+        <p>Kunstig vibrato (k&aelig;bevrikken, mellemgulvspuls) lyder unaturligt og skaber sp&aelig;nding. &AElig;gte vibrato opst&aring;r naturligt n&aring;r &aring;ndedr&aelig;tsst&oslash;tten er solid og halsen er afslappet. Har du ikke vibrato endnu, er l&oslash;sningen bedre teknik — ikke at fabrikere det.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Man er enten f&oslash;dt med det eller ej"</strong></p>
+        <p>Sang er en motorisk f&aelig;rdighed. Nogle har naturlige fordele, men teknik, toneh&oslash;jdepr&aelig;cision, klangkvalitet og register er alt sammen tr&aelig;nbart. De fleste "naturlige" sangere &oslash;vede bessat som b&oslash;rn.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Opvarmning er valgfrit"</strong></p>
+        <p>Dine stemmeb&aring;nd er v&aelig;v. De har brug for &oslash;get blodgennemstr&oslash;mning og gradvis udstr&aelig;kning f&oslash;r h&aring;rd brug — ligesom enhver anden muskel. Kold sang er den hurtigste vej til belastning, knuder og bl&oslash;dninger.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>"Smerte betyder du bygger styrke"</strong></p>
+        <p>Smerte betyder skade. Til forskel fra skeletmuskler bliver stemmeb&aring;nd ikke st&aelig;rkere af mikro-rifter. Smerte, sv&iacute;en eller vedvarende h&aelig;shed = stop straks. Hvil. Varer det mere end et par dage, s&oslash;g en &oslash;re-n&aelig;se-hals-specialist.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -864,7 +1155,20 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.6.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.7.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New: Warm-Up Routine</strong> — 5-minute and extended warm-up guides in burger menu</li>
+        <li><strong>New: Anatomy &amp; Preparation</strong> — Diaphragm, vocal folds, larynx, posture, vocal health</li>
+        <li><strong>New: Vocal Myths</strong> — 10 common bad advice items debunked</li>
+        <li><strong>AI-friendly:</strong> Added <code>llms.txt</code> and <code>llms-full.txt</code> for LLM content discovery</li>
+        <li>Added <code>hreflang</code> tags for bilingual SEO</li>
+        <li>Enhanced JSON-LD with per-technique structured data: difficulty, prerequisites, safety warnings</li>
+        <li>Improved how-to and exercise design — better spacing, gold accent borders, mobile layout fix</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.6.0</strong></p>
       <ul>
         <li>Replaced dark/light toggle with 5 color schemes: Dark, Light, Midnight, Forest, and Ember</li>
         <li>Theme button now cycles through all schemes with icon + name label</li>
@@ -1035,7 +1339,7 @@
   <p data-lang="da">Vocal Guide — En vokal-referenceguide af Jesper Ordrup</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="en">YouTube links search for educational tutorials. Verify availability in your region.</p>
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.6.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.7.0)</a></p>
 </div>
 
 <script>
@@ -1101,6 +1405,36 @@ function closeChangelog() {
   document.body.style.overflow = '';
 }
 
+// Warm-up modal
+function openWarmup() {
+  document.getElementById('warmupModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWarmup() {
+  document.getElementById('warmupModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Anatomy modal
+function openAnatomy() {
+  document.getElementById('anatomyModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAnatomy() {
+  document.getElementById('anatomyModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Myths modal
+function openMyths() {
+  document.getElementById('mythsModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMyths() {
+  document.getElementById('mythsModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 // Burger menu
 function toggleBurger() {
   const menu = document.getElementById('burgerMenu');
@@ -1153,6 +1487,9 @@ document.addEventListener('keydown', function(e) {
     closeReadme();
     closeChangelog();
     closeShareModal();
+    closeWarmup();
+    closeAnatomy();
+    closeMyths();
     closeBurger();
   }
 });

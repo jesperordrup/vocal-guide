@@ -1,0 +1,408 @@
+# Vocal Guide — Full Technique Reference
+
+> A vocal technique reference covering 21 techniques across five categories. By Jesper Ordrup (jesper@jesper.com).
+> Source: https://jesperordrup.github.io/vocal-guide/
+
+---
+
+## Vocal Registers
+
+Foundation voice modes every singer must master. Every sound you make lives somewhere on this spectrum. Master these before anything else.
+
+### Chest Voice
+
+- **Category:** Register
+- **Difficulty:** 1/5
+- **Prerequisites:** None
+- **Description:** Your speaking register. Thick vocal folds, full closure.
+- **Character:** Rich, warm, powerful, grounded. Vibrations felt in upper torso.
+- **Famous Examples:** Johnny Cash, Adele (vers), Elvis Presley, Amy Winehouse
+- **How To:** Place hand on chest and speak — feel the buzz. That's chest resonance. Sing "Hey!" like calling someone across the street. Keep that forward, spoken quality as you move to pitch.
+- **Exercises:**
+  - "Hey man!" projection on scales
+  - Speak-sing counting 1–10
+- **YouTube:** https://www.youtube.com/results?search_query=chest+voice+singing+tutorial
+
+### Head Voice
+
+- **Category:** Register
+- **Difficulty:** 2/5
+- **Prerequisites:** None
+- **Description:** Thinner folds, full closure. Rich resonance in upper range.
+- **Character:** Lighter than chest but with depth and ring. Resonant, clear, projecting. Not breathy.
+- **Famous Examples:** Freddie Mercury, Whitney Houston, Pavarotti, Ariana Grande
+- **How To:** Imagine calling over a fence — "Hellooo?" That lifting feeling is head voice. Keep cord closure (no air leaking). The sound should ring, not whisper.
+- **Exercises:**
+  - "Hoo" on descending 5-note scales
+  - "Wee" sirens from low to high
+- **YouTube:** https://www.youtube.com/results?search_query=head+voice+vs+falsetto+tutorial
+
+### Falsetto
+
+- **Category:** Register
+- **Difficulty:** 1/5
+- **Prerequisites:** None
+- **Description:** Folds don't fully close. Air leaks through. Light and airy.
+- **Character:** Breathy, ethereal, flute-like, intimate. Lighter than head voice. Hollow quality.
+- **Famous Examples:** Bee Gees, Jeff Buckley, Thom Yorke, Prince, Justin Timberlake
+- **How To:** Sigh gently on a high note — that airy release is falsetto. The vocal folds thin out and partially separate. Don't push volume; let it be light.
+- **Exercises:**
+  - Gentle sighs down 5-note scale
+  - "Hoo" (like an owl) on high notes
+- **YouTube:** https://www.youtube.com/results?search_query=how+to+sing+falsetto+tutorial
+
+### Mixed Voice
+
+- **Category:** Register
+- **Difficulty:** 4/5
+- **Prerequisites:** None
+- **Description:** Blend of chest power and head range. The holy grail.
+- **Character:** Powerful high notes that feel connected and full. Seamless transition through registers.
+- **Famous Examples:** Freddie Mercury, Brendon Urie, Beyoncé, Chris Cornell, Ariana Grande
+- **How To:** The bridge between chest and head — neither cracks nor flips. Start with bratty "Nay" on scales to force cord closure while ascending. Shade vowels toward "OH/OO" as you go higher.
+- **Exercises:**
+  - Bratty "Nay" on octave scales
+  - "Gee" ascending (keeps cords together)
+  - "Gug" for chest-to-head bridge
+- **YouTube:** https://www.youtube.com/results?search_query=mixed+voice+exercises+tutorial
+
+### Vocal Fry
+
+- **Category:** Register
+- **Difficulty:** 1/5
+- **Prerequisites:** None
+- **Description:** Lowest register. Folds are loose and "bubbling."
+- **Character:** Creaky, rattling, crackling. Extremely low. Also used as stylistic onset.
+- **Famous Examples:** Billie Eilish, Ke$ha, Britney Spears (spoken)
+- **How To:** Relax completely and say "ahhh" at the very bottom of your range until the voice crackles. Minimal air. The folds are barely vibrating.
+- **Exercises:**
+  - "Ahhh" at lowest possible pitch
+  - Fry into clean note (onset control)
+- **YouTube:** https://www.youtube.com/results?search_query=vocal+fry+singing+technique
+
+### Whistle Register
+
+- **Category:** Register
+- **Difficulty:** 5/5
+- **Prerequisites:** None
+- **Description:** Highest possible register. Folds vibrate only at edges.
+- **Character:** Piercing, whistle-like, extreme highs. Typically above C6. Very rare.
+- **Famous Examples:** Mariah Carey, Minnie Riperton, Ariana Grande, Dimash
+- **How To:** Not everyone can access this. Start by gently whimpering/squeaking at your very highest range. Minimal air. Think "tiny" and "narrow." Don't force.
+- **Exercises:**
+  - Gentle squeaks and whimpers
+  - Narrow "ee" at extreme top
+- **Safety Warning:** Do not push. Many singers cannot safely access this. Work with a coach.
+- **YouTube:** https://www.youtube.com/results?search_query=whistle+register+singing+tutorial
+
+---
+
+## Vocal Styles & Techniques
+
+Ways of using your registers to create specific sounds. These define genres and artistic identity.
+
+### Belting
+
+- **Category:** Style
+- **Difficulty:** 3/5
+- **Prerequisites:** Chest Voice, Head Voice, Mixed Voice
+- **Description:** Powerful, projected chest-dominant singing in higher range.
+- **Character:** Loud, bright, ringing, emotionally intense. Like a controlled shout. The "money note" sound.
+- **Famous Examples:** Whitney Houston, Celine Dion, Freddie Mercury, Beyoncé, Idina Menzel
+- **How To:** Good belting = right balance of chest and head, not just yelling. Open mouth naturally, jaw relaxed. Breath support from diaphragm. Bright, forward vowels. Think "calling out" not "pushing up."
+- **Exercises:**
+  - "Hey man!" at increasing pitch
+  - Bratty "Nae" on ascending 5ths
+- **Safety Warning:** Bad belting (pure chest pushed high) causes strain and nodules. Never belt without warming up.
+- **YouTube:** https://www.youtube.com/results?search_query=how+to+belt+singing+tutorial
+
+### Twang
+
+- **Category:** Style
+- **Difficulty:** 2/5
+- **Prerequisites:** Chest Voice
+- **Description:** Bright, nasal edge. Narrowed aryepiglottic funnel.
+- **Character:** Bright, piercing, "nasal" but in a good way. Adds volume and cut without extra effort.
+- **Famous Examples:** Steven Tyler, Dolly Parton, AC/DC, musical theatre
+- **How To:** Think of a duck quacking, or a witch cackling "nyah nyah!" That nasal, buzzy quality is twang. It narrows the vocal tract, amplifying sound. Hugely useful for projection without strain.
+- **Exercises:**
+  - Quack like a duck on scales
+  - "Nyah nyah" bratty sound, ascending
+- **YouTube:** https://www.youtube.com/results?search_query=twang+vocal+technique+tutorial
+
+### Breathy Singing
+
+- **Category:** Style
+- **Difficulty:** 1/5
+- **Prerequisites:** Breath Support
+- **Description:** Intentionally letting air leak through the folds.
+- **Character:** Intimate, soft, vulnerable, ASMR-like. Dreamy quality.
+- **Famous Examples:** Billie Eilish, Norah Jones, Sade, Bon Iver, Lana Del Rey
+- **How To:** Begin a note with a gentle "H" — let air flow before and during the tone. Soften cord closure. Keep volume low and microphone close.
+- **Exercises:**
+  - "Hah" with extra airflow on each note
+  - Whisper phrases, then add minimal tone
+- **YouTube:** https://www.youtube.com/results?search_query=breathy+singing+technique+tutorial
+
+### Vowel Modification
+
+- **Category:** Style
+- **Difficulty:** 3/5
+- **Prerequisites:** Chest Voice, Head Voice
+- **Description:** Shifting vowel shapes as you ascend to maintain resonance.
+- **Character:** Allows high notes to sound open and free instead of squeezed. Invisible to the audience.
+- **Famous Examples:** Chris Cornell, Pavarotti, Beyoncé — all great singers
+- **How To:** As you sing higher, narrow your vowels slightly. "AH" → "UH", "EE" → "IH", "AY" → "EH". This matches the resonant frequency of your vocal tract to the pitch.
+- **Exercises:**
+  - Sing "Ah" up a scale, let it shade to "Uh" above the break
+  - "Me" → "Meh" → "Muh" ascending
+- **YouTube:** https://www.youtube.com/results?search_query=vowel+modification+singing+tutorial
+
+---
+
+## Vocal Effects
+
+Textures and colors you add to your base tone. These are the seasoning — use them deliberately, not as defaults.
+
+### Grit / Rasp
+
+- **Category:** Effect
+- **Difficulty:** 4/5
+- **Prerequisites:** Chest Voice, Breath Support
+- **Description:** Controlled distortion. False folds or overtone break-up.
+- **Character:** Gravelly, raw, smoky, edgy. Adds emotional intensity and rock texture.
+- **Famous Examples:** Rod Stewart, Janis Joplin, Joe Cocker, Adele, Chris Cornell
+- **How To:** Do NOT squeeze your throat. Healthy grit comes from structures above the cords (false folds, overtone saturation). Start with a light dog-growl. Think "witch cackle." Keep throat relaxed — tighten only diaphragm.
+- **Exercises:**
+  - Light dog growl on sustained notes
+  - Witch cackle → bring into pitched singing
+- **Safety Warning:** If it hurts, stop immediately. Master clean singing first.
+- **YouTube:** https://www.youtube.com/results?search_query=vocal+grit+rasp+safe+technique
+
+### Distortion / Overdrive
+
+- **Category:** Effect
+- **Difficulty:** 5/5
+- **Prerequisites:** Grit/Rasp, Mixed Voice, Breath Support
+- **Description:** Heavy grit. False fold compression. Aggressive texture.
+- **Character:** Screaming, growling, aggressive power. From hard rock rasp to full metal scream.
+- **Famous Examples:** Chester Bennington, James Hetfield, Chris Cornell, Axl Rose, Corey Taylor
+- **How To:** False fold engagement + compression + breath support. The false folds cover the true vocal folds to create buzz. Think "clearing your throat" gently, then sustain. Strong diaphragm support is critical.
+- **Exercises:**
+  - Throat-clear → sustain the rattle on pitch
+  - Kargyraa-style low buzzing
+- **Safety Warning:** High risk. Requires solid clean singing foundation. Work with a specialist. Never push through pain.
+- **YouTube:** https://www.youtube.com/results?search_query=vocal+distortion+safe+singing+technique
+
+### Growl
+
+- **Category:** Effect
+- **Difficulty:** 3/5
+- **Prerequisites:** Chest Voice, Grit/Rasp
+- **Description:** Short, sharp burst of distortion at note onset.
+- **Character:** Aggressive "punch" at note start. Adds attitude. Short, not sustained.
+- **Famous Examples:** Christina Aguilera, James Brown, Tina Turner
+- **How To:** A brief false fold "bite" at the very beginning of a note. Short grunt or bark — then open into clean tone. Ornamental, not sustained.
+- **Exercises:**
+  - Short bark → clean sustained note
+  - "Grr-ahh" on single notes
+- **YouTube:** https://www.youtube.com/results?search_query=vocal+growl+technique+tutorial
+
+### Cry / Sob
+
+- **Category:** Effect
+- **Difficulty:** 2/5
+- **Prerequisites:** Head Voice, Breath Support
+- **Description:** Tilted larynx, thinned folds. Emotional, vulnerable quality.
+- **Character:** Emotional, pleading, vulnerable. A "lump in the throat" sound.
+- **Famous Examples:** Sam Smith, Sinead O'Connor, Jeff Buckley, Adele, Ray Charles
+- **How To:** Imagine you're about to cry — that tilted larynx and thinned sound is "cry mode." Thins the voice without going into falsetto. Extremely useful for emotional passages and safe mix voice access.
+- **Exercises:**
+  - Whimper like a puppy on pitch
+  - Sob-sigh into sustained notes
+- **YouTube:** https://www.youtube.com/results?search_query=cry+sob+vocal+technique+singing
+
+---
+
+## Embellish
+
+Decorative techniques that add flair, personality, and musicality to your phrasing.
+
+### Vibrato
+
+- **Category:** Embellish
+- **Difficulty:** 2/5
+- **Prerequisites:** Breath Support
+- **Description:** Natural oscillation of pitch on sustained notes.
+- **Character:** Warm, alive, shimmering. Pitch wobbles slightly above and below center.
+- **Famous Examples:** Whitney Houston, Freddie Mercury, Adele, Pavarotti
+- **How To:** Natural vibrato comes from relaxation, not forcing. Proper breath support + released tension = vibrato appears on its own. Relax jaw, tongue, throat while maintaining diaphragm support.
+- **Exercises:**
+  - Sustain "Ah" — pulsate diaphragm gently
+  - Alternate two neighboring notes fast → slow until it blends
+- **YouTube:** https://www.youtube.com/results?search_query=vibrato+singing+tutorial+exercise
+
+### Runs / Riffs
+
+- **Category:** Embellish
+- **Difficulty:** 4/5
+- **Prerequisites:** Chest Voice, Head Voice
+- **Description:** Rapid sequences of notes within a melody.
+- **Character:** Dazzling, virtuosic, soulful. Fast cascading notes. Gospel/R&B signature.
+- **Famous Examples:** Mariah Carey, Whitney Houston, Christina Aguilera, Stevie Wonder
+- **How To:** Start SLOW. Learn the exact notes before speeding up. Use a piano to identify each pitch. Practice at half speed, then 75%, then full. Runs are muscle memory.
+- **Exercises:**
+  - Slow 5-note scale runs → gradually speed up
+  - Pick a famous run, learn each note individually
+- **YouTube:** https://www.youtube.com/results?search_query=vocal+runs+riffs+tutorial+exercise
+
+### Pitch Bending
+
+- **Category:** Embellish
+- **Difficulty:** 2/5
+- **Prerequisites:** Chest Voice
+- **Description:** Sliding into or between notes instead of hitting them directly.
+- **Character:** Smooth, soulful, bluesy. Makes melodies feel human and emotional.
+- **Famous Examples:** B.B. King, Ray Charles, Stevie Wonder, Chris Cornell
+- **How To:** Approach a note from slightly below (scoop) or above (fall). Slide into it instead of landing clean. Can also bend between two notes without steps.
+- **Exercises:**
+  - Sing a note, then approach from a half-step below
+  - Portamento slides between intervals
+- **YouTube:** https://www.youtube.com/results?search_query=pitch+bending+singing+technique
+
+### Glottal Stop
+
+- **Category:** Embellish
+- **Difficulty:** 2/5
+- **Prerequisites:** Vocal Fry
+- **Description:** Brief closure of vocal folds before a note. Adds "attack."
+- **Character:** Punchy, percussive note beginnings. Adds emphasis. Like a tiny "click" before tone.
+- **Famous Examples:** Adele (signature), most pop singers use it selectively
+- **How To:** Say "uh-oh" — that little stop is a glottal stop. Use sparingly on emotionally important words. Overuse creates tension. Default should be simultaneous onset.
+- **Exercises:**
+  - "Uh-oh" — isolate the stop feeling
+  - Apply to first word of a phrase only
+- **YouTube:** https://www.youtube.com/results?search_query=glottal+onset+vocal+technique
+
+---
+
+## Dynamics & Breath
+
+The foundation everything else rests on. Control here is the difference between amateurs and professionals.
+
+### Breath Support
+
+- **Category:** Dynamics
+- **Difficulty:** 1/5
+- **Prerequisites:** None
+- **Description:** THE foundation. Everything depends on this.
+- **Character:** Not a "sound" — it's the engine behind every sound. Proper support = power, control, endurance, safety.
+- **Famous Examples:** Literally every great singer. Period.
+- **How To:** Breathe low into belly, sides, and back — not chest/shoulders. Place hands on sides below ribs. Inhale — feel expansion. Exhale on "Sss" — control the release with your abdominal wall.
+- **Exercises:**
+  - "Sss" sustained — aim for 30+ sec
+  - Farinelli breathing (inhale 4, hold 4, exhale 8)
+  - Lip trills on scales
+- **YouTube:** https://www.youtube.com/results?search_query=breath+support+singing+tutorial+diaphragm
+
+### Messa di Voce
+
+- **Category:** Dynamics
+- **Difficulty:** 4/5
+- **Prerequisites:** Breath Support
+- **Description:** Crescendo → decrescendo on a single note.
+- **Character:** Ultimate dynamic control. A note that swells from silence to full power and back.
+- **Famous Examples:** Pavarotti, Freddie Mercury, Jeff Buckley, Adele
+- **How To:** Start a note as quietly as possible. Gradually increase to full volume. Decrease back to nothing. All on one breath, one pitch. Requires exceptional breath control.
+- **Exercises:**
+  - Single note — pp → ff → pp (10 seconds)
+  - Do it on every note in your range
+- **YouTube:** https://www.youtube.com/results?search_query=messa+di+voce+singing+exercise
+
+### Dynamic Contrast
+
+- **Category:** Dynamics
+- **Difficulty:** 2/5
+- **Prerequisites:** Breath Support, Messa di Voce
+- **Description:** Intentional shifts between soft and loud within a song.
+- **Character:** Creates emotional impact. A whispered verse exploding into a powerful chorus.
+- **Famous Examples:** Nirvana (quiet/loud), Adele, Radiohead, Hozier, Billie Eilish
+- **How To:** Map your dynamics before performing. Decide where soft, where build, where explode. The contrast creates emotion — constant volume is boring regardless of power.
+- **Exercises:**
+  - Sing a phrase at volumes 1 through 5
+  - Whisper a verse → belt the chorus
+- **YouTube:** https://www.youtube.com/results?search_query=dynamic+contrast+singing+technique
+
+---
+
+## Warm-Up Routine
+
+### Before You Sing
+- Drink water — room temperature, not cold. Hydrate 30+ minutes before singing.
+- Check your posture — feet shoulder-width, shoulders back and down, chin level.
+- Release tension — roll your neck, shrug and drop shoulders, shake out your arms.
+- No cold starts — never belt, distort, or push range without warming up first.
+
+### 5-Minute Warm-Up (do in order)
+1. **Breathing (1 min)** — Inhale 4 counts into belly/sides/back. Exhale on "Sss" for 15–20 seconds. Repeat 3x.
+2. **Lip Trills (1 min)** — Blow air through closed lips to make them vibrate. Slide up and down your range.
+3. **Humming (1 min)** — Hum on "Mmm" through 5-note scales, ascending. Feel the buzz in your face.
+4. **Vowel Slides (1 min)** — Sing "Mee-Meh-Mah-Moh-Moo" on a single note, then move up by half steps.
+5. **Sirens (1 min)** — Slide from bottom to top and back on "Woo" or "Wee." Full range, gentle.
+
+### Extended Warm-Up (add 5 more minutes)
+- **Straw phonation** — Sing through a straw. Creates back-pressure that balances airflow and fold closure.
+- **Tongue trills** — Roll your tongue on "Rr" while singing scales. Releases tongue tension.
+- **Arpeggios** — 1-3-5-8-5-3-1 on "Nay" or "Gee" to work through your passaggio.
+- **Gentle belting prep** — "Hey!" calls on ascending 5ths. Forward placement, no strain.
+
+---
+
+## Anatomy & Preparation
+
+### The Diaphragm
+A dome-shaped muscle beneath your lungs. When you inhale, it flattens downward, pulling air in. You don't directly "sing from your diaphragm" — you use it to control the rate of exhalation. Think of it as an air pressure regulator, not a sound source.
+
+### Vocal Folds (Cords)
+Two small folds of tissue in your larynx. When air passes through, they vibrate and create sound. Thicker vibration = chest voice. Thinner vibration = head voice. Partial closure = falsetto/breathy. The space between them is called the glottis.
+
+### The Larynx
+Your "voice box." It can move up (bright, thin sound) or down (dark, warm sound). For most singing, a neutral or slightly lowered larynx is ideal. A high larynx under pressure = strain.
+
+### Supporting Muscles
+- **Abdominals** — Control exhalation pressure. They slow the collapse of the rib cage.
+- **Intercostals** — Muscles between your ribs. Keep ribs expanded during singing (appoggio).
+- **Back muscles** — Your lower back expands when breathing correctly. Engage it for support.
+
+### Posture
+Stand with feet shoulder-width apart. Knees slightly bent. Shoulders relaxed, back and down. Chest comfortably open. Head balanced on spine — not jutting forward.
+
+### Vocal Health
+- **Hydration** — Drink water consistently throughout the day, not just before singing.
+- **Steam inhalation** — Breathe steam for 10 minutes before heavy singing.
+- **Rest** — Your voice needs recovery time. Avoid talking loudly after intense sessions.
+- **Avoid** — Whispering (worse than talking), excessive throat clearing, smoking, dehydrating drinks.
+
+---
+
+## Vocal Myths & Bad Advice
+
+1. **"Sing from your diaphragm"** — You can't directly control it. What people mean is: use abdominal and intercostal muscles to control exhalation.
+
+2. **"Drink tea with honey to fix your voice"** — Tea and honey never touch your vocal folds. They go down the esophagus. What helps: steam inhalation and systemic hydration.
+
+3. **"Chest voice means singing from your chest"** — The sound is made at the vocal folds. "Chest voice" refers to the thick fold vibration pattern that creates resonance you feel in your torso.
+
+4. **"Falsetto is only for men"** — Everyone with vocal folds can produce falsetto. Women use it too.
+
+5. **"Whiskey and cigarettes give you a raspy voice"** — They give you a damaged voice. Healthy distortion uses the false folds — controlled art vs permanent damage.
+
+6. **"Push harder for high notes"** — The opposite. High notes require less air, not more. Think "less air, more compression."
+
+7. **"Vibrato should be added artificially"** — Real vibrato emerges naturally from solid breath support and a relaxed throat. Manufacturing it creates tension.
+
+8. **"You're either born with it or you're not"** — Singing is a trainable motor skill. Most "natural" singers practiced obsessively as children.
+
+9. **"Warm-ups are optional"** — Your vocal folds need increased blood flow and gradual stretching before heavy use. Cold singing leads to strain and damage.
+
+10. **"Pain means you're building strength"** — Pain means damage. Unlike skeletal muscles, vocal folds don't grow stronger from micro-tears. Stop immediately if it hurts.
