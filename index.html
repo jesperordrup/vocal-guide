@@ -198,6 +198,14 @@
     <span data-lang="en">Theme</span><span data-lang="da">Tema</span>
     <button class="theme-btn" onclick="cycleTheme()" title="Cycle color theme" id="themeBtn">🌙 Dark</button>
   </div>
+  <button class="burger-menu-btn" onclick="openIntroGuide();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+    <span data-lang="en">Introduction</span><span data-lang="da">Introduktion</span>
+  </button>
+  <button class="burger-menu-btn" onclick="openBeginnerGuide();closeBurger();">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span data-lang="en">Beginner Guide</span><span data-lang="da">Begynderguide</span>
+  </button>
   <button class="burger-menu-btn" onclick="openWarmup();closeBurger();">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
     <span data-lang="en">Warm-Up</span><span data-lang="da">Opvarmning</span>
@@ -239,7 +247,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.15.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.16.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -282,7 +290,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.15.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.16.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -763,6 +771,392 @@
   </div>
 </div>
 
+<!-- INTRODUCTION GUIDE MODAL -->
+<div id="introGuideModal" class="readme-overlay" onclick="if(event.target===this)closeIntroGuide()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeIntroGuide()">&times;</button>
+
+    <div data-lang="en">
+      <h3>Introduction to Singing</h3>
+      <div class="readme-section">
+        <p><strong>Can anyone learn to sing?</strong></p>
+        <p>Yes. Singing is a motor skill, not a gift. Some people have natural advantages (vocal fold length, resonance cavities), but pitch accuracy, tone quality, breath control, and range are all trainable. If you can speak, you can learn to sing.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Where are you right now?</strong></p>
+        <p>Before you start, honestly assess your current state:</p>
+        <ul>
+          <li><strong>Pitch:</strong> Can you match a note played on a piano? Can you tell if two notes are the same or different?</li>
+          <li><strong>Breathing:</strong> Do you breathe into your chest or your belly? Can you sustain a hiss ("Sss") for 15 seconds?</li>
+          <li><strong>Range:</strong> How many notes can you comfortably sing, low to high? (Don't worry if you don't know — you'll discover this.)</li>
+          <li><strong>Tension:</strong> Does your jaw clench, your throat tighten, or your shoulders rise when you sing?</li>
+        </ul>
+        <p>These aren't tests — they're starting points. Wherever you are is fine.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Is your body ready?</strong></p>
+        <p>Singing is physical. Before you focus on technique:</p>
+        <ul>
+          <li><strong>Posture:</strong> Stand tall, shoulders relaxed, chest open. See the <a href="#" onclick="closeIntroGuide();openAnatomy();return false;" style="color:var(--accent-warm);">Anatomy</a> section for details.</li>
+          <li><strong>Hydration:</strong> Drink water consistently throughout the day. Your vocal folds need systemic hydration — not just a sip before singing.</li>
+          <li><strong>Tension:</strong> Roll your neck, shrug and drop shoulders, massage your jaw. Tension is the enemy of good singing.</li>
+          <li><strong>Breathing:</strong> Practice breathing into your belly, sides, and lower back. This is your foundation.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>What are realistic goals?</strong></p>
+        <p>Set <em>starting</em> goals, not dream goals. Here's what beginners should aim for first:</p>
+        <ul>
+          <li>Sing a simple melody on pitch (in tune)</li>
+          <li>Sustain a note steadily for 10+ seconds</li>
+          <li>Breathe from the diaphragm without thinking about it</li>
+          <li>Sing without throat tension or pain</li>
+          <li>Identify your comfortable range (low to high)</li>
+        </ul>
+        <p><strong>End goals</strong> will evolve as you grow. Don't aim for belting high notes or vocal effects yet — build the foundation first. Think of it like sports: you learn to run before you sprint.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>How to use this guide</strong></p>
+        <p>This vocal guide is a reference, not a course. Here's the recommended approach:</p>
+        <ul>
+          <li><strong>Start with the <a href="#" onclick="closeIntroGuide();openBeginnerGuide();return false;" style="color:var(--accent-warm);">Beginner Guide</a></strong> — it gives you a structured routine and method.</li>
+          <li><strong>Read <a href="#" onclick="closeIntroGuide();openAnatomy();return false;" style="color:var(--accent-warm);">Anatomy</a></strong> — understand what's physically happening when you sing.</li>
+          <li><strong>Use <a href="#" onclick="closeIntroGuide();openWarmup();return false;" style="color:var(--accent-warm);">Warm-Up</a></strong> — every time, before you sing. No exceptions.</li>
+          <li><strong>Check <a href="#" onclick="closeIntroGuide();openMyths();return false;" style="color:var(--accent-warm);">Vocal Myths</a></strong> — unlearn bad advice early.</li>
+          <li><strong>Explore the technique tables</strong> — start with <a href="#registers" onclick="closeIntroGuide();return false;" style="color:var(--accent-warm);">Registers</a> (difficulty 1–2), then <a href="#dynamics" onclick="closeIntroGuide();return false;" style="color:var(--accent-warm);">Dynamics</a> (breath support).</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>What order should you learn?</strong></p>
+        <p>Follow this progression — each step builds on the previous:</p>
+        <ul>
+          <li><strong>1. Breath Support</strong> — Everything depends on this. Learn it first.</li>
+          <li><strong>2. Chest Voice</strong> — Your natural speaking register. Get comfortable here.</li>
+          <li><strong>3. Head Voice</strong> — Learn to access your upper register with full closure.</li>
+          <li><strong>4. Falsetto</strong> — Explore lightness and the top of your range.</li>
+          <li><strong>5. Pitch &amp; Ear Training</strong> — Match notes, sing scales in tune.</li>
+          <li><strong>6. Mixed Voice</strong> — Bridge chest and head. This takes time.</li>
+          <li><strong>7. Dynamics &amp; Expression</strong> — Soft/loud, vibrato, emotion.</li>
+          <li><strong>8. Styles &amp; Effects</strong> — Belting, twang, grit, etc. Only after the above are solid.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Should you get a vocal coach?</strong></p>
+        <p><strong>Yes, if at all possible.</strong> A guide like this can teach you concepts and exercises, but it can't hear you. A vocal coach provides real-time feedback, catches bad habits before they become injuries, and accelerates your progress dramatically. Even a few lessons make a huge difference.</p>
+        <p style="margin-top:8px;">If lessons aren't an option right now, use this guide carefully, record yourself often, and follow the golden rule: <strong>if it hurts, stop.</strong></p>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>Introduktion til sang</h3>
+      <div class="readme-section">
+        <p><strong>Kan alle l&aelig;re at synge?</strong></p>
+        <p>Ja. Sang er en motorisk f&aelig;rdighed, ikke en gave. Nogle har naturlige fordele (stemmeb&aring;ndsl&aelig;ngde, resonansrum), men toneh&oslash;jdepr&aelig;cision, klangkvalitet, &aring;ndedr&aelig;tskontrol og register er alt sammen tr&aelig;nbart. Hvis du kan tale, kan du l&aelig;re at synge.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Hvor er du nu?</strong></p>
+        <p>F&oslash;r du starter, vurd&eacute;r &aelig;rligt din nuv&aelig;rende tilstand:</p>
+        <ul>
+          <li><strong>Toneh&oslash;jde:</strong> Kan du ramme en tone spillet p&aring; et klaver? Kan du h&oslash;re om to toner er ens eller forskellige?</li>
+          <li><strong>&Aring;ndedræt:</strong> Tr&aelig;kker du vejret ind i brystet eller maven? Kan du holde en hvæselyd ("Sss") i 15 sekunder?</li>
+          <li><strong>Register:</strong> Hvor mange toner kan du komfortabelt synge, lavt til h&oslash;jt? (Bare rolig hvis du ikke ved det — du finder ud af det.)</li>
+          <li><strong>Sp&aelig;nding:</strong> Klemmer din kæbe sammen, strammer din hals, eller l&oslash;fter dine skuldre sig n&aring;r du synger?</li>
+        </ul>
+        <p>Det er ikke tests — det er udgangspunkter. Uanset hvor du er, er det fint.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>Er din krop klar?</strong></p>
+        <p>Sang er fysisk. F&oslash;r du fokuserer p&aring; teknik:</p>
+        <ul>
+          <li><strong>Kropsholdning:</strong> St&aring; h&oslash;jt, skuldre afslappet, bryst &aring;bent. Se <a href="#" onclick="closeIntroGuide();openAnatomy();return false;" style="color:var(--accent-warm);">Anatomi</a>-sektionen for detaljer.</li>
+          <li><strong>Hydrering:</strong> Drik vand konsekvent hele dagen. Dine stemmeb&aring;nd har brug for systemisk hydrering — ikke bare en slurk f&oslash;r sang.</li>
+          <li><strong>Sp&aelig;nding:</strong> Rul nakken, tr&aelig;k skuldrene op og slip, masser&eacute;r kæben. Spænding er fjenden af god sang.</li>
+          <li><strong>&Aring;ndedræt:</strong> &Oslash;v dig i at tr&aelig;kke vejret ned i mave, sider og l&aelig;nd. Det er dit fundament.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Hvad er realistiske m&aring;l?</strong></p>
+        <p>S&aelig;t <em>start</em>m&aring;l, ikke dr&oslash;mmem&aring;l. Her er hvad begyndere b&oslash;r sigte efter f&oslash;rst:</p>
+        <ul>
+          <li>Synge en simpel melodi rent (i tune)</li>
+          <li>Holde en tone stabilt i 10+ sekunder</li>
+          <li>Tr&aelig;kke vejret fra mellemgulvet uden at t&aelig;nke over det</li>
+          <li>Synge uden halsspænding eller smerte</li>
+          <li>Identificere dit komfortable register (lavt til h&oslash;jt)</li>
+        </ul>
+        <p><strong>Slutm&aring;l</strong> udvikler sig i takt med at du vokser. Sigt ikke efter belting-h&oslash;jder eller vokaleffekter endnu — byg fundamentet f&oslash;rst. T&aelig;nk p&aring; det som sport: du l&aelig;rer at l&oslash;be f&oslash;r du sprinter.</p>
+      </div>
+      <div class="readme-section">
+        <p><strong>S&aring;dan bruger du denne guide</strong></p>
+        <p>Denne vokalguide er en reference, ikke et kursus. Her er den anbefalede tilgang:</p>
+        <ul>
+          <li><strong>Start med <a href="#" onclick="closeIntroGuide();openBeginnerGuide();return false;" style="color:var(--accent-warm);">Begynderguiden</a></strong> — den giver dig en struktureret rutine og metode.</li>
+          <li><strong>L&aelig;s <a href="#" onclick="closeIntroGuide();openAnatomy();return false;" style="color:var(--accent-warm);">Anatomi</a></strong> — forst&aring; hvad der fysisk sker n&aring;r du synger.</li>
+          <li><strong>Brug <a href="#" onclick="closeIntroGuide();openWarmup();return false;" style="color:var(--accent-warm);">Opvarmning</a></strong> — hver gang, f&oslash;r du synger. Ingen undtagelser.</li>
+          <li><strong>Tjek <a href="#" onclick="closeIntroGuide();openMyths();return false;" style="color:var(--accent-warm);">Myter</a></strong> — afl&aelig;r d&aring;rlige r&aring;d tidligt.</li>
+          <li><strong>Udforsk tekniktabellerne</strong> — start med <a href="#registers" onclick="closeIntroGuide();return false;" style="color:var(--accent-warm);">Registre</a> (sværhedsgrad 1–2), derefter <a href="#dynamics" onclick="closeIntroGuide();return false;" style="color:var(--accent-warm);">Dynamik</a> (&aring;ndedr&aelig;tsst&oslash;tte).</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Hvilken r&aelig;kkef&oslash;lge skal du l&aelig;re?</strong></p>
+        <p>F&oslash;lg denne progression — hvert trin bygger p&aring; det forrige:</p>
+        <ul>
+          <li><strong>1. &Aring;ndedr&aelig;tsst&oslash;tte</strong> — Alt afh&aelig;nger af dette. L&aelig;r det f&oslash;rst.</li>
+          <li><strong>2. Bryststemme</strong> — Dit naturlige taleregister. Bliv fortrolig her.</li>
+          <li><strong>3. Hovedklang</strong> — L&aelig;r at tilg&aring; dit &oslash;vre register med fuld lukning.</li>
+          <li><strong>4. Falset</strong> — Udforsk lethed og toppen af dit register.</li>
+          <li><strong>5. Toneh&oslash;jde &amp; geh&oslash;r</strong> — Ram toner, syng skalaer rent.</li>
+          <li><strong>6. Mixstemme</strong> — Forbind bryst og hoved. Det tager tid.</li>
+          <li><strong>7. Dynamik &amp; udtryk</strong> — Svagt/kraftigt, vibrato, f&oslash;lelse.</li>
+          <li><strong>8. Stilarter &amp; effekter</strong> — Belting, twang, grit osv. F&oslash;rst n&aring;r ovenst&aring;ende er solidt.</li>
+        </ul>
+      </div>
+      <div class="readme-section">
+        <p><strong>Skal du have en sangcoach?</strong></p>
+        <p><strong>Ja, hvis det overhovedet er muligt.</strong> En guide som denne kan l&aelig;re dig koncepter og &oslash;velser, men den kan ikke h&oslash;re dig. En sangcoach giver feedback i realtid, fanger d&aring;rlige vaner f&oslash;r de bliver til skader, og accelererer din udvikling dramatisk. Selv f&aring; lektioner g&oslash;r en k&aelig;mpe forskel.</p>
+        <p style="margin-top:8px;">Hvis lektioner ikke er en mulighed lige nu, brug denne guide med omhu, optag dig selv ofte, og f&oslash;lg den gyldne regel: <strong>g&oslash;r det ondt, stop.</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BEGINNER GUIDE MODAL -->
+<div id="beginnerGuideModal" class="readme-overlay" onclick="if(event.target===this)closeBeginnerGuide()">
+  <div class="readme-card">
+    <button class="readme-close" onclick="closeBeginnerGuide()">&times;</button>
+
+    <div data-lang="en">
+      <h3>Beginner Guide</h3>
+      <div class="readme-section">
+        <p style="padding:10px 14px;border-left:3px solid var(--accent-warm);border-radius:0 4px 4px 0;background:rgba(212,135,77,0.05);font-size:0.88rem;color:var(--text-muted);"><strong style="color:var(--accent-warm);">Recommendation:</strong> If you can take vocal coach lessons, do it. A coach hears what you can't and prevents bad habits from becoming injuries. This guide is a companion, not a replacement for professional instruction.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>How to use this guide</strong></p>
+        <p>This is a practical, step-by-step method. Follow the steps in order. Each exercise builds on the previous. Use this alongside the technique tables in the main guide.</p>
+        <ul>
+          <li>Practice consistently — short daily sessions beat long weekly ones</li>
+          <li>Record yourself — your ears lie to you; recordings don't</li>
+          <li>Rest when tired — vocal fatigue is real and cumulative</li>
+          <li>Don't skip warm-ups — <a href="#" onclick="closeBeginnerGuide();openWarmup();return false;" style="color:var(--accent-warm);">use the Warm-Up guide</a> every time</li>
+        </ul>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 1: Breathing Foundation</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 1–2)</span></p>
+        <p>Everything in singing depends on breath control. Master this before moving on.</p>
+        <ul>
+          <li><strong>Diaphragmatic breathing:</strong> Lie on your back with a book on your belly. Breathe so the book rises on inhale and falls on exhale. Your chest should barely move.</li>
+          <li><strong>Sustained hiss:</strong> Inhale 4 counts, exhale on "Sss" as long as possible. Aim for 20 seconds, then 30. This trains exhalation control.</li>
+          <li><strong>Rib expansion:</strong> Place hands on your sides. Breathe so your ribs push outward. Hold the expansion while exhaling slowly. This is "appoggio."</li>
+        </ul>
+        <p><span class="exercise">Exercise: 4-count inhale → 20-second "Sss" exhale × 5 reps</span></p>
+        <p><span class="exercise">Exercise: Rib expansion hold → slow exhale on "Fff" × 5 reps</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 10–15 minutes daily. See <a href="#tech-breath-support" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Breath Support</a> in the guide.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 2: Finding Your Voice</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 2–3)</span></p>
+        <p>Discover your natural range and get comfortable making sound.</p>
+        <ul>
+          <li><strong>Speak-sing:</strong> Say a sentence at your normal pitch. Now "sing" that same sentence on the same pitch. Notice: speaking and singing are closer than you think.</li>
+          <li><strong>Pitch matching:</strong> Play a note on a piano app or tuner. Match it with "Ah." Hold for 5 seconds. Use a tuner app to check accuracy.</li>
+          <li><strong>Range exploration:</strong> Start on a comfortable note and sing downward on "Ah" until you can't go lower. Then go upward until it gets uncomfortable. That's your current range. Write it down.</li>
+        </ul>
+        <p><span class="exercise">Exercise: Pitch matching on single notes, 5 seconds each × 10 notes</span></p>
+        <p><span class="exercise">Exercise: 5-note descending scale on "Mah" — start mid-range, move down</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 10–15 minutes daily. See <a href="#tech-chest-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Chest Voice</a> in the guide.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 3: Chest Voice Control</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 3–4)</span></p>
+        <p>Solidify your natural register. This is where most of your singing lives.</p>
+        <ul>
+          <li><strong>Projection:</strong> Sing "Hey!" like calling someone across a room. Forward, bright, not forced. That placement is your target.</li>
+          <li><strong>Simple scales:</strong> Sing 5-note ascending/descending scales on "Mah" or "Nah." Stay in a comfortable range. Focus on steady, even tone — no wobble, no breathiness.</li>
+          <li><strong>Song application:</strong> Pick a simple song in your comfortable range. Sing it focusing only on pitch accuracy and steady breath.</li>
+        </ul>
+        <p><span class="exercise">Exercise: "Hey!" projection × 10, increasing pitch by half steps</span></p>
+        <p><span class="exercise">Exercise: 5-note scales on "Mah" — ascending, 3 minutes</span></p>
+        <p><span class="exercise">Exercise: Simple song — focus on pitch only, ignore style</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 15–20 minutes daily.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 4: Head Voice &amp; Upper Range</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 4–6)</span></p>
+        <p>Access your upper register without strain.</p>
+        <ul>
+          <li><strong>Hooting:</strong> Make a gentle "Hoo" sound like an owl. That's head voice — light, resonant, no air leaking.</li>
+          <li><strong>Descending scales:</strong> Start in head voice on a comfortable high note, sing down on "Hoo" through a 5-note scale. Descending is easier than ascending for head voice.</li>
+          <li><strong>Sirens:</strong> Slide from chest voice up into head voice and back on "Woo." Smooth, gentle, no cracking. If you crack, go lighter.</li>
+        </ul>
+        <p><span class="exercise">Exercise: "Hoo" on descending 5-note scales × 5, moving up</span></p>
+        <p><span class="exercise">Exercise: Gentle sirens (bottom to top and back) on "Woo" × 10</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 15–20 minutes daily. See <a href="#tech-head-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Head Voice</a> in the guide.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 5: Connecting the Registers</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 6–8)</span></p>
+        <p>The transition zone (passaggio) is where most beginners struggle. This takes patience.</p>
+        <ul>
+          <li><strong>Lip trills through the break:</strong> Lip trill from low to high and back. The trill forces balanced airflow across the passaggio.</li>
+          <li><strong>Bratty "Nay":</strong> Sing an octave scale on a bratty, nasal "Nay." The twang keeps the cords together through the break zone.</li>
+          <li><strong>Vowel narrowing:</strong> As you ascend, gradually shade open vowels toward closed ones (Ah → Oh → Oo). This is vowel modification — it prevents strain.</li>
+        </ul>
+        <p><span class="exercise">Exercise: Lip trills from low to high, full range × 10</span></p>
+        <p><span class="exercise">Exercise: "Nay" on octave scale, ascending by half steps × 5</span></p>
+        <p><span class="exercise">Exercise: "Gee" ascending scale through passaggio × 5</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 15–20 minutes daily. See <a href="#tech-mixed-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Mixed Voice</a> in the guide.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Step 6: Dynamics &amp; Expression</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Week 8+)</span></p>
+        <p>Now that you have control, add musical expression.</p>
+        <ul>
+          <li><strong>Volume control:</strong> Sing a sustained "Ah" — start soft, gradually get louder, then soft again. This is <a href="#tech-messa-di-voce" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">messa di voce</a>.</li>
+          <li><strong>Vibrato:</strong> Don't force it. Sing with good support on a sustained note. If vibrato appears naturally, let it. If not, keep working on support.</li>
+          <li><strong>Song work:</strong> Take a song you know well. Sing it with intention — decide where to be soft, where to be loud, where to add emotion.</li>
+        </ul>
+        <p><span class="exercise">Exercise: Messa di voce on sustained "Ah" — soft → loud → soft × 5</span></p>
+        <p><span class="exercise">Exercise: Sing one song with deliberate dynamic contrast</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Duration: 20–30 minutes daily. See <a href="#dynamics" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Dynamics</a> in the guide.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Daily Practice Routine (summary)</strong></p>
+        <p>Once you've progressed through the steps, use this as your daily structure:</p>
+        <ul>
+          <li><strong>Warm-up (5 min)</strong> — <a href="#" onclick="closeBeginnerGuide();openWarmup();return false;" style="color:var(--accent-warm);">Follow the warm-up routine</a></li>
+          <li><strong>Breathing exercises (5 min)</strong> — Sustained hiss, rib expansion</li>
+          <li><strong>Scales &amp; technique (10 min)</strong> — 5-note scales, sirens, lip trills through range</li>
+          <li><strong>Song work (10 min)</strong> — Apply technique to actual music</li>
+          <li><strong>Cool-down (2 min)</strong> — Gentle humming, descending sighs, drink water</li>
+        </ul>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:8px;"><strong>Total: ~30 minutes.</strong> Consistency matters more than duration. 20 minutes every day beats 2 hours once a week.</p>
+      </div>
+
+      <div class="readme-section" style="padding:10px 14px;border-left:3px solid var(--accent-warm);border-radius:0 4px 4px 0;background:rgba(212,135,77,0.05);">
+        <p style="font-size:0.88rem;"><strong style="color:var(--accent-warm);">Remember:</strong> This guide gives you a method, but a vocal coach gives you <em>feedback</em>. Even occasional lessons (monthly, bi-weekly) alongside self-practice will dramatically improve your results. Look for coaches who specialize in contemporary vocal technique (CVT, SLS, IVA, or similar evidence-based methods).</p>
+      </div>
+    </div>
+
+    <div data-lang="da">
+      <h3>Begynderguide</h3>
+      <div class="readme-section">
+        <p style="padding:10px 14px;border-left:3px solid var(--accent-warm);border-radius:0 4px 4px 0;background:rgba(212,135,77,0.05);font-size:0.88rem;color:var(--text-muted);"><strong style="color:var(--accent-warm);">Anbefaling:</strong> Hvis du kan tage sangtimer hos en vokalcoach, s&aring; g&oslash;r det. En coach h&oslash;rer hvad du ikke kan, og forhindrer d&aring;rlige vaner i at blive til skader. Denne guide er en ledsager, ikke en erstatning for professionel undervisning.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>S&aring;dan bruger du denne guide</strong></p>
+        <p>Dette er en praktisk, trinvis metode. F&oslash;lg trinene i r&aelig;kkef&oslash;lge. Hver &oslash;velse bygger p&aring; den forrige. Brug den sammen med tekniktabellerne i hovedguiden.</p>
+        <ul>
+          <li>&Oslash;v konsekvent — korte daglige sessioner sl&aring;r lange ugentlige</li>
+          <li>Optag dig selv — dine &oslash;rer lyver for dig; optagelser g&oslash;r ikke</li>
+          <li>Hvil n&aring;r du er tr&aelig;t — vokal udmattelse er reel og kumulativ</li>
+          <li>Spring ikke opvarmning over — <a href="#" onclick="closeBeginnerGuide();openWarmup();return false;" style="color:var(--accent-warm);">brug opvarmningsguiden</a> hver gang</li>
+        </ul>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 1: &Aring;ndedr&aelig;tsfundament</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 1–2)</span></p>
+        <p>Alt i sang afh&aelig;nger af &aring;ndedr&aelig;tskontrol. Mestr dette f&oslash;r du g&aring;r videre.</p>
+        <ul>
+          <li><strong>Diafragmatisk &aring;ndedræt:</strong> L&aelig;g dig p&aring; ryggen med en bog p&aring; maven. Tr&aelig;k vejret s&aring; bogen l&oslash;fter sig ved ind&aring;nding og falder ved ud&aring;nding. Brystet skal n&aelig;sten ikke bev&aelig;ge sig.</li>
+          <li><strong>Vedvarende hvæs:</strong> Ind&aring;nd 4 t&aelig;l, ud&aring;nd p&aring; "Sss" s&aring; l&aelig;nge som muligt. Sigt mod 20 sekunder, s&aring; 30. Dette tr&aelig;ner ud&aring;ndingskontrol.</li>
+          <li><strong>Ribbensudvidelse:</strong> L&aelig;g h&aelig;nderne p&aring; siderne. Tr&aelig;k vejret s&aring; ribbenene skubbes udad. Hold udvidelsen mens du ud&aring;nder langsomt. Dette er "appoggio."</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: 4-t&aelig;ls ind&aring;nding → 20-sekunders "Sss" ud&aring;nding × 5 gentagelser</span></p>
+        <p><span class="exercise">&Oslash;velse: Ribbensudvidelse hold → langsom ud&aring;nding p&aring; "Fff" × 5 gentagelser</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 10–15 minutter dagligt. Se <a href="#tech-breath-support" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">&Aring;ndedr&aelig;tsst&oslash;tte</a> i guiden.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 2: Find din stemme</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 2–3)</span></p>
+        <p>Opdag dit naturlige register og bliv fortrolig med at lave lyd.</p>
+        <ul>
+          <li><strong>Talesang:</strong> Sig en sætning p&aring; din normale toneh&oslash;jde. "Syng" nu den samme sætning p&aring; samme tone. Bem&aelig;rk: tale og sang er t&aelig;ttere p&aring; hinanden end du tror.</li>
+          <li><strong>Toneramning:</strong> Spil en tone p&aring; en klaver-app eller tuner. Ram den med "&Aring;h." Hold i 5 sekunder. Brug en tuner-app til at tjekke pr&aelig;cisionen.</li>
+          <li><strong>Registerudforskning:</strong> Start p&aring; en behagelig tone og syng nedad p&aring; "&Aring;h" indtil du ikke kan komme lavere. G&aring; derefter opad indtil det bliver ubehageligt. Det er dit nuv&aelig;rende register. Skriv det ned.</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: Toneramning p&aring; enkelte toner, 5 sekunder hver × 10 toner</span></p>
+        <p><span class="exercise">&Oslash;velse: 5-tone nedadg&aring;ende skala p&aring; "Mah" — start i midten, g&aring; ned</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 10–15 minutter dagligt. Se <a href="#tech-chest-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Bryststemme</a> i guiden.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 3: Bryststemmekontrol</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 3–4)</span></p>
+        <p>Solidific&eacute;r dit naturlige register. Det er her det meste af din sang lever.</p>
+        <ul>
+          <li><strong>Projektion:</strong> Syng "Hej!" som om du kalder p&aring; nogen tværs over et rum. Fremadrettet, lyst, ikke forceret. Den placering er dit m&aring;l.</li>
+          <li><strong>Simple skalaer:</strong> Syng 5-tone opadg&aring;ende/nedadg&aring;ende skalaer p&aring; "Mah" eller "Nah." Bliv i et behageligt register. Fokus&eacute;r p&aring; stabil, jævn tone — ingen vakling, ingen luftighed.</li>
+          <li><strong>Sangapplicering:</strong> V&aelig;lg en simpel sang i dit behagelige register. Syng den med fokus kun p&aring; toneh&oslash;jdepr&aelig;cision og stabilt &aring;ndedræt.</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: "Hej!" projektion × 10, stigende toneh&oslash;jde i halvtoner</span></p>
+        <p><span class="exercise">&Oslash;velse: 5-tone skalaer p&aring; "Mah" — opadg&aring;ende, 3 minutter</span></p>
+        <p><span class="exercise">&Oslash;velse: Simpel sang — fokus&eacute;r kun p&aring; toneh&oslash;jde, ignor&eacute;r stil</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 15–20 minutter dagligt.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 4: Hovedklang &amp; &oslash;vre register</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 4–6)</span></p>
+        <p>F&aring; adgang til dit &oslash;vre register uden belastning.</p>
+        <ul>
+          <li><strong>Uglelyd:</strong> Lav en bl&oslash;d "Hoo"-lyd som en ugle. Det er hovedklang — let, resonant, ingen luft lækker.</li>
+          <li><strong>Nedadg&aring;ende skalaer:</strong> Start i hovedklang p&aring; en behagelig h&oslash;j tone, syng ned p&aring; "Hoo" gennem en 5-tone skala. Nedadg&aring;ende er nemmere end opadg&aring;ende for hovedklang.</li>
+          <li><strong>Sirener:</strong> Glid fra bryststemme op i hovedklang og tilbage p&aring; "Woo." J&aelig;vnt, bl&oslash;dt, ingen knak. Hvis du knækker over, g&aring; lettere.</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: "Hoo" p&aring; nedadg&aring;ende 5-tone skalaer × 5, ryk opad</span></p>
+        <p><span class="exercise">&Oslash;velse: Bl&oslash;de sirener (bund til top og tilbage) p&aring; "Woo" × 10</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 15–20 minutter dagligt. Se <a href="#tech-head-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Hovedklang</a> i guiden.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 5: Forbind registrene</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 6–8)</span></p>
+        <p>Overgangszonen (passaggio) er der hvor de fleste begyndere k&aelig;mper. Det kr&aelig;ver t&aring;lmodighed.</p>
+        <ul>
+          <li><strong>L&aelig;betriller gennem bruddet:</strong> L&aelig;betril fra lavt til h&oslash;jt og tilbage. Trillen tvinger balanceret luftstr&oslash;m over passaggioen.</li>
+          <li><strong>Fr&aelig;kt "N&aelig;":</strong> Syng en oktavskala p&aring; et fr&aelig;kt, nasalt "N&aelig;." Twanget holder stemmebåndene sammen gennem brudzonen.</li>
+          <li><strong>Vokalindsnævring:</strong> N&aring;r du stiger, skift gradvist &aring;bne vokaler mod lukkede (Ah → Oh → Oo). Det er vokalmodifikation — det forebygger belastning.</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: L&aelig;betriller fra lavt til h&oslash;jt, fuldt register × 10</span></p>
+        <p><span class="exercise">&Oslash;velse: "N&aelig;" p&aring; oktavskala, stigende i halvtoner × 5</span></p>
+        <p><span class="exercise">&Oslash;velse: "Gee" opadg&aring;ende skala gennem passaggio × 5</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 15–20 minutter dagligt. Se <a href="#tech-mixed-voice" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Mixstemme</a> i guiden.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Trin 6: Dynamik &amp; udtryk</strong> <span style="color:var(--text-muted);font-size:0.8em;">(Uge 8+)</span></p>
+        <p>Nu hvor du har kontrol, tilf&oslash;j musikalsk udtryk.</p>
+        <ul>
+          <li><strong>Volumenkontrol:</strong> Syng en holdt "&Aring;h" — start svagt, bliv gradvist kraftigere, s&aring; svagt igen. Det er <a href="#tech-messa-di-voce" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">messa di voce</a>.</li>
+          <li><strong>Vibrato:</strong> Tving det ikke. Syng med god st&oslash;tte p&aring; en holdt tone. Hvis vibrato dukker op naturligt, lad det komme. Hvis ikke, bliv ved med at arbejde p&aring; st&oslash;tten.</li>
+          <li><strong>Sangarbejde:</strong> Tag en sang du kender godt. Syng den med intention — beslut hvor du vil v&aelig;re bl&oslash;d, hvor kraftig, hvor du tilf&oslash;jer f&oslash;lelse.</li>
+        </ul>
+        <p><span class="exercise">&Oslash;velse: Messa di voce p&aring; holdt "&Aring;h" — svagt → kraftigt → svagt × 5</span></p>
+        <p><span class="exercise">&Oslash;velse: Syng &eacute;n sang med bevidst dynamisk kontrast</span></p>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:6px;">Varighed: 20–30 minutter dagligt. Se <a href="#dynamics" onclick="closeBeginnerGuide();return false;" style="color:var(--accent-warm);">Dynamik</a> i guiden.</p>
+      </div>
+
+      <div class="readme-section">
+        <p><strong>Daglig &oslash;velsesrutine (opsummering)</strong></p>
+        <p>N&aring;r du er kommet igennem trinene, brug dette som din daglige struktur:</p>
+        <ul>
+          <li><strong>Opvarmning (5 min)</strong> — <a href="#" onclick="closeBeginnerGuide();openWarmup();return false;" style="color:var(--accent-warm);">F&oslash;lg opvarmningsrutinen</a></li>
+          <li><strong>&Aring;ndedr&aelig;ts&oslash;velser (5 min)</strong> — Vedvarende hvæs, ribbensudvidelse</li>
+          <li><strong>Skalaer &amp; teknik (10 min)</strong> — 5-tone skalaer, sirener, l&aelig;betriller gennem registret</li>
+          <li><strong>Sangarbejde (10 min)</strong> — Anvend teknik p&aring; rigtig musik</li>
+          <li><strong>Nedk&oslash;ling (2 min)</strong> — Bl&oslash;d nynnen, nedadg&aring;ende suk, drik vand</li>
+        </ul>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-top:8px;"><strong>Total: ~30 minutter.</strong> Konsistens er vigtigere end varighed. 20 minutter hver dag sl&aring;r 2 timer &eacute;n gang om ugen.</p>
+      </div>
+
+      <div class="readme-section" style="padding:10px 14px;border-left:3px solid var(--accent-warm);border-radius:0 4px 4px 0;background:rgba(212,135,77,0.05);">
+        <p style="font-size:0.88rem;"><strong style="color:var(--accent-warm);">Husk:</strong> Denne guide giver dig en metode, men en vokalcoach giver dig <em>feedback</em>. Selv lejlighedsvise lektioner (m&aring;nedligt, hver anden uge) sammen med selv&oslash;velse vil dramatisk forbedre dine resultater. Kig efter coaches der specialiserer sig i moderne vokalteknik (CVT, SLS, IVA, eller lignende evidensbaserede metoder).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- WELCOME POPUP (first-time visitors) -->
 <div id="welcomePopup" class="install-popup-overlay" onclick="if(event.target===this)dismissWelcome()">
   <div class="install-popup" style="text-align:left;max-width:400px;">
@@ -773,6 +1167,8 @@
     <p data-lang="en" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:6px;"><strong style="color:var(--text);">In the menu</strong> (top right ☰) you'll find:</p>
     <p data-lang="da" style="font-size:0.82rem;color:var(--text-muted);margin-bottom:6px;"><strong style="color:var(--text);">I menuen</strong> (øverst til højre ☰) finder du:</p>
     <ul data-lang="en" style="font-size:0.82rem;color:var(--text-muted);padding-left:18px;margin-bottom:16px;line-height:1.7;">
+      <li><strong style="color:var(--text);">Introduction</strong> — overview, goals, and learning order</li>
+      <li><strong style="color:var(--text);">Beginner Guide</strong> — step-by-step practice method</li>
       <li><strong style="color:var(--text);">Warm-Up</strong> — guided vocal warm-up routine</li>
       <li><strong style="color:var(--text);">Anatomy</strong> — how your voice works</li>
       <li><strong style="color:var(--text);">Vocal Myths</strong> — common bad advice debunked</li>
@@ -780,6 +1176,8 @@
       <li><strong style="color:var(--text);">Share &amp; Feedback</strong> — spread the word or get in touch</li>
     </ul>
     <ul data-lang="da" style="font-size:0.82rem;color:var(--text-muted);padding-left:18px;margin-bottom:16px;line-height:1.7;">
+      <li><strong style="color:var(--text);">Introduktion</strong> — overblik, m&aring;l og l&aelig;ringsr&aelig;kkef&oslash;lge</li>
+      <li><strong style="color:var(--text);">Begynderguide</strong> — trinvis &oslash;velsesmetode</li>
       <li><strong style="color:var(--text);">Opvarmning</strong> — guidet vokal opvarmningsrutine</li>
       <li><strong style="color:var(--text);">Anatomi</strong> — hvordan din stemme fungerer</li>
       <li><strong style="color:var(--text);">Myter</strong> — almindelige dårlige råd aflivet</li>
@@ -1345,7 +1743,17 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.15.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.16.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New: Introduction Guide</strong> — Overview for new singers: self-assessment, body readiness, realistic goals, learning order, and how to use the guide</li>
+        <li><strong>New: Beginner Guide</strong> — Practical step-by-step method with weekly progression, exercises with durations, and a daily practice routine summary</li>
+        <li>Both guides available in English and Danish, accessible from burger menu, footer, and direct links <code>#intro-guide</code> / <code>#beginner-guide</code></li>
+        <li>Updated welcome popup to mention new guides</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.15.0</strong></p>
       <ul>
         <li><strong>Content:</strong> Added David Lee Roth and Jon Bon Jovi as example singers for Whistle Register</li>
       </ul>
@@ -1600,6 +2008,8 @@
   <p style="margin-top:4px; font-size:0.72rem;" data-lang="da">YouTube-links søger efter undervisningsvideoer. Tjek tilgængelighed i din region.</p>
   <p style="margin-top:12px;" data-lang="en">
     <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">First time here?</a> ·
+    <a href="#" onclick="openIntroGuide();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Introduction</a> ·
+    <a href="#" onclick="openBeginnerGuide();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Beginner Guide</a> ·
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Warm-Up</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomy</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Vocal Myths</a> ·
@@ -1610,6 +2020,8 @@
   </p>
   <p style="margin-top:12px;" data-lang="da">
     <a href="#" onclick="showWelcome();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Første gang her?</a> ·
+    <a href="#" onclick="openIntroGuide();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Introduktion</a> ·
+    <a href="#" onclick="openBeginnerGuide();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Begynderguide</a> ·
     <a href="#" onclick="openWarmup();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Opvarmning</a> ·
     <a href="#" onclick="openAnatomy();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Anatomi</a> ·
     <a href="#" onclick="openMyths();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Myter</a> ·
@@ -1618,7 +2030,7 @@
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.15.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.16.0)</a></p>
 </div>
 
 <script>
@@ -1670,6 +2082,8 @@ var _hashRouting = true; // flag to prevent recursive pushState
 var modalHashMap = {
   'readme':    { modalId: 'readmeModal' },
   'changelog': { modalId: 'changelogModal' },
+  'intro-guide': { modalId: 'introGuideModal' },
+  'beginner-guide': { modalId: 'beginnerGuideModal' },
   'warmup':    { modalId: 'warmupModal' },
   'anatomy':   { modalId: 'anatomyModal' },
   'myths':     { modalId: 'mythsModal' },
@@ -1693,6 +2107,8 @@ function clearHash() {
 function closeAllModals() {
   document.getElementById('readmeModal').classList.remove('open');
   document.getElementById('changelogModal').classList.remove('open');
+  document.getElementById('introGuideModal').classList.remove('open');
+  document.getElementById('beginnerGuideModal').classList.remove('open');
   document.getElementById('warmupModal').classList.remove('open');
   document.getElementById('anatomyModal').classList.remove('open');
   document.getElementById('mythsModal').classList.remove('open');
@@ -1738,6 +2154,34 @@ function closeChangelog() {
   document.getElementById('changelogModal').classList.remove('open');
   document.body.style.overflow = '';
   if (_hashRouting && location.hash === '#changelog') clearHash();
+}
+
+// Introduction Guide modal
+function openIntroGuide() {
+  closeAllModals();
+  document.getElementById('introGuideModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushHash('intro-guide');
+  plausible('Open-IntroGuide');
+}
+function closeIntroGuide() {
+  document.getElementById('introGuideModal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#intro-guide') clearHash();
+}
+
+// Beginner Guide modal
+function openBeginnerGuide() {
+  closeAllModals();
+  document.getElementById('beginnerGuideModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  pushHash('beginner-guide');
+  plausible('Open-BeginnerGuide');
+}
+function closeBeginnerGuide() {
+  document.getElementById('beginnerGuideModal').classList.remove('open');
+  document.body.style.overflow = '';
+  if (_hashRouting && location.hash === '#beginner-guide') clearHash();
 }
 
 // Warm-up modal
