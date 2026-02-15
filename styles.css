@@ -479,6 +479,87 @@
     position: relative;
   }
   .hero h1 span { color: var(--accent-warm); }
+
+  /* === FACT SUGGESTION (replaces h1 title) === */
+  .hero h1.fact-hidden { display: none; }
+  .fact-suggestion {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    max-width: 600px;
+    text-align: left;
+    line-height: 1.5;
+    animation: factFloat 8s ease-in-out infinite;
+    will-change: transform;
+  }
+  .fact-suggestion-icon {
+    flex-shrink: 0;
+    font-size: 1.3rem;
+  }
+  .fact-suggestion-text {
+    flex: 1;
+    min-width: 0;
+  }
+  .fact-suggestion-text strong {
+    color: var(--accent-warm);
+    font-weight: 600;
+  }
+  .fact-suggestion-link {
+    flex-shrink: 0;
+    color: var(--accent-warm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--accent-warm);
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .fact-suggestion-link:hover {
+    background: var(--accent-warm);
+    color: var(--bg);
+  }
+  .fact-suggestion-close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+    transition: color 0.2s, background 0.2s;
+  }
+  .fact-suggestion-close:hover {
+    color: var(--text);
+    background: var(--surface);
+  }
+  .fact-suggestion.fact-dismissed {
+    animation: factDismiss 0.3s ease-out forwards;
+  }
+  @keyframes factFloat {
+    0%   { transform: translate(0, 0); }
+    15%  { transform: translate(6px, -4px); }
+    30%  { transform: translate(-4px, -7px); }
+    50%  { transform: translate(-7px, 2px); }
+    65%  { transform: translate(3px, 5px); }
+    80%  { transform: translate(8px, -2px); }
+    100% { transform: translate(0, 0); }
+  }
+  @keyframes factDismiss {
+    0%   { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.9) translateY(-10px); }
+  }
   .first-time-btn {
     display: inline-block;
     margin-top: 16px;
@@ -839,6 +920,20 @@
     .hero .subtitle {
       font-size: 0.85rem;
       padding: 0 8px;
+    }
+    .fact-suggestion {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      max-width: 90vw;
+      font-size: 0.88rem;
+      padding: 10px 14px;
+    }
+    .fact-suggestion-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Sticky nav - horizontal scrollable */
