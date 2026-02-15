@@ -250,7 +250,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.18.1</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.0</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -293,7 +293,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.18.1</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.0</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -1211,8 +1211,9 @@
 
 <!-- HERO -->
 <div class="hero">
-  <h1 data-lang="en"><span>Vocal Guide</span></h1>
-  <h1 data-lang="da"><span>Vocal Guide</span></h1>
+  <h1 data-lang="en" id="heroTitleEn"><span>Vocal Guide</span></h1>
+  <h1 data-lang="da" id="heroTitleDa"><span>Vocal Guide</span></h1>
+  <div id="factSuggestion" style="display:none;"></div>
   <button id="firstTimeBtn" class="first-time-btn" onclick="openFirstTime()" style="display:none;">
     <span data-lang="en">First time here?</span>
     <span data-lang="da">Første gang her?</span>
@@ -1746,7 +1747,16 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.18.1</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.19.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>New:</strong> Fact suggestion / TIL feature — replaces the title with a random tip about the guide or a singer fact, with a link to explore and an X to dismiss for the session</li>
+        <li>Suggestion gently floats with a random orbit animation until dismissed</li>
+        <li>Mix of guide feature tips (warm-up, CVT, anatomy, myths, themes) and singer trivia (Freddie Mercury, Mariah Carey, Adele, and more)</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.18.1</strong></p>
       <ul>
         <li><strong>Fix:</strong> Danish language auto-detection now checks all browser preferred languages (not just the primary one) and is case-insensitive</li>
         <li><strong>Fix:</strong> Removed call to undefined function that caused silent errors on every language switch</li>
@@ -2055,7 +2065,7 @@
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.18.1)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.19.0)</a></p>
 </div>
 
 <script>
@@ -2535,6 +2545,98 @@ document.querySelectorAll('.sticky-nav .nav-link').forEach(function(link) {
   });
 });
 
+// === FACT SUGGESTION / TIL ===
+var factSuggestions = [
+  // Guide facts — teasers from actual guide content
+  { text: { en: '<strong>Singing is a motor skill, not a gift.</strong> Anyone can learn it.', da: '<strong>Sang er en motorisk færdighed, ikke en gave.</strong> Alle kan lære det.' }, action: 'openIntroGuide()', linkText: { en: 'Read more', da: 'Læs mere' } },
+  { text: { en: '<strong>Your ears lie to you.</strong> Record yourself — that\'s what others hear.', da: '<strong>Dine ører lyver.</strong> Optag dig selv — det er hvad andre hører.' }, action: 'openBeginnerGuide()', linkText: { en: 'See why', da: 'Se hvorfor' } },
+  { text: { en: '<strong>Singing through a straw</strong> is one of the best warm-ups that exist.', da: '<strong>At synge gennem et sugerør</strong> er en af de bedste opvarmninger der findes.' }, action: 'openWarmup()', linkText: { en: 'Try it', da: 'Prøv det' } },
+  { text: { en: '<strong>Whispering is worse for your voice than talking.</strong> It strains the folds harder.', da: '<strong>Hvisken er værre for stemmen end tale.</strong> Det belaster stemmebåndene mere.' }, action: 'openAnatomy()', linkText: { en: 'Learn why', da: 'Lær hvorfor' } },
+  { text: { en: '<strong>Tea and honey never touch your vocal folds.</strong> Liquids go to your stomach.', da: '<strong>Te og honning rører aldrig dine stemmebånd.</strong> Væsker går til maven.' }, action: 'openMyths()', linkText: { en: 'More myths', da: 'Flere myter' } },
+  { text: { en: '<strong>High notes need LESS air, not more.</strong> Pushing harder is the #1 mistake.', da: '<strong>Høje toner kræver MINDRE luft, ikke mere.</strong> At presse er fejl #1.' }, action: 'openMyths()', linkText: { en: 'Bust myths', da: 'Afkræft myter' } },
+  { text: { en: '<strong>"Overdrive" means different things</strong> in CVT vs traditional singing.', da: '<strong>"Overdrive" betyder forskellige ting</strong> i CVT vs traditionel sang.' }, action: 'openCvt()', linkText: { en: 'See CVT', da: 'Se CVT' } },
+  { text: { en: '<strong>Your abs don\'t push air out.</strong> They slow rib cage collapse instead.', da: '<strong>Dine mavemuskler presser ikke luft ud.</strong> De bremser brystkassens fald.' }, action: 'openAnatomy()', linkText: { en: 'See anatomy', da: 'Se anatomi' } },
+  { text: { en: '<strong>Short daily practice beats long weekly sessions.</strong> Muscle memory is key.', da: '<strong>Kort daglig øvning slår lange ugentlige.</strong> Muskelhukommelse er nøglen.' }, action: 'openBeginnerGuide()', linkText: { en: 'Start here', da: 'Start her' } },
+  { text: { en: '<strong>Your diaphragm can\'t move on the exhale.</strong> It\'s a pressure regulator, not a sound source.', da: '<strong>Din mellemgulv kan ikke bevæge sig ved udånding.</strong> Det er en trykregulator, ikke en lydkilde.' }, action: 'openAnatomy()', linkText: { en: 'See anatomy', da: 'Se anatomi' } },
+  { text: { en: '<strong>Steam is the only way to directly hydrate vocal folds.</strong> Water only helps indirectly.', da: '<strong>Damp er den eneste måde at fugte stemmebånd direkte.</strong> Vand hjælper kun indirekte.' }, action: 'openAnatomy()', linkText: { en: 'See anatomy', da: 'Se anatomi' } },
+  { text: { en: '<strong>Vocal folds stretch thinner for high notes</strong> and stay thick for low ones.', da: '<strong>Stemmebånd strækkes tyndere til høje toner</strong> og forbliver tykke til lave.' }, action: 'openAnatomy()', linkText: { en: 'See how', da: 'Se hvordan' } },
+  { text: { en: '<strong>Falsetto isn\'t just for men.</strong> Women have it too — it\'s just less obvious.', da: '<strong>Falset er ikke kun for mænd.</strong> Kvinder har det også — det er bare mindre tydeligt.' }, action: 'openMyths()', linkText: { en: 'Read more', da: 'Læs mere' } },
+  { text: { en: '<strong>Pain when singing always means something is wrong.</strong> Never push through it.', da: '<strong>Smerte ved sang betyder altid noget er galt.</strong> Pres aldrig igennem.' }, action: 'openMyths()', linkText: { en: 'See why', da: 'Se hvorfor' } },
+  { text: { en: '<strong>Milk doesn\'t cause more mucus.</strong> Studies show it\'s just a sensation.', da: '<strong>Mælk giver ikke mere slim.</strong> Studier viser det bare er en fornemmelse.' }, action: 'openMyths()', linkText: { en: 'More myths', da: 'Flere myter' } },
+  { text: { en: '<strong>Singing cold is the fastest path to vocal nodules.</strong> Even 5 min warm-up helps.', da: '<strong>Kold sang er den hurtigste vej til knuder.</strong> Selv 5 min opvarmning hjælper.' }, action: 'openWarmup()', linkText: { en: 'Warm up', da: 'Opvarm' } },
+  { text: { en: '<strong>Lip trills keep tongue, jaw, and throat relaxed</strong> all at once.', da: '<strong>Lip trills holder tunge, kæbe og hals afslappet</strong> på én gang.' }, action: 'openWarmup()', linkText: { en: 'See routine', da: 'Se rutine' } },
+  { text: { en: '<strong>CVT\'s 4 modes are based on vocal tract shape</strong>, not where you feel vibration.', da: '<strong>CVT\'s 4 modes er baseret på vokaltraktens form</strong>, ikke hvor du mærker vibration.' }, action: 'openCvt()', linkText: { en: 'Open CVT', da: 'Åbn CVT' } },
+  { text: { en: '<strong>A bratty "Nay" keeps cords together</strong> through the break zone. Silly but effective.', da: '<strong>Et næsviist "Næ" holder stemmebåndene sammen</strong> gennem brudzonen. Fjollet men effektivt.' }, action: 'openBeginnerGuide()', linkText: { en: 'Open guide', da: 'Åbn guide' } },
+  // Singer facts
+  { text: { en: '<strong>Freddie Mercury</strong> had a 4-octave range and used distortion like no one else.', da: '<strong>Freddie Mercury</strong> havde 4 oktavers omfang og brugte distortion som ingen anden.' }, link: '#tech-distortion-overdrive', linkText: { en: 'Learn distortion', da: 'Lær distortion' } },
+  { text: { en: '<strong>Mariah Carey</strong>\'s whistle register hits above C7 — higher than most instruments.', da: '<strong>Mariah Carey</strong>s fløjteregister rammer over C7 — højere end de fleste instrumenter.' }, link: '#tech-whistle-register', linkText: { en: 'See whistle', da: 'Se fløjte' } },
+  { text: { en: '<strong>Adele</strong>\'s power comes from belting — chest voice is her foundation.', da: '<strong>Adeles</strong> kraft kommer fra belting — bryststemmen er hendes fundament.' }, link: '#tech-belting', linkText: { en: 'Learn belting', da: 'Lær belting' } },
+  { text: { en: '<strong>Jeff Buckley</strong> shifted between chest, head, and falsetto in a single phrase.', da: '<strong>Jeff Buckley</strong> skiftede mellem bryst-, hoved- og falset i én frase.' }, link: '#tech-falsetto', linkText: { en: 'See falsetto', da: 'Se falset' } },
+  { text: { en: '<strong>Amy Winehouse</strong> defined retro-soul with deep chest voice and natural vibrato.', da: '<strong>Amy Winehouse</strong> definerede retro-soul med dyb bryststemme og naturlig vibrato.' }, link: '#tech-vibrato', linkText: { en: 'Learn vibrato', da: 'Lær vibrato' } },
+  { text: { en: '<strong>Chris Cornell</strong> belted in mixed voice across 4 octaves with grit and cry.', da: '<strong>Chris Cornell</strong> beltede i mixstemme over 4 oktaver med grit og cry.' }, link: '#tech-mixed-voice', linkText: { en: 'See mixed voice', da: 'Se mixstemme' } },
+  { text: { en: '<strong>Billie Eilish</strong> built her sound on breathy singing and intimate dynamics.', da: '<strong>Billie Eilish</strong> byggede sin lyd på breathy singing og intime dynamikker.' }, link: '#tech-breathy-singing', linkText: { en: 'See breathy', da: 'Se breathy' } },
+  { text: { en: '<strong>Christina Aguilera</strong> is famous for melismatic runs — rapid note sequences.', da: '<strong>Christina Aguilera</strong> er berømt for melismatiske runs — hurtige tonesekvenser.' }, link: '#tech-runs-riffs', linkText: { en: 'Learn runs', da: 'Lær runs' } },
+  { text: { en: '<strong>Louis Armstrong</strong> pioneered growl as an expressive vocal effect in jazz.', da: '<strong>Louis Armstrong</strong> var pioner inden for growl som vokal effekt i jazz.' }, link: '#tech-growl', linkText: { en: 'See growl', da: 'Se growl' } },
+  { text: { en: '<strong>Sia</strong> uses a cry/sob quality that gives her vocals raw emotional impact.', da: '<strong>Sia</strong> bruger cry/sob-kvalitet der giver hendes vokal rå følelsesmæssig kraft.' }, link: '#tech-cry-sob', linkText: { en: 'See cry/sob', da: 'Se cry/sob' } },
+];
+
+function initFactSuggestion() {
+  try {
+    if (sessionStorage.getItem('vtb-fact-dismissed')) return;
+  } catch(e) {}
+
+  var container = document.getElementById('factSuggestion');
+  if (!container) return;
+
+  // Pick a random fact
+  var fact = factSuggestions[Math.floor(Math.random() * factSuggestions.length)];
+  var lang = document.body.classList.contains('da') ? 'da' : 'en';
+
+  var text = fact.text[lang] || fact.text.en;
+  var linkLabel = fact.linkText[lang] || fact.linkText.en;
+
+  // Build the action button/link
+  var actionHtml = '';
+  if (fact.link) {
+    actionHtml = '<a href="' + fact.link + '" class="fact-suggestion-link">' + linkLabel + '</a>';
+  } else if (fact.action) {
+    actionHtml = '<a href="#" onclick="' + fact.action + ';return false;" class="fact-suggestion-link">' + linkLabel + '</a>';
+  }
+
+  container.innerHTML =
+    '<div class="fact-suggestion">' +
+      '<button class="fact-suggestion-close" onclick="dismissFact()" title="Dismiss" aria-label="Dismiss suggestion">&times;</button>' +
+      '<span class="fact-suggestion-text">' + text + '</span>' +
+      actionHtml +
+    '</div>';
+
+  container.style.display = '';
+
+  // Hide the h1 titles
+  var titleEn = document.getElementById('heroTitleEn');
+  var titleDa = document.getElementById('heroTitleDa');
+  if (titleEn) titleEn.classList.add('fact-hidden');
+  if (titleDa) titleDa.classList.add('fact-hidden');
+}
+
+function dismissFact() {
+  var container = document.getElementById('factSuggestion');
+  if (!container) return;
+  var bubble = container.querySelector('.fact-suggestion');
+  if (bubble) {
+    bubble.classList.add('fact-dismissed');
+    setTimeout(function() {
+      container.style.display = 'none';
+      // Restore the titles
+      var titleEn = document.getElementById('heroTitleEn');
+      var titleDa = document.getElementById('heroTitleDa');
+      if (titleEn) titleEn.classList.remove('fact-hidden');
+      if (titleDa) titleDa.classList.remove('fact-hidden');
+    }, 300);
+  }
+  try { sessionStorage.setItem('vtb-fact-dismissed', '1'); } catch(e) {}
+}
+
 // Initialize accordion on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
@@ -2542,12 +2644,14 @@ if (document.readyState === 'loading') {
     handleInitialHash();
     // Show "First time here?" button for new visitors
     showFirstTimeButton();
+    initFactSuggestion();
   });
 } else {
   initAccordion();
   handleInitialHash();
   // Show "First time here?" button for new visitors
   showFirstTimeButton();
+  initFactSuggestion();
 }
 </script>
 
