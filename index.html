@@ -2580,6 +2580,78 @@ var factSuggestions = [
   { text: { en: '<strong>Sia</strong> uses a cry/sob quality that gives her vocals raw emotional impact.', da: '<strong>Sia</strong> bruger cry/sob-kvalitet der giver hendes vokal rå følelsesmæssig kraft.' }, link: '#tech-cry-sob', linkText: { en: 'See cry/sob', da: 'Se cry/sob' } },
 ];
 
+var factIndex = 0;
+var factOrder = [];
+var factTimer = null;
+var factTransitioning = false;
+
+function shuffleArray(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+function buildFactHtml(fact) {
+  var lang = document.body.classList.contains('da') ? 'da' : 'en';
+  var text = fact.text[lang] || fact.text.en;
+  var linkLabel = fact.linkText[lang] || fact.linkText.en;
+  var actionHtml = '';
+  if (fact.link) {
+    actionHtml = '<a href="' + fact.link + '" class="fact-suggestion-link">' + linkLabel + '</a>';
+  } else if (fact.action) {
+    actionHtml = '<a href="#" onclick="' + fact.action + ';return false;" class="fact-suggestion-link">' + linkLabel + '</a>';
+  }
+  return '<div class="fact-suggestion">' +
+    '<button class="fact-suggestion-close" onclick="dismissFact()" title="Dismiss" aria-label="Dismiss suggestion">&times;</button>' +
+    '<span class="fact-suggestion-text">' + text + '</span>' +
+    actionHtml +
+  '</div>';
+}
+
+function showFact(direction) {
+  var container = document.getElementById('factSuggestion');
+  if (!container || factTransitioning) return;
+  factTransitioning = true;
+
+  var outClass = direction === 'left' ? 'slide-out-left' : 'slide-out-right';
+  var inClass = direction === 'left' ? 'slide-in-right' : 'slide-in-left';
+  var current = container.querySelector('.fact-suggestion');
+
+  if (current) {
+    current.classList.add(outClass);
+    setTimeout(function() {
+      container.innerHTML = buildFactHtml(factSuggestions[factOrder[factIndex]]);
+      var next = container.querySelector('.fact-suggestion');
+      if (next) next.classList.add(inClass);
+      factTransitioning = false;
+    }, 350);
+  } else {
+    container.innerHTML = buildFactHtml(factSuggestions[factOrder[factIndex]]);
+    var next = container.querySelector('.fact-suggestion');
+    if (next) next.classList.add(inClass);
+    factTransitioning = false;
+  }
+}
+
+function nextFact() {
+  factIndex = (factIndex + 1) % factOrder.length;
+  showFact('left');
+  resetFactTimer();
+}
+
+function prevFact() {
+  factIndex = (factIndex - 1 + factOrder.length) % factOrder.length;
+  showFact('right');
+  resetFactTimer();
+}
+
+function resetFactTimer() {
+  if (factTimer) clearInterval(factTimer);
+  factTimer = setInterval(nextFact, 10000);
+}
+
 function initFactSuggestion() {
   try {
     if (sessionStorage.getItem('vtb-fact-dismissed')) return;
@@ -2588,38 +2660,62 @@ function initFactSuggestion() {
   var container = document.getElementById('factSuggestion');
   if (!container) return;
 
-  // Pick a random fact
-  var fact = factSuggestions[Math.floor(Math.random() * factSuggestions.length)];
-  var lang = document.body.classList.contains('da') ? 'da' : 'en';
+  // Shuffle order
+  factOrder = [];
+  for (var i = 0; i < factSuggestions.length; i++) factOrder.push(i);
+  shuffleArray(factOrder);
+  factIndex = 0;
 
-  var text = fact.text[lang] || fact.text.en;
-  var linkLabel = fact.linkText[lang] || fact.linkText.en;
-
-  // Build the action button/link
-  var actionHtml = '';
-  if (fact.link) {
-    actionHtml = '<a href="' + fact.link + '" class="fact-suggestion-link">' + linkLabel + '</a>';
-  } else if (fact.action) {
-    actionHtml = '<a href="#" onclick="' + fact.action + ';return false;" class="fact-suggestion-link">' + linkLabel + '</a>';
-  }
-
-  container.innerHTML =
-    '<div class="fact-suggestion">' +
-      '<button class="fact-suggestion-close" onclick="dismissFact()" title="Dismiss" aria-label="Dismiss suggestion">&times;</button>' +
-      '<span class="fact-suggestion-text">' + text + '</span>' +
-      actionHtml +
-    '</div>';
-
+  // Show first fact
   container.style.display = '';
+  container.innerHTML = buildFactHtml(factSuggestions[factOrder[0]]);
 
   // Hide the h1 titles
   var titleEn = document.getElementById('heroTitleEn');
   var titleDa = document.getElementById('heroTitleDa');
   if (titleEn) titleEn.classList.add('fact-hidden');
   if (titleDa) titleDa.classList.add('fact-hidden');
+
+  // Auto-rotate every 10s
+  resetFactTimer();
+
+  // Drag / swipe support
+  var startX = 0, dragging = false, dx = 0;
+  container.addEventListener('mousedown', function(e) {
+    if (e.target.closest('.fact-suggestion-close') || e.target.closest('.fact-suggestion-link')) return;
+    dragging = true; startX = e.clientX; dx = 0;
+    e.preventDefault();
+  });
+  container.addEventListener('touchstart', function(e) {
+    if (e.target.closest('.fact-suggestion-close') || e.target.closest('.fact-suggestion-link')) return;
+    dragging = true; startX = e.touches[0].clientX; dx = 0;
+  }, { passive: true });
+
+  var onMove = function(x) {
+    if (!dragging) return;
+    dx = x - startX;
+    var bubble = container.querySelector('.fact-suggestion');
+    if (bubble) bubble.style.transform = 'translateX(' + dx + 'px)';
+  };
+  container.addEventListener('mousemove', function(e) { onMove(e.clientX); });
+  container.addEventListener('touchmove', function(e) { onMove(e.touches[0].clientX); }, { passive: true });
+
+  var onEnd = function() {
+    if (!dragging) return;
+    dragging = false;
+    var bubble = container.querySelector('.fact-suggestion');
+    if (bubble) bubble.style.transform = '';
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) nextFact(); else prevFact();
+    }
+  };
+  container.addEventListener('mouseup', onEnd);
+  container.addEventListener('mouseleave', onEnd);
+  container.addEventListener('touchend', onEnd);
 }
 
 function dismissFact() {
+  if (factTimer) clearInterval(factTimer);
   var container = document.getElementById('factSuggestion');
   if (!container) return;
   var bubble = container.querySelector('.fact-suggestion');
@@ -2627,7 +2723,6 @@ function dismissFact() {
     bubble.classList.add('fact-dismissed');
     setTimeout(function() {
       container.style.display = 'none';
-      // Restore the titles
       var titleEn = document.getElementById('heroTitleEn');
       var titleDa = document.getElementById('heroTitleDa');
       if (titleEn) titleEn.classList.remove('fact-hidden');
