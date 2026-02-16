@@ -250,7 +250,7 @@
     <button class="readme-close" onclick="closeReadme()">&times;</button>
 
     <div data-lang="en">
-      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.0</span></h3>
+      <h3>Welcome to Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.1</span></h3>
       <div class="readme-section">
         <p>This is a vocal technique reference covering 21 techniques across five categories. It's designed as a learning companion — whether you're a beginner finding your voice or an experienced singer expanding your toolkit.</p>
       </div>
@@ -293,7 +293,7 @@
     </div>
 
     <div data-lang="da">
-      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.0</span></h3>
+      <h3>Velkommen til Vocal Guide <span style="font-size:0.6em;color:var(--text-muted);font-weight:normal;">v3.19.1</span></h3>
       <div class="readme-section">
         <p>Dette er en vokal-reference der dækker 21 teknikker fordelt på fem kategorier. Den er designet som en læringsguide — uanset om du er begynder eller erfaren sanger der vil udvide din værktøjskasse.</p>
       </div>
@@ -1747,7 +1747,14 @@
     <h3>Changelog</h3>
 
     <div class="readme-section">
-      <p><strong>v3.19.0</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <p><strong>v3.19.1</strong> <span style="color:var(--text-muted);font-size:0.8em;">— Latest</span></p>
+      <ul>
+        <li><strong>Fix:</strong> Tips slider now gives real-time visual feedback while dragging — card follows your thumb with opacity fade, animates out from where you release instead of snapping back first, and smoothly returns on short swipes</li>
+      </ul>
+    </div>
+
+    <div class="readme-section">
+      <p><strong>v3.19.0</strong></p>
       <ul>
         <li><strong>New:</strong> Fact suggestion / TIL feature — replaces the title with a random tip about the guide or a singer fact, with a link to explore and an X to dismiss for the session</li>
         <li>Suggestion gently floats with a random orbit animation until dismissed</li>
@@ -2065,7 +2072,7 @@
     <a href="#" onclick="openShareModal();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Del</a> ·
     <a href="#" onclick="openFeedback();return false;" style="color:var(--accent-warm);font-size:0.75rem;">Feedback</a>
   </p>
-  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.19.0)</a></p>
+  <p style="margin-top:12px;"><a href="#" onclick="openChangelog();return false;" style="color:var(--accent-warm);font-size:0.75rem;">View Changelog (v3.19.1)</a></p>
 </div>
 
 <script>
@@ -2695,7 +2702,10 @@ function initFactSuggestion() {
     if (!dragging) return;
     dx = x - startX;
     var bubble = container.querySelector('.fact-suggestion');
-    if (bubble) bubble.style.transform = 'translateX(' + dx + 'px)';
+    if (bubble) {
+      bubble.style.transform = 'translateX(' + dx + 'px)';
+      bubble.style.opacity = String(1 - Math.min(Math.abs(dx) / 300, 0.4));
+    }
   };
   container.addEventListener('mousemove', function(e) { onMove(e.clientX); });
   container.addEventListener('touchmove', function(e) { onMove(e.touches[0].clientX); }, { passive: true });
@@ -2704,9 +2714,41 @@ function initFactSuggestion() {
     if (!dragging) return;
     dragging = false;
     var bubble = container.querySelector('.fact-suggestion');
-    if (bubble) bubble.style.transform = '';
-    if (Math.abs(dx) > 50) {
-      if (dx < 0) nextFact(); else prevFact();
+    var swipedDx = dx;
+
+    if (Math.abs(swipedDx) > 50 && bubble && !factTransitioning) {
+      // Swiped past threshold — animate out from current dragged position
+      factTransitioning = true;
+      var swipedLeft = swipedDx < 0;
+
+      bubble.style.transition = 'transform 0.25s ease-in, opacity 0.25s ease-in';
+      bubble.style.transform = 'translateX(' + (swipedLeft ? '-100%' : '100%') + ')';
+      bubble.style.opacity = '0';
+
+      // Update index
+      if (swipedLeft) {
+        factIndex = (factIndex + 1) % factOrder.length;
+      } else {
+        factIndex = (factIndex - 1 + factOrder.length) % factOrder.length;
+      }
+      resetFactTimer();
+
+      // After slide-out completes, bring in new card
+      setTimeout(function() {
+        var inClass = swipedLeft ? 'slide-in-right' : 'slide-in-left';
+        container.innerHTML = buildFactHtml(factSuggestions[factOrder[factIndex]]);
+        var next = container.querySelector('.fact-suggestion');
+        if (next) next.classList.add(inClass);
+        factTransitioning = false;
+      }, 250);
+    } else if (bubble) {
+      // Below threshold — smoothly snap back to center
+      bubble.style.transition = 'transform 0.25s ease-out, opacity 0.25s ease-out';
+      bubble.style.transform = '';
+      bubble.style.opacity = '';
+      setTimeout(function() {
+        if (bubble) bubble.style.transition = '';
+      }, 250);
     }
   };
   container.addEventListener('mouseup', onEnd);
